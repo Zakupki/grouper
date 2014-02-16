@@ -132,8 +132,8 @@ Class Index_Controller Extends BaseReport_Controller {
 		$smtp->Hello(SMTP_HOST);
 		$smtp->Authenticate('support@clubsreport.com', 'Z1IRldqU');
 		$smtp->Mail('support@clubsreport.com');
-		$smtp->Recipient('selina@reactor.ua');
-		$smtp->Recipient('inna.merk@reactor.ua');
+		$smtp->Recipient('support@grouper.com.ua');
+		
 		$smtp->Data($message, $subject);
 		
 		$subject2 = "Заявка на регистрацию в системе Clubsreport";
@@ -153,7 +153,7 @@ Class Index_Controller Extends BaseReport_Controller {
 		$smtp3->Hello(SMTP_HOST);
 		$smtp3->Authenticate('support@clubsreport.com', 'Z1IRldqU');
 		$smtp3->Mail('support@clubsreport.com');
-		$smtp3->Recipient('selina@reactor.ua');
+		$smtp3->Recipient('support@grouper.com.ua');
 		$smtp3->Recipient('inna.merk@reactor.ua');
 		$smtp3->Data($message3, $subject3);
 		}
@@ -166,14 +166,12 @@ Class Index_Controller Extends BaseReport_Controller {
 			$smtp->Authenticate('reactor@reactor-pro.ru', '123qwe123');
 			$smtp->Mail('reactor@reactor-pro.ru');
 			if($_POST['subject']==1){
-				$smtp->Recipient('selina@reactor.ua');
-				$smtp->Recipient('inna.merk@reactor.ua');
+				$smtp->Recipient('support@grouper.com.ua');
 			}
 			elseif($_POST['subject']==4)
 				$smtp->Recipient('dmitriy.bozhok@gmail.com');
 			elseif($_POST['subject']==5){
-				$smtp->Recipient('selina@reactor.ua');
-				$smtp->Recipient('inna.merk@reactor.ua');
+				$smtp->Recipient('support@grouper.com.ua');
 			}
 			$smtp->Data($message, $subject);
 		}
