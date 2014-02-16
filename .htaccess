@@ -1,0 +1,34 @@
+    Options -Indexes 
+    RewriteEngine on 
+	
+	<IfModule mod_expires.c>
+	  ExpiresActive on
+	
+	# Perhaps better to whitelist expires rules? Perhaps.
+	  ExpiresDefault                          "access plus 1 month"
+	
+	# cache.appcache needs re-requests in FF 3.6 (thx Remy ~Introducing HTML5)
+	  ExpiresByType text/cache-manifest       "access plus 0 seconds"
+	
+	
+	# media: images, video, audio
+	  ExpiresByType image/gif                 "access plus 1 month"
+	  ExpiresByType image/png                 "access plus 1 month"
+	  ExpiresByType image/jpg                 "access plus 1 month"
+	  ExpiresByType image/jpeg                "access plus 1 month"
+	  ExpiresByType video/ogg                 "access plus 1 month"
+	  ExpiresByType audio/ogg                 "access plus 1 month"
+	  ExpiresByType video/mp4                 "access plus 1 month"
+	  ExpiresByType application/x-shockwave-flash               "access plus 1 month"
+	
+	  <IfModule mod_headers.c>
+	    Header append Cache-Control "public"
+	  </IfModule>
+	
+	</IfModule>
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
+    php_value register_globals on
