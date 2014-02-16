@@ -108,6 +108,17 @@ Class Vk {
                 ');*/
                 $userid=$db->lastInsertId();
                 if($userid>0){
+
+                    $message3 = "В системе grouper.com.ua был зарегистрирован новый пользователь с ID ".$userid.".\n\nПросмотреть всех пользователей: http://".$_SERVER['HTTP_HOST']."/admin/users/";
+                    $subject3 = "Регистрация нового пользователя";
+                    $smtp3=new smtp;
+                    $smtp3->Connect(SMTP_HOST);
+                    $smtp3->Hello(SMTP_HOST);
+                    $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+                    $smtp3->Mail('info@group.reactor.ua');
+                    $smtp3->Recipient('support@grouper.com.ua');
+                    $smtp3->Data($message3, $subject3);
+
                     mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads/users/'.$userid.'/');
                     mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads/users/'.$userid.'/img/');
                 }

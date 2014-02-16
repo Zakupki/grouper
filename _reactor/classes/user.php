@@ -112,21 +112,16 @@ class user {
 		$data['activationcode']=md5(microtime(). $data['email'].MD5_KEY . rand());
 		$data['password']=md5($data['password'].MD5_KEY);
 		
-		if($_SESSION['langid']==1){
+
 		$subject = "Подтверждение регистрации";
 		$message = "Здравствуйте! Спасибо за регистрацию на сайте ".$_SERVER['HTTP_HOST']."\n\nВаш логин: ".$data['login']."\n\nДля того чтобы войти в свой аккуант его нужно активировать.\n\nЧтобы активировать ваш аккаунт, перейдите по ссылке:\n\nhttp://".$_SERVER['HTTP_HOST']."/activate/?act=".$data['activationcode']."\n\nС уважением, Администрация сайта ".$_SERVER['HTTP_HOST']."";
-		}elseif($_SESSION['langid']==2){
-		$subject = "Registration confirmation";
-		$message = "Hi! Thanks for registrating at ".$_SERVER['HTTP_HOST']."\n\nYour login: ".$data['login']."\n\nTo activate your account go to http://".$_SERVER['HTTP_HOST']."/activate/?act=".$data['activationcode']."\n\nBest regards, Administration ".$_SERVER['HTTP_HOST']."";
-		}
-		
 		$smtp=new smtp;
 		$smtp->Connect(SMTP_HOST);
 		$smtp->Hello(SMTP_HOST);
-		$smtp->Authenticate('reactor@reactor-pro.ru', '123qwe123');
-		$smtp->Mail('reactor@reactor-pro.ru');
+        $smtp->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+        $smtp->Mail('info@group.reactor.ua');
 		$smtp->Recipient($data['email']);
-		$smtp->Data($message, $subject, 'Grouper');
+		$smtp->Data($message, $subject);
 		
 		$db=db::init();
 		$db->exec('INSERT INTO z_user (login, password, firstName, email, familyName, secondName, country, city, phone, question, answer, cash, activation, activationcode)
@@ -135,6 +130,17 @@ class user {
 		$newuserid=$db->lastInsertId();
 		//$db->exec('INSERT INTO z_usertype_user (userid, usertypeid) VALUES ('.$newuserid.',2)');
 		if($newuserid>0){
+
+            $message3 = "В системе grouper.com.ua был зарегистрирован новый пользователь с ID ".$newuserid.", email: ".$data['email'].".\n\nПросмотреть всех пользователей: http://".$_SERVER['HTTP_HOST']."/admin/users/";
+            $subject3 = "Регистрация нового пользователя";
+            $smtp3=new smtp;
+            $smtp3->Connect(SMTP_HOST);
+            $smtp3->Hello(SMTP_HOST);
+            $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+            $smtp3->Mail('info@group.reactor.ua');
+            $smtp3->Recipient('support@grouper.com.ua');
+            $smtp3->Data($message3, $subject3);
+
 		    mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads/users/'.$newuserid.'/');
             mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads/users/'.$newuserid.'/img/');
         }
