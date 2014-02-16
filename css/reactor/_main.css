@@ -1,0 +1,712 @@
+/* html */
+.html {}
+
+/* site-error */
+.site-error {font-size: 14px; line-height: 18px;}
+
+/* browser-error */
+.browser-error {font-size: 14px; line-height: 18px;}
+
+/* browser-download */
+.browser-download ul,
+.browser-download li {margin: 0; padding: 0; list-style: none outside none; background: none; display: block;}
+.browser-download ul {zoom: 1;}
+.browser-download ul:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.browser-download li {width: 312px; padding-right: 1px; position: relative; background: url(/img/reactor/vr.gif) repeat-y 100% 0; float: left; display: inline;}
+.browser-download .last {width: 313px; padding: 0; background: none;}
+.browser-download a {height: 340px; overflow: hidden; text-decoration: none; display: block;}
+.browser-download i {left: 50%; top: 0; position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.browser-download .title {font-size: 20px; line-height: 24px; color: #fff; white-space: nowrap; margin-left: -100%; right: 50%; top: 240px; position: absolute;}
+.browser-download .title span {padding: 8px 15px; right: -50%; top: 0; position: relative; background: #000; display: block;}
+.browser-download .link {text-decoration: underline; text-align: center; width: 100%; left: 0; top: 300px; position: absolute;}
+.browser-download .i-ie {width: 245px; height: 219px; margin-left: -123px; top: 4px; background-image: url(/img/reactor/icons/browser-download_ie.png);}
+.browser-download .i-chrome {width: 197px; height: 197px; margin-left: -99px; top: 18px; background-image: url(/img/reactor/icons/browser-download_chrome.png);}
+.browser-download .i-ff {width: 207px; height: 202px; margin-left: -104px; top: 18px; background-image: url(/img/reactor/icons/browser-download_ff.png);}
+
+
+/* settings */
+.settings {margin-bottom: 20px; background: #ccc; width: 460px;}
+.settings-last {margin-bottom: 0;}
+.settings .fieldset {padding: 20px; background: url(/img/reactor/hr.gif) repeat-x;}
+.settings .fieldset-first {background-image: none;}
+.settings .fieldset-even {background-color: #d6d6d6;}
+.settings .title,
+.settings .submit,
+.settings .fieldset {zoom: 1;}
+.settings .title:after,
+.settings .submit:after,
+.settings .fieldset:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.settings .br {height: 8px;}
+.settings .toggle {left: 0; top: 0; position: absolute; display: none;}
+.settings .toggle,
+.settings .toggle a {width: 460px; height: 60px;}
+.settings .toggle a {display: block;}
+.settings .toggle .i {width: 12px; height: 10px; right: 19px; top: 26px; position: absolute; background: url(/img/reactor/icons/settings_toggle.gif) no-repeat; font: 0/0 serif; display: block;}
+.settings .toggle-expanded .i {background-position: 0 -100px;}
+
+/* fieldset-account */
+.settings .fieldset-account {padding: 10px 20px 8px;}
+.settings .fieldset-account .link {font-size: 15px; line-height: 18px; margin-top: 18px; float: left; display: inline;}
+.settings .fieldset-account .id {font-size: 50px; line-height: 58px; float: right; display: inline;}
+.settings .fieldset-account .id .num,
+.settings .fieldset-account .id .help-link {float: left; display: inline;}
+.settings .fieldset-account .id .help-link {margin: 10px 0 0 5px;}
+
+/* fieldset-kind */
+.settings .fieldset-kind .row {margin-left: -20px;}
+.settings .fieldset-kind .input-radio {width: 180px; margin-left: 20px; float: left; display: inline;}
+.settings .fieldset-kind .help-link {right: 20px; top: 20px; position: absolute;}
+
+/* fieldset-kind-edit */
+.settings .fieldset-kind-edit h3,
+.settings .fieldset-kind-edit .help-link {float: left; display: inline;}
+.settings .fieldset-kind-edit h3 {font-size: 16px; line-height: 20px; margin: 0;}
+.settings .fieldset-kind-edit .help-link {margin: 2px 0 0 5px; z-index: 2;}
+.settings .fieldset-kind-edit .content {position: relative; zoom: 1;}
+.settings .fieldset-kind-edit .content-wrap {padding-top: 20px; position: relative; zoom: 1;}
+.settings .fieldset-kind-edit .row {margin-right: -20px;}
+.settings .fieldset-kind-edit .input-radio {width: 180px; margin-right: 20px; float: left; display: inline;}
+.settings .fieldset-kind-edit .submit {margin-top: 20px; position: relative;}
+.settings .fieldset-kind-edit button {width: 140px;}
+.settings .fieldset-kind-edit .button {float: right;}
+
+/* fieldset-transfer */
+.settings .fieldset-transfer h3,
+.settings .fieldset-transfer .help-link {float: left; display: inline;}
+.settings .fieldset-transfer h3 {font-size: 16px; line-height: 20px; margin: 0;}
+.settings .fieldset-transfer .help-link {margin: 2px 0 0 5px; z-index: 2;}
+.settings .fieldset-transfer .content {position: relative; zoom: 1;}
+.settings .fieldset-transfer .content-wrap {padding-top: 20px; position: relative; zoom: 1;}
+.settings .fieldset-transfer .row {margin-right: -10px;}
+.settings .fieldset-transfer .field {margin-right: 10px;}
+.settings .fieldset-transfer .field,
+.settings .fieldset-transfer .input-text {float: left; display: inline;}
+.settings .fieldset-transfer .input-text input {font-size: 13px; line-height: 15px; width: 185px; padding: 10px;}
+.settings .fieldset-transfer .submit {margin-top: 20px; position: relative;}
+.settings .fieldset-transfer .error {color: #f00; left: 0; top: 11px; position: absolute; display: none;}
+.settings .fieldset-transfer button {width: 140px;}
+.settings .fieldset-transfer .button {float: right;}
+
+/* fieldset-period */
+.settings .fieldset-period .title {margin: 11px 0 0; float: left; display: inline;}
+.settings .fieldset-period h3 {margin: 0; float: left; display: inline;}
+.settings .fieldset-period .title .help-link {float: left; display: inline;}
+.settings .fieldset-period .field {margin-left: 15px; float: right; display: inline;}
+.settings .fieldset-period .field-warning .input-text input,
+.settings .fieldset-period .field-warning .input-text .input {color: #f00;}
+.settings .fieldset-period .input-text input,
+.settings .fieldset-period .input-text .input {font-size: 18px; line-height: 21px; text-align: center; width: 50px; padding: 7px 0;}
+.settings .fieldset-period .label,
+.settings .fieldset-period .input-text {float: left; display: inline;}
+.settings .fieldset-period .label {margin: 10px 5px 0 0;}
+.settings .fieldset-period .price,
+.settings .fieldset-period .max-val,
+.settings .fieldset-period .max-discount {display: none;}
+
+/* fieldset-quota */
+.settings .fieldset-quota .title {margin: 11px 0 0; float: left; display: inline;}
+.settings .fieldset-quota h3 {margin: 0; float: left; display: inline;}
+.settings .fieldset-quota .title .help-link {margin-left: 5px; float: left; display: inline;}
+.settings .fieldset-quota .field {margin-left: 15px; float: right; display: inline;}
+.settings .fieldset-quota .field-warning .input-text input,
+.settings .fieldset-quota .field-warning .input-text .input {color: #f00;}
+.settings .fieldset-quota .input-text input,
+.settings .fieldset-quota .input-text .input {font-size: 18px; line-height: 21px; text-align: center; width: 50px; padding: 7px 0;}
+.settings .fieldset-quota .label,
+.settings .fieldset-quota .input-text {float: left; display: inline;}
+.settings .fieldset-quota .label {margin: 10px 5px 0 0;}
+.settings .fieldset-quota .price,
+.settings .fieldset-quota .max-val,
+.settings .fieldset-quota .max-discount {display: none;}
+
+/* fieldset-submit */
+.settings .fieldset-submit .cost {margin-top: 5px; float: left; display: none;}
+.settings .fieldset-submit .cost .start {display: none;}
+.settings .fieldset-submit .cost .discount {color: #f00; display: none;}
+.settings .fieldset-submit .cost .discount span {font-size: 18px; line-height: 22px;}
+.settings .fieldset-submit .cost .full {font-size: 18px; line-height: 22px; color: #f00; text-decoration: line-through; display: none;}
+.settings .fieldset-submit .cost .final {font-size: 18px; line-height: 22px;}
+.settings .fieldset-submit button {width: 140px;}
+.settings .fieldset-submit .button {float: right; display: inline;}
+
+/* services */
+.services {margin-bottom: 20px; zoom: 1;}
+.services:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.services .teaser {clear: right; float: right; display: inline;}
+.services-content {width: 460px; float: left; display: none;}
+.services-content-act {display: block;}
+
+/* sites */
+.sites {margin-bottom: 20px; zoom: 1;}
+.sites:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.sites .teaser {clear: right; float: right; display: inline;}
+.sites-content {width: 460px; float: left; display: none;}
+.sites-content-act {display: block;}
+
+/* register */
+.register {margin-bottom: 16px;}
+.register .submit {zoom: 1;}
+.register .submit:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.register .row {position: relative;}
+.register .row,
+.register .field {margin-bottom: 10px;}
+.register .row-last,
+.register .row .field {margin-bottom: 0;}
+.register .row .field {float: left; display: inline;}
+.register .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 4px;}
+.register .input-text input,
+.register .input-text .input {width: 340px;}
+.register .error {font-size: 12px; line-height: 16px; font-style: italic; color: #c00; width: 560px; left: 380px; top: 11px; position: absolute; display: none;}
+.register .error-2lines {top: 1px;}
+.register .input-checkbox .error {top: 0;}
+.register .field-father .error {width: 220px; left: 240px;}
+.register .field-agree,
+.register .field-cache {width: 360px; margin: 16px 0 0;}
+.register .field-cache {display: none;}
+.register .field-cache .help img {margin-left: 5px;}
+.register .fieldset-cache {position: relative; zoom: 1;}
+.register .fieldset-cache-wrap {padding-top: 20px; position: relative; zoom: 1;}
+.register .fieldset-cache h2 .help img {margin: 2px 0 0 5px;}
+.register .fieldset-cache .row {margin-left: -20px;}
+.register .fieldset-cache .field {width: 220px; margin-left: 20px;}
+.register .fieldset-cache .input-text input {width: 200px;}
+.register .fieldset-cache .field-question {width: 700px;}
+.register .fieldset-cache .field-question .input-text input {width: 680px;}
+.register .fieldset-cache .webmoney {width: 26px; height: 27px; left: 4px; top: 4px; position: absolute; background: url(/img/reactor/icons/register_webmoney.gif) no-repeat; font: 0/0 serif; display: block;}
+.register .fieldset-cache .field-webmoney .input-text input {width: 175px; padding-left: 35px;}
+.register .submit {margin-top: 20px;}
+.register .button {float: right; display: inline;}
+.register button {width: 180px;}
+
+/* user-personal */
+.user-data {margin-bottom: 16px;}
+.user-data .submit {zoom: 1;}
+.user-data .submit:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.user-data .row {position: relative;}
+.user-data .row,
+.user-data .field {margin-bottom: 10px;}
+.user-data .row-last,
+.user-data .row .field {margin-bottom: 0;}
+.user-data .row .field {float: left; display: inline;}
+.user-data .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 4px;}
+.user-data .input-text input,
+.user-data .input-text .input {width: 340px;}
+.user-data .error {font-size: 12px; line-height: 16px; font-style: italic; color: #c00; width: 560px; left: 380px; top: 11px; position: absolute; display: none;}
+.user-data .error-2lines {top: 1px;}
+.user-data .input-checkbox .error {top: 0;}
+.user-data .field-father .error {width: 220px; left: 240px;}
+.user-data .field-agree,
+.user-data .field-cache {width: 360px; margin: 16px 0 0;}
+.user-data .field-cache {display: none;}
+.user-data .field-cache .help img {margin-left: 5px;}
+.user-data .fieldset-cache {position: relative; zoom: 1;}
+.user-data .fieldset-cache-wrap {padding-top: 20px; position: relative; zoom: 1;}
+.user-data .fieldset-cache h2 .help img {margin: 2px 0 0 5px;}
+.user-data .fieldset-cache .row {margin-left: -20px;}
+.user-data .fieldset-cache .field {width: 220px; margin-left: 20px;}
+.user-data .fieldset-cache .input-text input {width: 200px;}
+.user-data .fieldset-cache .field-question {width: 700px;}
+.user-data .fieldset-cache .field-question .input-text input {width: 680px;}
+.user-data .fieldset-cache .webmoney {width: 26px; height: 27px; left: 4px; top: 4px; position: absolute; background: url(/img/reactor/icons/register_webmoney.gif) no-repeat; font: 0/0 serif; display: block;}
+.user-data .fieldset-cache .field-webmoney .input-text input {width: 175px; padding-left: 35px;}
+.user-data .submit {margin-top: 20px;}
+.user-data .field-confirm {margin-right: 20px; float: right; display: inline;}
+.user-data .field-confirm .input-text input {width: 200px;}
+.user-data .button {margin-top: 18px; float: right; display: inline;}
+.user-data button {width: 100px;}
+
+/* personal */
+.personal,
+.personal .h {zoom: 1;}
+.personal:after,
+.personal .h:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.personal .h {padding-bottom: 32px;}
+.personal .h h1 {margin: 0; padding: 0 20px 0 0; position: relative; float: left; display: inline;}
+.personal .h h1 .i {width: 15px; height: 9px; right: 0; top: 6px; position: absolute; background: url(/img/reactor/icons/pro.gif) no-repeat; font: 0/0 serif; display: block;}
+.personal .h .link {font-size: 18px; line-height: 20px; margin: 2px 0 0 15px; padding-left: 46px; position: relative; background: url(/img/reactor/vr.gif) repeat-y; float: left; display: inline;}
+.personal .h .link .i {width: 20px; height: 20px; left: 16px; top: 0; position: absolute; background: url(/img/reactor/icons/personal_link.gif) no-repeat; font: 0/0 serif; display: block;}
+
+/* user-profile */
+.profile {width: 520px; padding-left: 240px; float: left; display: inline;}
+.profile .image {margin-left: -240px; position: relative; float: left; display: inline;}
+.profile .text {}
+.profile .hr {margin: 20px 0;}
+.profile .links,
+.profile .links li {margin: 0; padding: 0; list-style: none outside none; background: none; display: block;}
+.profile .links {margin-bottom: 20px;}
+.profile .links li {margin-bottom: 14px; padding-left: 30px; position: relative;}
+.profile .links i {width: 20px; height: 20px; left: 0; top: -2px; position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.profile .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 6px;}
+.profile textarea {width: 500px; height: 150px;}
+.profile .loading {width: 40px; height: 40px; margin-left: -20px; left: 50%; top: 65px; position: absolute; z-index: 3; background: url(/img/reactor/loading/bg.png) no-repeat;}
+.profile .loading .i {width: 16px; height: 16px; margin: -8px 0 0 -8px; left: 50%; top: 50%; position: absolute; background: url(/img/reactor/loading/i.gif) no-repeat; font: 0/0 serif; display: block;}
+.profile .overlay {width: 100%; height: 230px; left: 0; top: 0; position: absolute; z-index: 2; background: url(/img/reactor/px.gif) no-repeat;}
+.profile .hidden {left: -9999px; top: -9999px; position: absolute;}
+.profile .submit {margin-top: 20px; zoom: 1;}
+.profile .submit:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.profile .button {float: right; display: inline;}
+.profile button {width: 100px;}
+
+/* profile-edit */
+.profile-edit,
+.profile-edit .submit {zoom: 1;}
+.profile-edit:after,
+.profile-edit .submit:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.profile-edit .image {width: 220px; height: 220px; position: relative; float: left; display: inline;}
+.profile-edit .image .default {}
+.profile-edit .image .remove {left: 4px; bottom: 3px; position: absolute;}
+.profile-edit .image .remove .i {width: 17px; height: 17px; background: url(/img/reactor/icons/remove.png) no-repeat; font: 0/0 serif; display: block;}
+.profile-edit .image .remove a:hover .i {background-position: 0 -100px;}
+.profile-edit .image .upload {right: 9px; top: 10px; position: absolute;}
+.profile-edit .image .upload .i {width: 22px; height: 22px; background: url(/img/reactor/icons/profile-edit_image_upload.png) no-repeat; font: 0/0 serif; display: block;}
+.profile-edit .image .upload a:hover .i {background-position: 0 -100px;}
+.profile-edit .fields {width: 700px; float: right; display: inline;}
+.profile-edit .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 6px;}
+.profile-edit .row,
+.profile-edit .field {margin-bottom: 10px;}
+.profile-edit .row {margin-left: -20px;}
+.profile-edit .row .field {margin: 0 0 0 20px; float: left; display: inline;}
+.profile-edit .field-reccount select {width: 340px;}
+.profile-edit .field-name input,
+.profile-edit .field-name .input,
+.profile-edit .field-site input {width: 320px;}
+.profile-edit .field-about {position: relative;}
+.profile-edit .field-about .edit-link {right: 0; top: 0; position: absolute;}
+.profile-edit .field-about .edit-link .i {height: 16px; cursor: pointer; font: 0/0 serif; display: block;}
+.profile-edit .field-about .edit-link .add,
+.profile-edit .field-about .edit-link .remove {float: left; display: inline;}
+.profile-edit .field-about .edit-link .add .i {width: 16px; background: url(/img/reactor/icons/editor_link-add.gif) no-repeat 0 4px;}
+.profile-edit .field-about .edit-link .remove {margin-left: 8px; padding-left: 9px; background: url(/img/reactor/vr.gif) repeat-y;}
+.profile-edit .field-about .edit-link .remove .i {width: 17px; background: url(/img/reactor/icons/editor_link-remove.gif) no-repeat 0 4px;}
+.profile-edit .field-about .edit-link .i:hover {background-position: 0 -96px;}
+.profile-edit .field-about textarea {width: 680px; height: 150px;}
+.profile-edit .links,
+.profile-edit .links li {margin: 0; padding: 0; list-style: none outside none; background: none; display: block;}
+.profile-edit .links li {height: 55px; margin-bottom: 10px; position: relative; background: #ccc; zoom: 1;}
+.profile-edit .links .lt,
+.profile-edit .links .rt,
+.profile-edit .links .rb,
+.profile-edit .links .lb {width: 3px; height: 3px; position: absolute; background: url(/img/reactor/rc.png) no-repeat; font: 0/0 serif; display: block;}
+.profile-edit .links .lt {left: 0; top: 0;}
+.profile-edit .links .rt {right: 0; top: 0; background-position: 100% 0;}
+.profile-edit .links .rb {right: 0; bottom: 0; background-position: 100% 100%;}
+.profile-edit .links .lb {left: 0; bottom: 0; background-position: 0 100%;}
+.profile-edit .links .input-text {margin: 10px 0 0 10px; float: left; display: inline;}
+.profile-edit .links .input-text input {width: 420px;}
+.profile-edit .links .link-hidden .input-text input {color: #ccc;}
+.profile-edit .links .input-checkbox {margin: 20px 0 0 10px; float: left; display: inline;}
+.profile-edit .links .remove {line-height: 20px; margin: 18px 0 0 10px; padding-left: 36px; position: relative; background: url(/img/reactor/vr.gif) repeat-y; float: left; display: inline;}
+.profile-edit .links .remove .i {width: 17px; height: 17px; left: 10px; top: 2px; position: absolute; background: url(/img/reactor/icons/remove.png) no-repeat; font: 0/0 serif; display: block;}
+.profile-edit .links .remove a:hover .i {background-position: 0 -100px;}
+.profile-edit .links .drag {width: 19px; height: 36px; margin: 10px 10px 0 0; cursor: move; background: url(/img/reactor/profile-edit_drag.gif); float: right; display: inline;}
+.profile-edit .submit {margin-top: 20px;}
+.profile-edit .link-add {margin-top: 10px; padding-left: 25px; position: relative; float: left; display: inline;}
+.profile-edit .link-add .i {width: 17px; height: 17px; left: 0; top: 0; position: absolute; background: url(/img/reactor/icons/add.png) no-repeat; font: 0/0 serif; display: block;}
+.profile-edit .link-add a:hover .i {background-position: 0 -100px;}
+.profile-edit button {width: 100px;}
+.profile-edit .button {float: right; display: inline;}
+.profile-edit .hidden {left: -9999px; top: -9999px; position: absolute;}
+
+/* balance */
+.balance {margin-bottom: 16px; zoom: 1;}
+.balance:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.balance .content {width: 460px; padding-bottom: 9px; background: url(/img/reactor/hr.gif) repeat-x 0 100%; float: left; display: inline;}
+.balance h2 {margin: 24px 0 0; float: left; display: inline;}
+.balance .sum {font-size: 54px; line-height: 62px; margin-top: -11px; float: right; display: inline;}
+.balance .teaser {margin: 0; float: right; display: inline;}
+
+/* operations */
+.operations {margin-bottom: 16px;}
+.operations h2 {margin: -31px 0 16px;}
+.operations table {width: 100%;}
+.operations th,
+.operations td {white-space: nowrap; vertical-align: top; padding: 10px; border: 1px solid #bbb;}
+.operations th {font-size: 11px; line-height: 14px; font-weight: normal; font-style: italic; color: #666; text-align: left;}
+.operations th {padding-top: 0; border-top: 0;}
+.operations .num {width: 80px; border-left: 0;}
+.operations .date {width: 100px;}
+.operations td.descr {white-space: normal;}
+.operations .sum {width: 80px; border-right: 0;}
+.operations .blank {border: 0;}
+.operations .total .descr {text-align: right; padding-top: 15px; border-width: 1px 1px 0 0;}
+.operations .total .sum {font-size: 18px; line-height: 22px; border-bottom: 0;}
+.operations .in {background: #ccebcc;}
+.operations .out {background: #f5ccd6;}
+.operations .bonus-in {background: #e0f5ff;}
+.operations .bonus-in .links {margin-left: 5px;}
+.operations .bonus-in .links a {font-weight: bold;}
+.operations .bonus-out {background: #fff5cc;}
+.operations .help img {margin-left: 5px;}
+
+/* archive-links */
+.archive-links,
+.archive-links li {margin: 0 0 16px; padding: 0; list-style: none outside none; background: none; display: block;}
+.archive-links li {margin-bottom: 8px;}
+
+/* notifications */
+.notifications {width: 100%; margin-bottom: 16px;}
+.notifications th,
+.notifications td {white-space: nowrap; vertical-align: top; padding: 10px; border: 1px solid #bbb;}
+.notifications a {text-decoration: none; margin: -10px -10px -10px -11px; padding: 10px 10px 10px 11px; position: relative; zoom: 1; display: block;}
+.notifications a,
+.notifications a:hover {color: #333;}
+.notifications th {font-size: 11px; line-height: 14px; font-weight: normal; font-style: italic; color: #666; text-align: left;}
+.notifications th {padding-top: 0; border-top: 0;}
+.notifications td {background: #fff;}
+.notifications .new td {background: #f5ccd6;}
+.notifications .num {width: 80px; border-left: 0;}
+.notifications .num a {margin-left: -10px; padding-left: 10px;}
+.notifications .date {width: 100px;}
+.notifications .message {white-space: normal; border-right: 0;}
+.notifications .title {float: left; display: inline;}
+.notifications .note {position: relative; float: right; display: inline;}
+.notifications .note .i {width: 7px; height: 7px; left: -12px; top: 0; position: absolute; background: url(/img/reactor/icons/note.gif) no-repeat; font: 0/0 serif; display: block;}
+
+/* deposit */
+.deposit {}
+.deposit .systems {margin: 0 0 16px -10px; zoom: 1;}
+.deposit .systems:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.deposit .systems div {margin-left: 10px; background-repeat: no-repeat; font: 0/0 serif; float: left; display: inline;}
+.deposit .systems .i-paypal {width: 81px; height: 23px; margin-top: 4px; background-image: url(/img/reactor/icons/deposit_paypal.gif);}
+.deposit .systems .i-mastercard {width: 37px; height: 23px; background-image: url(/img/reactor/icons/deposit_mastercard.gif);}
+.deposit .systems .i-visa {width: 37px; height: 23px; background-image: url(/img/reactor/icons/deposit_visa.gif);}
+.deposit .systems .i-amex {width: 37px; height: 23px; background-image: url(/img/reactor/icons/deposit_amex.gif);}
+.deposit .systems .i-discover {width: 36px; height: 23px; background-image: url(/img/reactor/icons/deposit_discover.gif);}
+.deposit .systems .i-echeck {width: 36px; height: 23px; background-image: url(/img/reactor/icons/deposit_echeck.gif);}
+.deposit .systems .i-webmoney {width: 107px; height: 27px; background-image: url(/img/reactor/icons/deposit_webmoney.gif);}
+.deposit .text {}
+.deposit .text p {margin: 0;}
+.deposit .note {color: #c00;}
+.deposit .br {height: 32px;}
+.deposit .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 4px;}
+.deposit .input-text {float: left; display: inline;}
+.deposit .input-text input {font-size: 18px; line-height: 21px; text-align: center; width: 100px; padding: 7px 10px;}
+.deposit .button {margin-left: 20px; float: left; display: inline;}
+.deposit .button button {width: 120px;}
+
+/* userlink */
+.userlink {margin-bottom: 16px; zoom: 1;}
+.userlink:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.userlink .button,
+.userlink .input-text {float: left; display: inline;}
+.userlink .input-text .input {width: 260px;}
+.userlink button {width: 160px;}
+.userlink .button {margin-left: 20px;}
+
+/* alert */
+.alert {width: 100%; height: 100%; left: -9999px; top: 0; position: fixed; z-index: 9999;}
+* html .alert {top: expression( ( 0 + ( y = document.documentElement.scrollTop ) ) + 'px' ); position: absolute;}
+.alert .overlay {width: 100%; height: 100%; left: 0; top: 0; position: absolute; background: url(/img/reactor/overlay.png) 50% 50%;}
+.alert .window {width: 180px; height: 125px; margin: -65px 0 0 -90px; left: 50%; top: 50%; position: absolute; z-index: 2; background: url(/img/reactor/confirm-window.png) no-repeat;}
+.alert .text {color: #000; text-align: center; width: 140px; margin-left: -70px; left: 50%; top: 27px; position: absolute;}
+.alert .ok {width: 35px; height: 35px; right: 30px; top: 60px; position: absolute;}
+.alert .ok .i {width: 37px; height: 37px; left: -1px; top: 0; position: absolute; cursor: pointer; background: url(/img/reactor/icons/alert_ok.gif) no-repeat; font: 0/0 serif; display: block;}
+.alert .ok .i:hover {background-position: 0 -100px;}
+
+/* confirm */
+.confirm {width: 100%; height: 100%; left: -9999px; top: 0; position: fixed; z-index: 9999;}
+* html .confirm {top: expression( ( 0 + ( y = document.documentElement.scrollTop ) ) + 'px' ); position: absolute;}
+.confirm .overlay {width: 100%; height: 100%; left: 0; top: 0; position: absolute; background: url(/img/reactor/overlay.png) 50% 50%;}
+.confirm .window {width: 180px; height: 125px; margin: -65px 0 0 -90px; left: 50%; top: 50%; position: absolute; z-index: 2; background: url(/img/reactor/confirm-window.png) no-repeat;}
+.confirm .text {color: #000; text-align: center; width: 140px; margin-left: -70px; left: 50%; top: 27px; position: absolute;}
+.confirm .no,
+.confirm .yes {width: 35px; height: 35px; top: 60px; position: absolute;}
+.confirm .no {left: 30px;}
+.confirm .yes {right: 30px;}
+.confirm .no .i,
+.confirm .yes .i {width: 37px; height: 37px; left: -1px; top: 0; position: absolute; cursor: pointer; font: 0/0 serif; display: block;}
+.confirm .no .i {background: url(/img/reactor/icons/confirm_no.gif) no-repeat;}
+.confirm .yes .i {background: url(/img/reactor/icons/confirm_yes.gif) no-repeat;}
+.confirm .no .i:hover,
+.confirm .yes .i:hover {background-position: 0 -100px;}
+
+/* support-form */
+.feedback-form {margin-bottom: 16px; zoom: 1;}
+.feedback-form:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.feedback-form .left {width: 340px; float: left; display: inline;}
+.feedback-form .right {width: 580px; float: right; display: inline;}
+.feedback-form select {width: 100%;}
+.feedback-form .note {font-size: 11px; line-height: 14px; font-style: italic; margin-top: 16px;}
+.feedback-form .note div {padding-left: 10px; background: url(/img/reactor/icons/note.gif) no-repeat; display: none;}
+.feedback-form .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 4px;}
+.feedback-form .field-email {margin-bottom: 20px;}
+.feedback-form .input-text input {width: 320px;}
+.feedback-form textarea {width: 540px; height: 150px; padding: 19px 20px 1px;}
+.feedback-form textarea.placeholder {color: #999;}
+.feedback-form .field-error .textarea textarea {margin-bottom: 0;}
+.feedback-form .input-file {width: 540px;}
+.feedback-form .input-file .name {width: 500px;}
+.feedback-form .submit {margin-top: 20px; zoom: 1;}
+.feedback-form .submit:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.feedback-form .button {float: right; display: inline;}
+.feedback-form button {width: 100px;}
+.feedback-form .loading {width: 40px; height: 40px; margin-left: -20px; left: 50%; top: 95px; position: absolute; z-index: 3; background: url(/img/reactor/loading/bg.png) no-repeat;}
+.feedback-form .loading .i {width: 16px; height: 16px; margin: -8px 0 0 -8px; left: 50%; top: 50%; position: absolute; background: url(/img/reactor/loading/i.gif) no-repeat; font: 0/0 serif; display: block;}
+.feedback-form .overlay {width: 100%; height: 230px; left: 0; top: 0; position: absolute; z-index: 2; background: url(/img/reactor/px.gif) no-repeat;}
+.feedback-form .hidden {left: -9999px; top: -9999px; position: absolute;}
+
+/* contacts */
+.contacts {font-size: 20px; line-height: 24px; margin: 40px 0 16px; zoom: 1;}
+.contacts:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.contacts .hr,
+.contacts .hr .l {height: 4px; background: url(/img/reactor/hr2.gif) no-repeat 100% 0;}
+.contacts .hr {height: 18px; margin: 0 -1px 0 0;}
+.contacts .hr .l {margin: 0 20px 0 -1px; background-position: 0 -100px;}
+.contacts ul,
+.contacts li {margin: 0; padding: 0; list-style: none outside none; background: none; display: block;}
+.contacts ul {float: right; display: inline;}
+.contacts li {margin-right: 20px; padding: 0 21px 0 25px; position: relative; background: url(/img/reactor/vr.gif) repeat-y 100% 0; float: left; display: inline;}
+.contacts .last {margin-right: 0; padding-right: 0; background: none;}
+.contacts i {left: 0; top: 2px; position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.contacts .i-phone {width: 11px; height: 18px; background-image: url(/img/reactor/icons/contacts_phone.gif);}
+.contacts .i-skype {width: 17px; height: 18px; background-image: url(/img/reactor/icons/contacts_skype.gif);}
+
+/* support-form */
+.support-form {margin-bottom: 16px; zoom: 1;}
+.support-form:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.support-form .left {width: 340px; float: left; display: inline;}
+.support-form .right {width: 580px; float: right; display: inline;}
+.support-form select {width: 100%;}
+.support-form .note {font-size: 11px; line-height: 14px; font-style: italic; margin-top: 16px;}
+.support-form .note div {padding-left: 10px; background: url(/img/reactor/icons/note.gif) no-repeat; display: none;}
+.support-form .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 4px;}
+.support-form textarea {width: 540px; height: 150px; padding: 19px 20px 1px;}
+.support-form textarea.placeholder {color: #999;}
+.support-form .field-error .textarea textarea {margin-bottom: 0;}
+.support-form .input-file {width: 540px;}
+.support-form .input-file .name {width: 500px;}
+.support-form .submit {margin-top: 20px; zoom: 1;}
+.support-form .submit:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.support-form .button {float: right; display: inline;}
+.support-form button {width: 100px;}
+.support-form .loading {width: 40px; height: 40px; margin-left: -20px; left: 50%; top: 95px; position: absolute; z-index: 3; background: url(/img/reactor/loading/bg.png) no-repeat;}
+.support-form .loading .i {width: 16px; height: 16px; margin: -8px 0 0 -8px; left: 50%; top: 50%; position: absolute; background: url(/img/reactor/loading/i.gif) no-repeat; font: 0/0 serif; display: block;}
+.support-form .overlay {width: 100%; height: 230px; left: 0; top: 0; position: absolute; z-index: 2; background: url(/img/reactor/px.gif) no-repeat;}
+.support-form .hidden {left: -9999px; top: -9999px; position: absolute;}
+
+/* support-requests */
+.support-requests {margin-bottom: 16px;}
+.support-requests h2 {margin-bottom: 16px;}
+.support-requests table {width: 100%;}
+.support-requests th,
+.support-requests td {white-space: nowrap; vertical-align: top; padding: 10px; border: 1px solid #bbb;}
+.support-requests th {font-size: 11px; line-height: 14px; font-weight: normal; font-style: italic; color: #666; text-align: left; padding-top: 0; border-top: 0;}
+.support-requests td {background: #fff;}
+.support-requests .answered td {background: #f5ccd6;}
+.support-requests .num {border-left: 0;}
+.support-requests .qa {border-right: 0;}
+.support-requests .collapsed {cursor: pointer;}
+.support-requests td.qa {white-space: normal; width: 100%;}
+.support-requests .expanded td.qa,
+.support-requests .collapsed td.qa {padding-right: 40px;}
+.support-requests .text-wrap {width: 100%; overflow: hidden; position: relative; float: left; display: inline;}
+.support-requests .text {}
+.support-requests .text p {margin: 0;}
+.support-requests .notice {color: #c00; margin-right: 6px; padding-right: 11px; background: url(/img/reactor/vr.gif) repeat-y 100% 0;}
+.support-requests .kind {font-weight: bold; margin-right: 6px; padding-right: 11px; background: url(/img/reactor/vr.gif) repeat-y 100% 0;}
+.support-requests .question {}
+.support-requests .answer {margin-top: 8px;}
+.support-requests .arr {width: 12px; height: 10px; margin: 4px -31px 0 -1px; position: absolute; cursor: pointer; background: url(/img/reactor/icons/support-requests_arr.png) no-repeat; visibility: hidden; float: right; display: inline;}
+.support-requests .expanded .arr {background-position: 0 -100px;}
+.support-requests .expanded .arr,
+.support-requests .collapsed .arr {visibility: visible; position: relative;}
+
+
+
+
+
+
+/* side-bn */
+.side-bn {float: right; display: inline;}
+
+/* news-wrap */
+.news-wrap {zoom: 1;}
+.news-wrap:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+
+/* news */
+.news {width: 720px; float: left; display: inline;}
+.news .list {margin: 0 0 17px -40px; zoom: 1;}
+.news .list:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news .pager {margin-top: 27px;}
+.news .li {width: 340px; margin-left: 40px; float: left; display: inline;}
+.news .br {height: 27px;}
+.news .image {width: 340px; height: 100px; margin-bottom: 7px; position: relative;}
+.news .image img {left: 0; top: 0; position: absolute;}
+.news .image .hidden {left: -9999px; top: -9999px;}
+.news .image a:hover img {left: -9999px; top: -9999px;}
+.news .image a:hover .hidden {left: 0; top: 0;}
+.news .author {margin-bottom: 9px; zoom: 1;}
+.news .author:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news .author .user {font-size: 11px; line-height: 14px; font-style: italic; float: left; display: inline;}
+.news .author .user a {padding: 0 20px 0 15px; position: relative; zoom: 1;}
+.news .author .user i {position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.news .author .user .i {width: 11px; height: 12px; left: -1px; top: 1px; background-image: url(/img/reactor/icons/user.png);}
+.news .author .user .i-pro {width: 15px; height: 9px; right: 0; top: 2px; background-image: url(/img/reactor/icons/pro.gif);}
+.news .author .date {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-left: 10px; padding-left: 11px; background: url(/img/reactor/vr.gif) repeat-y; float: left; display: inline;}
+.news .author .date em {font-style: normal; color: #000;}
+.news h3 {font-size: 15px; line-height: 25px; color: #fff; margin-bottom: 7px; padding: 2px 10px 3px; background: #000;}
+.news h3 a,
+.news h3 a:hover {color: #fff; text-decoration: none;}
+.news h3.text-outline {line-height: 30px; margin-right: 6px; padding: 5px 0 0; border-left: 10px solid #000; background: transparent; zoom: 1;}
+.news h3.text-outline:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news h3.text-outline span {margin: -5px -6px 0 0; padding: 0 10px 0 0; background: #000; float: left; display: inline;}
+.news .text {color: #666;}
+.news .text p {margin: 0;}
+.news .links {font-size: 11px; line-height: 14px; margin-top: 8px; padding-top: 8px; background: url(/img/reactor/hr.gif) repeat-x; zoom: 1;}
+.news .links:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news .link {margin-right: 10px; float: left; display: inline;}
+.news .link em {font-style: normal; color: #000;}
+.news .link .new {color: #c00;}
+.news .link a {color: #333; text-decoration: none; padding-left: 15px; position: relative; zoom: 1;}
+.news .link a:hover,
+.news .link a:hover .new {color: #666;}
+.news .link i {position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.news .link .i-favorites {width: 12px; height: 12px; left: -1px; top: 1px; background-image: url(/img/reactor/icons/favorites.png);}
+.news .link .i-comments {width: 12px; height: 12px; left: -1px; top: 1px; background-image: url(/img/reactor/icons/comments.png);}
+
+
+
+
+
+/* news-popular */
+.news-popular {width: 280px; margin-bottom: 16px; padding: 20px; position: relative; background: #d8d8d8; float: right; display: inline;}
+.news-popular .h {margin-bottom: 16px; zoom: 1;}
+.news-popular .h:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news-popular h2 {font-size: 12px; line-height: 16px; color: #fff; margin: 0; padding: 2px 6px; background: #8ec0cf; float: left; display: inline;}
+.news-popular ul,
+.news-popular li {margin: 0; padding: 0; list-style: none outside none; background: none; display: block;}
+.news-popular li {margin-bottom: 20px; padding-bottom: 21px; background: url(/img/reactor/hr.gif) repeat-x 0 100%;}
+.news-popular .last {margin: 0; padding: 0; background: none;}
+.news-popular .author {margin-bottom: 16px; zoom: 1;}
+.news-popular .author:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news-popular .author .user {font-size: 11px; line-height: 14px; font-style: italic; float: left; display: inline;}
+.news-popular .author .user a {padding: 0 20px 0 15px; position: relative; zoom: 1;}
+.news-popular .author .user i {position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.news-popular .author .user .i {width: 11px; height: 12px; left: -1px; top: 1px; background-image: url(/img/reactor/icons/user.png);}
+.news-popular .author .user .i-pro {width: 15px; height: 9px; right: 0; top: 2px; background-image: url(/img/reactor/icons/pro.gif);}
+.news-popular .author .date {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-left: 10px; padding-left: 11px; background: url(/img/reactor/vr.gif) repeat-y; float: left; display: inline;}
+.news-popular .author .date em {font-style: normal; color: #000;}
+.news-popular h3 {font-size: 15px; line-height: 18px; margin-bottom: 8px;}
+.news-popular .text {font-size: 12px; line-height: 16px; color: #666;}
+.news-popular .text p {margin: 0;}
+.news-popular .links {font-size: 11px; line-height: 14px; margin-top: 16px; zoom: 1;}
+.news-popular .links:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.news-popular .link {margin-right: 10px; float: left; display: inline;}
+.news-popular .link em {font-style: normal; color: #000;}
+.news-popular .link .new {color: #c00;}
+.news-popular .link a {color: #333; text-decoration: none; padding-left: 15px; position: relative; zoom: 1;}
+.news-popular .link a:hover,
+.news-popular .link a:hover .new {color: #666;}
+.news-popular .link i {position: absolute; background-repeat: no-repeat; font: 0/0 serif; display: block;}
+.news-popular .link .i-favorites {width: 12px; height: 12px; left: -1px; top: 1px; background-image: url(/img/reactor/icons/favorites.png);}
+.news-popular .link .i-comments {width: 12px; height: 12px; left: -1px; top: 1px; background-image: url(/img/reactor/icons/comments.png);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* video */
+.video {width: 100%; height: 100%; overflow: hidden; left: -9999px; top: 0; position: fixed; z-index: 9999;}
+* html .video {top: expression( ( y = document.documentElement.scrollTop ) + 'px' ); position: absolute;}
+.video .window {left: 50%; top: 50%; position: absolute; z-index: 2;}
+.video .content {}
+.video .close {width: 17px; height: 17px; right: -1px; top: -25px; position: absolute; z-index: 4; cursor: pointer; background: url(/img/reactor/icons/close.png) no-repeat; font: 0/0 serif; display: block;}
+.video .close:hover {background-position: 0 -100px;}
+.video .overlay {width: 100%; height: 100%; left: 0; top: 0; position: absolute; background: url(/img/reactor/overlay.png) 50% 50%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* balance */
+.balance {margin-bottom: 16px; zoom: 1;}
+.balance:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.balance .content {width: 460px; padding-bottom: 9px; background: url(/img/reactor/hr.gif) repeat-x 0 100%; float: left; display: inline;}
+.balance h2 {margin: 24px 0 0; float: left; display: inline;}
+.balance .sum {font-size: 54px; line-height: 62px; margin-top: -11px; float: right; display: inline;}
+.balance .teaser {margin: 0; float: right; display: inline;}
+
+/* operations */
+.operations {margin-bottom: 16px;}
+.operations h2 {margin: -31px 0 16px;}
+.operations table {width: 100%;}
+.operations th,
+.operations td {white-space: nowrap; vertical-align: top; padding: 10px; border: 1px solid #bbb;}
+.operations th {font-size: 11px; line-height: 14px; font-weight: normal; font-style: italic; color: #666; text-align: left;}
+.operations th {padding-top: 0; border-top: 0;}
+.operations .num {width: 80px; border-left: 0;}
+.operations .date {width: 100px;}
+.operations td.descr {white-space: normal;}
+.operations .sum {width: 80px; border-right: 0;}
+.operations .blank {border: 0;}
+.operations .total .descr {text-align: right; padding-top: 15px; border-width: 1px 1px 0 0;}
+.operations .total .sum {font-size: 18px; line-height: 22px; border-bottom: 0;}
+.operations .in {background: #ccebcc;}
+.operations .out {background: #f5ccd6;}
+.operations .bonus-in {background: #e0f5ff;}
+.operations .bonus-in .links {margin-left: 5px;}
+.operations .bonus-in .links a {font-weight: bold;}
+.operations .bonus-out {background: #fff5cc;}
+.operations .help img {margin-left: 5px;}
+
+/* archive-links */
+.archive-links,
+.archive-links li {margin: 0 0 16px; padding: 0; list-style: none outside none; background: none; display: block;}
+.archive-links li {margin-bottom: 8px;}
+
+/* deposit */
+.deposit {}
+.deposit .systems {margin: 0 0 16px -10px; zoom: 1;}
+.deposit .systems:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.deposit .systems div {margin-left: 10px; background-repeat: no-repeat; font: 0/0 serif; float: left; display: inline;}
+.deposit .systems .i-paypal {width: 81px; height: 23px; margin-top: 4px; background-image: url(/img/reactor/icons/deposit_paypal.gif);}
+.deposit .systems .i-mastercard {width: 37px; height: 23px; background-image: url(/img/reactor/icons/deposit_mastercard.gif);}
+.deposit .systems .i-visa {width: 37px; height: 23px; background-image: url(/img/reactor/icons/deposit_visa.gif);}
+.deposit .systems .i-amex {width: 37px; height: 23px; background-image: url(/img/reactor/icons/deposit_amex.gif);}
+.deposit .systems .i-discover {width: 36px; height: 23px; background-image: url(/img/reactor/icons/deposit_discover.gif);}
+.deposit .systems .i-echeck {width: 36px; height: 23px; background-image: url(/img/reactor/icons/deposit_echeck.gif);}
+.deposit .systems .i-webmoney {width: 107px; height: 27px; background-image: url(/img/reactor/icons/deposit_webmoney.gif);}
+.deposit .text {}
+.deposit .text p {margin: 0;}
+.deposit .note {color: #c00;}
+.deposit .br {height: 32px;}
+.deposit .label {font-size: 11px; line-height: 14px; font-style: italic; color: #666; margin-bottom: 4px;}
+.deposit .input-text {float: left; display: inline;}
+.deposit .input-text input {font-size: 18px; line-height: 21px; text-align: center; width: 100px; padding: 7px 10px;}
+.deposit .button {margin-left: 20px; float: left; display: inline;}
+.deposit .button button {width: 120px;}
+
+
+
+
+

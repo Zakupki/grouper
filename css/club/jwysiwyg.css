@@ -1,0 +1,14 @@
+html {
+    margin: 0;
+    padding: 0;
+    font: 13px Arial;
+}
+
+body {
+    margin: 0;
+    padding: 5px;
+}
+div,
+p {
+    margin: 0 0 10px; padding: 0;
+}

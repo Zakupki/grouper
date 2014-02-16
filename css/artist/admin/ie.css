@@ -1,0 +1,160 @@
+﻿/* global styles (begin) */
+.g-wrapper {
+    *z-index:1;
+}
+.g-overlay {
+    filter:alpha(opacity=60);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+}
+/* global styles (end) */
+
+/* confirmation pop-up (begin) */
+.g-confirmation-pop-up {
+    position:absolute;
+    top:expression( ( 0 + ( y = document.documentElement.scrollTop ) ) + 'px' );
+}
+/* confirmation pop-up (end) */
+
+/* header (begin) */
+.g-header li {
+    *display:inline;
+    *zoom:1;
+}
+.g-header .logout {
+    *margin:-22px 0 0;
+}
+/* header (end) */
+
+/* navigation (begin) */
+.g-navigation .b-navigation-list li {
+    *display:inline;
+    *zoom:1;
+    *z-index:10;
+}
+.g-navigation .b-navigation-list .show-more {
+    *margin:-60px 0 0;
+}
+.g-navigation .b-navigation-list .current i {
+    *zoom:1;
+}
+.g-navigation ul .show-more .b-dropdown li a {
+    *white-space:nowrap;
+}
+.g-navigation .b-navigation-list li a,
+.g-navigation .b-navigation-list li a:visited {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#FFFFFF')";
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#FFFFFF');
+}
+/* navigation (end) */
+
+/* submenu (begin) */
+.g-submenu li {
+    *display:inline;
+}
+.g-submenu li a,
+.g-submenu li div {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=0, Color='#000000')";
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=0, Color='#000000');
+}
+.g-submenu li.turn-on-reccount {
+    margin:-45px 0 0;
+}
+/* submenu (end) */
+
+/* links (begin) */
+.b-links .b-options li:first-child {
+    margin:2px 0 0 0;
+}
+.b-links .b-options input {
+    vertical-align:middle;
+}
+.b-links .b-social-services ul li {
+    *display:inline;
+}
+.b-links .b-social-services ul span {
+    *display:inline;
+}
+.b-links .b-accounts li .options .draggable-area {
+    margin:-20px 0 0;
+}
+/* links (end) */
+
+/* languages (begin) */
+.b-languages .b-languages-list li .major-item {
+    *padding:8px 0 0 14px;
+}
+    .b-languages .b-languages-list li .major-item input {
+        *vertical-align:middle;
+    }
+.b-languages .b-languages-list li .hide-item {
+    *padding:6px 0 0 16px;
+}
+.b-languages .b-languages-list li .delete-item {
+    *margin:10px 0 0;
+}
+/* languages (end) */
+
+/* menu customization (begin) */
+.b-menu-customization .b-menu-items li .hidden-item {
+    *padding:10px 11px 2px 0;
+    *vertical-align:top;
+}
+/* menu customization (end) */
+
+/* backgrounds customization (begin) */
+.b-backgrounds .b-backgrounds li {
+    *display:inline;
+}
+/* backgrounds customization (end) */
+
+/* background position (begin) */
+.b-background-position .position {
+    *display:inline;
+}
+.b-background-position .position label input {
+    *vertical-align:middle;
+}
+.b-background-position .dark-or-light {
+    *display:inline;
+}
+.b-background-position .dark-or-light label input {
+    *vertical-align:middle;
+}
+.b-background-position .categories {
+    *display:inline;
+}
+.b-background-position .categories label input {
+    *vertical-align:middle;
+}
+/* background position (end) */
+
+/* radioshows (begin) */
+.b-edit-radioshow .radioshows li {
+    *display:inline;
+}
+/* radioshows (end) */
+
+/* news (begin) */
+.b-news-edit .b-news li .description,
+.b-news-edit .b-news li .options label,
+.b-news-edit .b-news li .options .separator,
+.b-news-edit .b-news li .options a,
+.b-news-edit .b-news li .options .draggable-area {
+    *display:inline;
+}
+/* news (end) */
+
+/* news adding (begin) */
+.b-news-menu ul li {
+    *display:inline;
+}
+.b-news-step-three .b-photos li {
+    *display:inline;
+}
+/* news adding (end) */
+
+/* footer (begin) */
+.g-footer .copyright {
+    *margin:-16px 0 0;
+}
+/* footer (end) */

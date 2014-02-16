@@ -1,0 +1,106 @@
+/* global styles (begin) */
+.g-wrap {
+     *overflow:hidden;
+}
+.g-wrapper {
+    *z-index:1;
+}
+.g-fixed-bottom-wrapper {
+    *z-index:1;
+}
+.g-content-wrap {
+    *zoom:1;
+}
+/* global styles (end) */
+
+/* login box (begin) */
+.b-login-box {
+    padding:20px;
+}
+.b-login-box .login-form .button-set .alert {
+    *width:250px;
+    margin:-5px 0 0;
+}
+/* login box (end) */
+
+/* header (begin) */
+.g-header li {
+    *display:inline;
+    *zoom:1;
+}
+.g-header .login {
+    *margin:-20px 0 0;
+}
+/* header (end) */
+
+/* navigation (begin) */
+.g-navigation .b-navigation-list li {
+    *display:inline;
+    *zoom:1;
+    *z-index:10;
+}
+.g-navigation .b-navigation-list .show-more {
+    *margin:-60px 0 0;
+}
+.g-navigation .b-navigation-list .current i {
+    *zoom:1;
+}
+.g-navigation ul .show-more .b-dropdown li a {
+    *white-space:nowrap;
+}
+.g-navigation .b-navigation-list li a,
+.g-navigation .b-navigation-list li a:visited {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#FFFFFF')";
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=135, Color='#FFFFFF');
+}
+/* navigation (end) */
+
+/* content (begin) */
+.g-content {
+    *overflow:hidden;
+}
+.g-content .b-container {
+    *position:relative;
+}
+.g-content .b-switcher {
+    *vertical-align:text-bottom;
+    *display:inline;
+}
+.g-content h2 {
+    *display:inline;
+}
+.g-content h3 {
+    *display:inline;
+}
+.g-content .b-press-release-pdf,
+.g-content .b-press-release-pdf:visited {
+    *margin:-46px 0 0;
+}
+.b-slider li h4 {
+    *display:inline !important;
+    *padding: 0 5px 0 0;
+}
+.b-slider li h5 {
+    *display:inline !important;
+}
+.g-content .b-slider li {
+    *display:inline;
+}
+.g-content .b-pager li {
+    *display:inline;
+}
+/* content (end) */
+
+/* footer (begin) */
+.g-footer li {
+    *display:inline;
+    *zoom:1;
+}
+.g-footer .social-networks-plugins {
+    *margin:0 0 0 3px;
+}
+.g-footer .copyright {
+    *width:65px;
+    *margin:-22px 0 0;
+}
+/* footer (end) */

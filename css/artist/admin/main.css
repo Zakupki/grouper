@@ -1,0 +1,5270 @@
+﻿/* global styles (begin) */
+html, body {
+    height:100%;
+    margin:0;
+    padding:0;
+}
+body {
+    min-width:940px;
+    background:#E6E6E6;
+    font:12px Arial;
+    color:#333;
+}
+img {
+    border:none;
+}
+.g-wrap {
+    min-height:100%;
+    height:auto !important;
+    height:100%;
+}
+.g-overlay {
+    position:absolute;
+    z-index:99;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:#000;
+    -khtml-opacity:0.6;
+    -moz-opacity:0.6;
+    opacity:0.6;
+}
+.g-loader {
+    position:absolute;
+    z-index: 100;
+    top:50%;
+    left:50%;
+    height:40px;
+    width:40px;
+    margin:-20px 0 0 -20px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background:#000 url('/img/artist/bg-content-loading.gif') no-repeat center center;
+}
+/* global styles (end) */
+
+/* confirmation pop-up (begin) */
+.g-confirmation-pop-up {
+    position:fixed;
+    z-index:9999;
+    top:0;
+    left:0;
+    display:none;
+    width:100%;
+    height:100%;
+}
+    .g-confirmation-pop-up .b-overlay {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:url('/img/artist/admin/bg-overlay.png') repeat top left;
+    }
+    .g-confirmation-pop-up .b-confirm {
+        position:absolute;
+        z-index:100;
+        top:50%;
+        left:50%;
+        width:120px;
+        margin:-52px 0 0 -80px;
+        padding:16px 20px 18px;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        background:#E6E6E6;
+        text-align:center;
+    }
+        .g-confirmation-pop-up .b-confirm .b-button-set {
+            height:37px;
+            padding:18px 0 0;
+        }
+            .g-confirmation-pop-up .b-confirm .b-button-set .cancel {
+                float:left;
+                display:block;
+                width:37px;
+                height:37px;
+                background:url('/img/artist/admin/bg-pop-up-cancel.png') no-repeat center center;
+            }
+            .g-confirmation-pop-up .b-confirm .b-button-set .ok {
+                float:right;
+                display:block;
+                width:37px;
+                height:37px;
+                background:url('/img/artist/admin/bg-pop-up-ok.png') no-repeat center center;
+            }
+/* confirmation pop-up (end) */
+
+/* header (begin) */
+.g-header {
+    height:26px;
+    margin:0;
+    padding:7px 10px 7px;
+    list-style:none;
+    background:url('/img/artist/admin/bg-header-footer.png') repeat-x top left;
+    -moz-text-shadow:0px 1px 0px #000;
+    -webkit-text-shadow:0px 1px 0px #000;
+    text-shadow:0px 1px 0px #000;
+}
+    .g-header li {
+        display:inline-block;
+        vertical-align:top;
+        margin:0 13px 0 0;
+        font-size:12px;
+    }
+        .g-header li a,
+        .g-header li a:visited {
+            display:block;
+            padding:5px 0 5px 30px;
+            text-decoration:none;
+            color:#FFF;
+        }
+        .g-header li a:hover {
+            text-decoration:none;
+            color:#CCC;
+        }
+    .g-header .my-reccounts {
+        background:url('/img/artist/admin/icon-my-reccounts.png') no-repeat center left;
+    }
+    .g-header .reccount-settings {
+        background:url('/img/artist/admin/icon-reccount-settings.png') no-repeat center left;
+    }
+    .g-header .design-settings {
+        background:url('/img/artist/admin/icon-design-settings.png') no-repeat center left;
+    }
+    .g-header .notifications,
+    .g-header .notifications:hover,
+    .g-header .notifications:visited {
+        background:url('/img/artist/admin/icon-notifications.png') no-repeat center left;
+    }
+    .g-header .notifications-new,
+    .g-header .notifications-new:hover,
+    .g-header .notifications-new:visited {
+        background:url('/img/artist/admin/icon-notifications.png') no-repeat center left;
+        color:#F00;
+    }
+    .g-header .synchronization {
+        background:url('/img/artist/admin/icon-sync.png') no-repeat center left;
+    }
+    .g-header .exit-edit-mode {
+        background:url('/img/artist/admin/icon-exit-edit-mode.png') no-repeat center left;
+    }
+    .g-header .logout {
+        float:right;
+        margin:3px 0 0 0;
+    }
+        .g-header .logout a,
+        .g-header .logout a:hover,
+        .g-header .logout a:visited {
+            display:block;
+            width:20px;
+            height:20px;
+            padding:0;
+            background:url('/img/artist/admin/icon-logout.png') no-repeat center center;
+            text-decoration:none;
+        }
+/* header (end) */
+
+/* navigation (begin) */
+.g-navigation {
+    height:60px;
+    margin:0 auto;
+    padding:0 0 0px;
+    background:#1A1A1A url('/img/artist/admin/bg-navigation.png') repeat-x top left;
+}
+    .g-navigation .b-navigation-list {
+        width:940px;
+        margin: 0 auto;
+        padding:0;
+        list-style:none;
+        text-align:left;
+    }
+        .g-navigation .b-navigation-list li {
+            position:relative;
+            display:inline-block;
+            padding:20px 16px 24px 13px;
+            vertical-align:top;
+            background:url('/img/artist/admin/bg-navigation-li.png') no-repeat 100% 18px;
+        }
+        .g-navigation .b-navigation-list > :first-child {
+            padding:20px 16px 24px 0px;
+        }
+            .g-navigation .b-navigation-list > :first-child i {
+                left:0;
+            }
+        .g-navigation .b-navigation-list .last {
+            background:none;
+        }
+        .g-navigation .b-navigation-list .show-more {
+            float:right;
+            width:22px;
+            padding:20px 0 24px 13px;
+            background:url('/img/artist/admin/bg-navigation-more.png') no-repeat 12px 21px;
+            cursor:pointer;
+        }
+            .g-navigation .b-navigation-list i {
+                position:absolute;
+                top:0;
+                right:17px;
+                left:13px;
+                height:5px;
+                border-right:1px solid #AEAEAE;
+                border-left:1px solid #AEAEAE;
+                border-bottom:1px solid #FFF;
+                background:url('/img/artist/admin/bg-navigation-li-current.png') repeat-x top left;
+            }
+            .g-navigation .b-navigation-list .show-more i {
+                width:20px;
+            }
+            .g-navigation .b-navigation-list b {
+                position:absolute;
+                right:18px;
+                bottom:-20px;
+                left:13px;
+                display:block;
+                height:20px;
+                background:url('/img/artist/admin/bg-submenu-slim-item.png') no-repeat top center;
+            }
+            .g-navigation .b-navigation-list q {
+                position:absolute;
+                right:18px;
+                bottom:-20px;
+                left:13px;
+                display:block;
+                height:20px;
+                background:url('/img/artist/admin/bg-submenu-slim-white-item.png')no-repeat top center;
+                text-indent:-9999px;
+            }
+            .g-navigation .b-navigation-list .show-more b {
+                bottom:-21px;
+                width:20px;
+            }
+            .g-navigation .b-navigation-list .show-more ul {
+                z-index:99;
+                position:absolute;
+                top:59px;
+                right:0;
+                margin:0;
+                padding:0;
+                padding:0 20px 16px;
+                -moz-border-radius:0 0 3px 3px;
+                -webkit-border-radius:0 0 3px 3px;
+                border-radius:0 0 3px 3px;
+                background:#1A1A1A;
+                text-align:left;
+            }
+                .g-navigation .b-navigation-list .show-more ul li {
+                    width:100%;
+                    padding:7px 0;
+                    background:none;
+                }
+                .g-navigation .b-navigation-list .show-more ul .last {
+                    padding:7px 0 0;
+                    background:none;
+                }
+                .g-navigation .b-navigation-list .show-more ul a,
+                .g-navigation .b-navigation-list .show-more ul a:visited {
+                    -moz-text-shadow:0px -1px 0px #000;
+                    -webkit-text-shadow:0px -1px 0px #000;
+                    text-shadow:0px -1px 0px #000;
+                }
+        .g-navigation .b-navigation-list li a,
+        .g-navigation .b-navigation-list li a:visited {
+            font-size:14px;
+            text-decoration:none;
+            color:#FFF;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+        }
+        .g-navigation .b-navigation-list li a:hover {
+            text-decoration:none;
+        }
+        .g-navigation .b-navigation-list li a.unactive {
+            color: #747474;
+        }
+/* navigation (end) */
+
+/* submenu (begin) */
+.g-submenu {
+    height:50px;
+    margin:0;
+    padding:0 50px;
+    list-style:none;
+    background:url('/img/artist/admin/bg-submenu.png') repeat-x top left;
+    text-align:left;
+}
+    .g-submenu li {
+        display:inline-block;
+        margin:6px 0 0;
+        padding:3px 17px 25px 13px;
+        vertical-align:top;
+        background:url('/img/artist/admin/bg-submenu-li.png') no-repeat top right;
+    }
+        .g-submenu li:first-child {
+            padding:3px 17px 25px 0;
+        }
+        .g-submenu li.current:first-child {
+            padding:0;
+        }
+        .g-submenu li.last {
+            background:none;
+        }
+        .g-submenu li.turn-on-reccount {
+            float:right;
+            background:none;
+        }
+        .g-submenu li a,
+        .g-submenu li a:visited {
+            text-decoration:none;
+            font-size:14px;
+            color:#000;
+        }
+        .g-submenu li a:hover {
+            text-decoration:none;
+        }
+        .g-submenu .current {
+            padding:0;
+        }
+        .g-submenu .current div {
+            padding:3px 17px 25px 13px;
+            background:url('/img/artist/admin/bg-submenu-li-current.png') no-repeat center bottom;
+            text-align: center;
+            font-size:14px;
+            color:#767171;
+        }
+        .g-submenu li.current:first-child div {
+            margin:0 17px 0 0;
+            padding:3px 0 25px 0;
+        }
+        .g-submenu li .last {
+            background:none;
+        }
+        .g-submenu li a,
+        .g-submenu li div {
+        }
+        .g-submenu li.turn-on-reccount a {
+            display:block;
+            height:17px;
+            padding:0 0 0 22px;
+            background:url('/img/artist/admin/icon-turn-on-recount.png') no-repeat top left;
+        }
+.g-submenu-slim {
+    height:15px;
+    background:url('/img/artist/admin/bg-submenu-slim.png') repeat-x top left;
+}
+/* submenu (begin) */
+
+/* content (begin) */
+.g-content {
+    width:940px;
+    margin:0 auto;
+    padding:0 0 40px;
+    border:1px solid #E6E6E6;
+}
+    .g-content i {
+        font-size:11px;
+        color:#666;
+    }
+/* content (end) */
+
+/* help (begin) */
+.b-help {
+    position:relative;
+    float:right;
+    width:410px;
+    margin:0 0 0 10px;
+    padding:15px 20px;
+    background:#FFF;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    -moz-box-shadow:0px 1px 4px #CBCBCB;
+    -webkit-box-shadow:0px 1px 4px #CBCBCB;
+    box-shadow:0px 1px 4px #CBCBCB;
+    color:#666;
+}
+    .b-help .corner {
+        position:absolute;
+        top:14px;
+        left:-11px;
+        width:11px;
+        height:22px;
+        background:url('/img/artist/admin/bg-help-corner.png') no-repeat right center;
+    }
+    .b-help span {
+        font-style:italic;
+        font-size:11px;
+        color:#8EC0CF;
+    }
+    .b-help h2 {
+        margin:8px 0 9px;
+        font-weight:normal;
+        font-size:15px;
+        color:#000;
+    }
+    .b-help p {
+        margin:0;
+    }
+.b-help-about {
+    margin:35px 0 0 10px;
+}
+.b-help-backgrounds {
+    margin:70px 0 0 10px;
+}
+.b-help-background-position {
+    margin:20px 0 0 10px;
+}
+.b-help-languages {
+    margin:35px 0 0 10px;
+}
+.b-help-links {
+    margin:35px 0 0 10px;
+}
+.b-help-menu-customization {
+    margin:35px 0 0 10px;
+}
+.b-help-news-edit {
+    margin:75px 0 0 10px;
+}
+.b-help-news-add {
+    margin:49px 0 0 10px;
+}
+/* help (end) */
+
+/* Synchronization (begin) */
+.b-synchro-facebook {
+    width: 940px;
+}
+    .b-synchro-facebook textarea {
+        display: block;
+        width: 920px;
+        height: 82px;
+        margin: 8px 0 20px;
+        padding:9px 10px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+    }
+    #b-copy-code {
+        float:right;
+        display:block;
+        height:35px;
+        overflow:hidden;
+        margin:0;
+        padding:9px 20px 11px;
+        border:0;
+        background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        -moz-text-shadow:0px -1px 0px #000;
+        -webkit-text-shadow:0px -1px 0px #000;
+        text-shadow:0px -1px 0px #000;
+        -moz-box-shadow:0px 1px 2px #a3a3a3;
+        -webkit-box-shadow:0px 1px 2px #a3a3a3;
+        box-shadow:0px 1px 2px #a3a3a3;
+        color:#FFF;
+        cursor:pointer;
+        zoom:1;
+    }
+    .b-synchro-facebook .alert {
+        display: none;
+        color: #F00;
+    }
+/* Synchronization (end) */
+
+/* reccount switcher (begin) */
+.b-reccount-switch-overlay {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    width: 370px;
+    height: 165px;
+    margin: -82px 0 0 -185px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    background: #000;
+}
+.b-reccount-switch {
+    position: absolute;
+    z-index: 101;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 95px;
+    margin: -67px 0 0 -170px;
+    padding: 20px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    background: #E6E6E6;
+}
+    .b-reccount-switch .b-close-button {
+        float: right;
+        display: block;
+        width: 17px;
+        height: 17px;
+        background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat top left;
+    }
+    .b-reccount-switch .b-switch-button {
+        clear: both;
+        display: block;
+        width: 140px;
+        height: 28px;
+        padding:9px 0 0 50px ;
+        background: url('/img/artist/admin/bg-reccount-switch.png') no-repeat center left;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-reccount-switch .b-switch-message {
+        display: block;
+        margin: 18px 0 0;
+        padding: 4px 0 0 7px;
+        background: url('/img/artist/admin/bg-reccount-switch-message.png') no-repeat top left;
+        font-size: 11px;
+        font-style: italic;
+        color: #666;
+    }
+/* reccount switcher (end) */
+
+/* links (begin) */
+.b-links {
+    width:940px;
+    padding:13px 0 0;
+}
+.b-links .b-options {
+    float:right;
+    margin:0;
+    padding:0 0 0 19px;
+    list-style:none;
+    font-size:13px;
+}
+    .b-links .b-options li {
+        margin:14px 0 0 0;
+    }
+    .b-links .b-options li:first-child {
+        margin:19px 0 0 0;
+    }
+    .b-links .b-options input {
+        vertical-align:text-bottom;
+    }
+.b-links .b-social-services {
+    height:20px;
+    margin:7px 0 28px;
+    padding:10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    overflow:hidden;
+    background:url('/img/artist/admin/bg-social-services.png') repeat-x top left;
+    color:#999;
+}
+    .b-links .b-social-services ul {
+        margin:0;
+        padding:0;
+        list-style:none;
+    }
+        .b-links .b-social-services ul li {
+            display:inline-block;
+            height:20px;
+            width:20px;
+            margin:0 5px 0 0;
+            vertical-align:top;
+            font-size:11px;
+            font-style:italic;
+        }
+        .b-links .b-social-services ul .vkontakte {
+            height:20px;
+            width:20px;
+            background:url('/img/artist/admin/icon-vkontakte.png') no-repeat center center;
+        }
+        .b-links .b-social-services ul .facebook {
+            height:20px;
+            width:20px;
+            background:url('/img/artist/admin/icon-facebook.png') no-repeat center center;
+        }
+        .b-links .b-social-services ul .twitter {
+            height:20px;
+            width:20px;
+            background:url('/img/artist/admin/icon-twitter.png') no-repeat center center;
+        }
+        .b-links .b-social-services ul .twitter-active {
+            width:auto;
+            padding:3px 0 0 29px;
+            background:url('/img/artist/admin/icon-twitter-active.png') no-repeat top left;
+        }
+        .b-links .b-social-services ul span {
+            display:inline-block;
+            padding:2px 0 0;
+            vertical-align:top;
+        }
+        .b-links .b-social-services ul li.news {
+            width:auto;
+        }
+            .b-links .b-social-services ul .news .logo {
+                width:53px;
+                height:18px;
+                margin:0 10px 0 0;
+                padding:2px 0 0 7px;
+                background:url('/img/artist/admin/bg-services-new.png') no-repeat center left;
+                font-style:normal;
+                color:#FFF;
+            }
+.b-links .b-accounts {
+    min-height:10px;
+    margin:7px 0 0;
+    padding:0;
+    list-style:none;
+}
+    .b-links .b-accounts li {
+        display:block;
+        height:36px;
+        margin:0 0 10px;
+        padding:9px 10px 10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-links .b-accounts li.hidden {
+        display:none;
+    }
+        .b-links .b-accounts li .input {
+            overflow:hidden;
+        }
+            .b-links .b-accounts li .url {
+                display:inline-block;
+                vertical-align: top;
+                width:95%;
+                padding:9px 10px;
+                border:0;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-box-shadow: 0px -1px 0px #7D7D7D;
+                -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+                box-shadow: 0px -1px 0px #7D7D7D;
+            }
+            .b-links .b-accounts li .url.with-button {
+                width: 425px;
+            }
+        .b-links .b-accounts li .sync {
+            display:inline-block;
+            vertical-align: top;
+            width: 167px;
+            height: 28px;
+            padding: 9px 0 0 55px;
+            margin: 1px 0 0 10px;
+            background-position: center top;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            color: #FFF;
+        }
+        .b-links .b-accounts li .sync-227 {
+            background-image: url('/img/club/sync-youtube-channel.png');
+            text-shadow: 0px -1px 0px #A60000;
+        }
+        .b-links .b-accounts li .sync-232 {
+            background-image: url('/img/club/sync-vimeo-channel.png');
+            text-shadow: 0px -1px 0px #0B5498;
+        }
+        .b-links .b-accounts li .sync-198 {
+            background-image: url('/img/club/sync-beatport-channel.png');
+            text-shadow: 0px -1px 0px #698F14;
+        }
+        .b-links .b-accounts li .options {
+            float:right;
+            height:30px;
+            width:214px;
+            padding:11px 0 0 16px;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat 100% 1px;
+        }
+            .b-links .b-accounts li .options label {
+                margin:0 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-links .b-accounts li .options input {
+                width:14px;
+                height:14px;
+                vertical-align:middle;
+            }
+            .b-links .b-accounts li .options .delete {
+                padding:1px 0 2px 20px;
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+                text-decoration:underline;
+                color:#000;
+                cursor: pointer;
+            }
+            .b-links .b-accounts li .options .draggable-area {
+                float:right;
+                height:35px;
+                width:19px;
+                margin:-12px 0 0;
+                cursor:move;
+            }
+.b-links .b-button-set {
+    height:40px;
+    padding:10px 0 40px;
+}
+    .b-links .b-button-set button {
+        display:block;
+        height:35px;
+        overflow:hidden;
+        padding:9px 20px 11px;
+        border:0;
+        margin:0;
+        background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        -moz-text-shadow:0px -1px 0px #000;
+        -webkit-text-shadow:0px -1px 0px #000;
+        text-shadow:0px -1px 0px #000;
+        -moz-box-shadow:0px 1px 2px #a3a3a3;
+        -webkit-box-shadow:0px 1px 2px #a3a3a3;
+        box-shadow:0px 1px 2px #a3a3a3;
+        color:#FFF;
+        cursor:pointer;
+        zoom:1;
+    }
+    .b-links .b-button-set .add-item {
+        float:left;
+    }
+    .b-links .b-button-set .save-items {
+        float:right;
+    }
+/* links (end) */
+
+/* languages (begin) */
+.b-languages {
+    width:700px;
+    padding:13px 0 0;
+}
+.b-languages .lang-caption {
+    display:inline-block;
+    width:100px;
+    padding:0 0 0 20px;
+}
+.b-languages .project-title {
+    display:inline-block;
+    width:680px;
+    margin:8px 20px 0 0;
+    padding:9px 10px 9px;
+    border:0;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    -moz-box-shadow: 0px -1px 0px #7D7D7D;
+    -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+    box-shadow: 0px -1px 0px #7D7D7D;
+}
+.b-languages .b-languages-list {
+    min-height:10px;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+    .b-languages .b-languages-list li {
+        display:block;
+        height:35px;
+        margin:0;
+        padding:11px 20px 9px 10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-languages .b-languages-list .hidden {
+        display:none;
+    }
+        .b-languages .b-languages-list li .lang {
+            display:inline-block;
+            vertical-align:top;
+            width:80px;
+            margin:0 10px 0 0;
+            padding:9px 10px 9px 10px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        .b-languages .b-languages-list li .description {
+            display:inline-block;
+            vertical-align:top;
+            width:180px;
+            margin:0;
+            padding:9px 10px 9px 10px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        .b-languages .b-languages-list li .major-item {
+            display:inline-block;
+            vertical-align:top;
+            padding:10px 0 0 14px;
+        }
+            .b-languages .b-languages-list li .major-item input {
+                vertical-align:top;
+                margin:1px 3px 0 0;
+            }
+        .b-languages .b-languages-list li .help {
+            display:inline-block;
+            vertical-align:top;
+            width:15px;
+            height:15px;
+            margin:10px 0 0;
+            background:url('/img/artist/admin/icon-question-mark.png') no-repeat center center;
+            text-indent:-9999px;
+        }
+        .b-languages .b-languages-list li .hide-item {
+            display:inline-block;
+            vertical-align:top;
+            padding:10px 0 0 16px;
+        }
+            .b-languages .b-languages-list li .hide-item input {
+                vertical-align:top;
+                margin:1px 3px 0 0;
+            }
+        .b-languages .b-languages-list li .delete-item,
+        .b-languages .b-languages-list li .delete-item:visited {
+            float:right;
+            display:block;
+            margin:9px 0 0;
+            padding:1px 0 2px 20px;
+            background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            text-decoration:underline;
+            color:#000;
+        }
+        .b-languages .b-languages-list li .delete-item:hover {
+            text-decoration:none;
+        }
+.b-languages .b-button-set {
+    height:40px;
+    padding:20px 0 40px;
+}
+    .b-languages .b-button-set button {
+        height:35px;
+        overflow:hidden;
+        padding:9px 20px 11px;
+        border:0;
+        margin:0;
+        background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        -moz-text-shadow:0px -1px 0px #000;
+        -webkit-text-shadow:0px -1px 0px #000;
+        text-shadow:0px -1px 0px #000;
+        -moz-box-shadow:0px 1px 2px #a3a3a3;
+        -webkit-box-shadow:0px 1px 2px #a3a3a3;
+        box-shadow:0px 1px 2px #a3a3a3;
+        color:#FFF;
+        cursor:pointer;
+        zoom:1;
+    }
+    .b-languages .b-button-set .add-lang {
+        float:left;
+    }
+    .b-languages .b-button-set .save-langs {
+        float:right;
+    }
+/* languages (end) */
+
+/* menu customization (begin) */
+.b-menu-customization {
+    width:940px;
+    padding:13px 0 0;
+}
+.b-menu-customization .url {
+    display:inline-block;
+    width:240px;
+    margin: 0 0 0 250px;
+}
+.b-menu-customization .template-title img {
+    vertical-align:middle;
+}
+.b-menu-customization .b-menu-items {
+    min-height:10px;
+    margin:7px 0 0;
+    padding:0;
+    list-style:none;
+}
+    .b-menu-customization .b-menu-items li {
+        display:block;
+        height:35px;
+        margin:0 0 10px;
+        padding:11px 10px 9px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-menu-customization .b-menu-items li:first-child {
+        margin:6px 0 10px;
+    }
+    .b-menu-customization .b-menu-items .hidden {
+        display:none;
+    }
+        .b-menu-customization .b-menu-items li .draggable-area {
+            float:right;
+            height:35px;
+            width:19px;
+            margin:-1px 0 0;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center center;
+            cursor:move;
+        }
+        .b-menu-customization .b-menu-items li .text-input {
+            display:inline-block;
+            width:210px;
+            margin:0 10px 0 0;
+            padding:9px 10px 9px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        .b-menu-customization .b-menu-items li .template {
+            display:inline-block;
+            padding:10px 0 0;
+            vertical-align:top;
+        }
+            .b-menu-customization .b-menu-items li .template b {
+                font-weight:normal;
+            }
+            .b-menu-customization .b-menu-items li .template span {
+                display:inline-block;
+                width:15px;
+                height:15px;
+                margin:0 0 0 5px;
+                background:url('/img/artist/admin/icon-question-mark.png') no-repeat center center;
+                text-indent:-9999px;
+            }
+        .b-menu-customization .b-menu-items li .hidden-item {
+            float:right;
+            display:inline-block;
+            margin:0 11px 0 0;
+            padding:9px 11px 2px 0;
+            /*background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat 100% 10px;*/
+        }
+            .b-menu-customization .b-menu-items li .hidden-item input {
+                width:14px;
+                height:14px;
+                margin:1px 3px 0 0;
+                vertical-align:top;
+            }
+        .b-menu-customization .b-menu-items li a.delete-item,
+        .b-menu-customization .b-menu-items li a.delete-item:visited {
+            float:right;
+            display:inline-block;
+            width: 120px;
+            margin:9px 20px 0 0;
+            padding:1px 0 2px 20px;
+            background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat bottom left;
+            text-decoration:underline;
+            color:#000;
+        }
+        .b-menu-customization .b-menu-items li a.delete-item:hover {
+            text-decoration:none;
+        }
+        .b-menu-customization .b-menu-items li a.duplicate-item,
+        .b-menu-customization .b-menu-items li a.duplicate-item:visited {
+            float:right;
+            display:inline-block;
+            margin:9px 20px 0 0;
+            padding:1px 0 2px 20px;
+            background:url('/img/artist/admin/bg-accounts-item-options-duplicate.png') no-repeat bottom left;
+            text-decoration:underline;
+            color:#000;
+        }
+        .b-menu-customization .b-menu-items li a.duplicate-item:hover {
+            text-decoration:none;
+        }
+.b-menu-customization .b-button-set {
+    height:40px;
+    padding:10px 0 40px;
+}
+    .b-menu-customization .b-button-set button {
+        display:block;
+        height:35px;
+        overflow:hidden;
+        padding:9px 20px 11px;
+        border:0;
+        margin:0;
+        background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+        -moz-border-radius:3px;
+        -webkit-border-radius:3px;
+        border-radius:3px;
+        -moz-text-shadow:0px -1px 0px #000;
+        -webkit-text-shadow:0px -1px 0px #000;
+        text-shadow:0px -1px 0px #000;
+        -moz-box-shadow:0px 1px 2px #a3a3a3;
+        -webkit-box-shadow:0px 1px 2px #a3a3a3;
+        box-shadow:0px 1px 2px #a3a3a3;
+        color:#FFF;
+        cursor:pointer;
+        zoom:1;
+    }
+    .b-menu-customization .b-button-set .save-items {
+        float:right;
+    }
+/* menu customization (end) */
+
+/* tracklist (begin) */
+.b-tracklist {
+    width: 940px;
+    padding: 0;
+}
+.b-tracklist .b-items {
+        min-height:10px;
+        margin:15px 0 0;
+        padding:0 0 10px;
+        list-style:none;
+    }
+    .b-tracklist .b-items li {
+        display:block;
+        height:40px;
+        margin:9px 0 0;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-tracklist .b-items li.hidden {
+        display:none;
+    }
+        .b-tracklist .b-items li .preview {
+            display:inline-block;
+            vertical-align:top;
+            margin:0 10px 0 0;
+        }
+        .b-tracklist .b-items li .description {
+            display:inline-block;
+            vertical-align:top;
+        }
+            .b-tracklist .b-items li .description :last-child {
+                background: none !important;
+            }
+            .b-tracklist .b-items li .description .title {
+                font-size:13px;
+            }
+            .b-tracklist .b-items li .description .author {
+                color:#C00;
+            }
+            .b-tracklist .b-items li .description .style {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                font-style:italic;
+                color:#666;
+            }
+            .b-tracklist .b-items li .description .date {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                font-style:italic;
+                color:#666;
+            }
+            .b-tracklist .b-items li .description .label {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                font-size:11px;
+                font-style:italic;
+                color:#C00;
+            }
+            .b-tracklist .b-items li .description .no-bg {
+                background: none !important;
+            }
+        .b-tracklist .b-items li .options {
+            float:right;
+            height:30px;
+            padding:5px 0 0 16px;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center right;
+        }
+            .b-tracklist .b-items li .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-tracklist .b-items li .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-tracklist .b-items li .options a,
+            .b-tracklist .b-items li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-tracklist .b-items li .options a:hover {
+                text-decoration:none;
+            }
+            .b-tracklist .b-items li .options a.delete-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+            .b-tracklist .b-items li .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 43px;
+                cursor:move;
+            }
+    .b-tracklist .b-button-set {
+            height:40px;
+            padding:10px 0 20px 0;
+        }
+            .b-tracklist .b-button-set .save {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                padding:9px 20px 11px;
+                border:0;
+                margin:0;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+            .b-tracklist .b-button-set label {
+                float: left;
+                display: block;
+                margin: -1px 0 0;
+            }
+                .b-tracklist .b-button-set label input {
+                    margin: 0 3px 1px 0;
+                    vertical-align: bottom;
+                }
+/* tracklist (end) */
+
+/* backgrounds customization (begin) */
+.b-backgrounds {
+    width:960px;
+    padding:16px 0 0;
+    overflow:hidden;
+}
+    .b-backgrounds .upload-background {
+        position:relative;
+        min-height:42px;
+    }
+        .b-backgrounds .upload-background .upload-button {
+            z-index:-1;
+            position:absolute;
+            top:-5px;
+            left:0;
+            height:32px;
+            padding:13px 0 0 48px;
+            background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+            font-size:13px;
+        }
+    .b-backgrounds .b-backgrounds {
+        clear:both;
+        margin:0;
+        padding:12px 0 0;
+        list-style:none;
+    }
+        .b-backgrounds .b-backgrounds li {
+            position:relative;
+            display:inline-block;
+            height:100px;
+            width:220px;
+            margin:0 20px 20px 0;
+            vertical-align:top;
+            background:#999;
+        }
+        .b-backgrounds .b-backgrounds li img {
+            width: 220px;
+            height: 100px;
+        }
+        .b-backgrounds .b-backgrounds li .current {
+            position:absolute;
+            z-index:1;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            border:2px solid #C00;
+        }
+        .b-backgrounds .b-backgrounds li .edit {
+            position:absolute;
+            z-index:99;
+            top:5px;
+            right:4px;
+            display:block;
+            height:22px;
+            width:22px;
+            background:url('/img/artist/admin/icon-reccount-settings.png') no-repeat center center;
+        }
+        .b-backgrounds .b-backgrounds li .delete {
+            position:absolute;
+            z-index:99;
+            bottom:3px;
+            left:4px;
+            display:block;
+            height:17px;
+            width:17px;
+            background:url('/img/artist/admin/icon-delete-bg-item.png') no-repeat center center;
+        }
+    .b-backgrounds .b-button-set {
+        height:40px;
+        padding:0 20px 40px 0;
+    }
+        .b-backgrounds .b-button-set .save-backgrounds {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* backgrounds customization (end) */
+
+/* backgrounds position (begin) */
+.b-background-position {
+    width:940px;
+    padding:15px 0 0;
+}
+    .b-background-position .current-background {
+        margin:5px 15px 0 0;
+        vertical-align:top;
+    }
+    .b-background-position .position {
+        display:inline-block;
+        width:240px;
+        vertical-align:top;
+    }
+        .b-background-position .position label {
+            display:block;
+            margin:0 0 12px;
+        }
+            .b-background-position .position label input {
+                vertical-align:bottom;
+            }
+    .b-background-position .dark-or-light {
+        display:inline-block;
+        width:262px;
+        vertical-align:top;
+    }
+        .b-background-position .dark-or-light label {
+            display:block;
+            margin:0 0 12px;
+        }
+            .b-background-position .dark-or-light label input {
+                vertical-align:bottom;
+            }
+    .b-background-position .categories {
+        display:inline-block;
+        width:190px;
+        vertical-align:top;
+    }
+        .b-background-position .categories label {
+            display:block;
+            margin:0 0 12px;
+        }
+        .b-background-position .categories .major {
+            margin:0 0 16px;
+            padding:0 0 14px 0;
+            background:url('/img/artist/admin/bg-background-position-category.png') no-repeat bottom left;
+        }
+            .b-background-position .categories label input {
+                margin:-2px 11px 0 0;
+                vertical-align:middle;
+            }
+    .b-background-position .b-button-set {
+        height:40px;
+        padding:8px 0 0;
+    }
+        .b-background-position .b-button-set .save-background-position {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+        .b-background-position .b-button-set .cancel-background-position {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0 20px 0 0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* backgrounds position (end) */
+
+/* video previews (begin) */
+.b-previews {
+    width:960px;
+    padding:14px 0 0;
+    overflow:hidden;
+}
+    .b-previews .upload-preview {
+        position:relative;
+        min-height:44px;
+    }
+        .b-previews .upload-preview .upload-button {
+            z-index:-1;
+            position:absolute;
+            top:-3px;
+            left:0;
+            height:32px;
+            padding:13px 0 0 48px;
+            background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+            font-size:13px;
+        }
+    .b-previews .b-previews {
+        clear:both;
+        margin:0;
+        padding:12px 0 0;
+        list-style:none;
+    }
+        .b-previews .b-previews li {
+            position:relative;
+            display:inline-block;
+            height:100px;
+            width:220px;
+            margin:0 20px 20px 0;
+            vertical-align:top;
+            background:#999;
+        }
+            .b-previews .b-previews li img {
+                width: 220px;
+                height: 100px;
+            }
+        .b-previews .b-previews .current {
+            position:absolute;
+            z-index:1;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            border:2px solid #C00;
+        }
+        .b-previews .b-previews li .edit {
+            position:absolute;
+            top:5px;
+            right:4px;
+            display:block;
+            height:22px;
+            width:22px;
+            background:url('/img/artist/admin/icon-edit-bg-item.png') no-repeat center center;
+        }
+        .b-previews .b-previews li .delete {
+            position:absolute;
+            z-index:99;
+            bottom:3px;
+            left:4px;
+            display:block;
+            height:17px;
+            width:17px;
+            background:url('/img/artist/admin/icon-delete-bg-item.png') no-repeat center center;
+            cursor: pointer;
+        }
+    .b-previews .b-button-set {
+        height:40px;
+        padding:0 20px 40px 0;
+    }
+        .b-previews .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* video previews (end) */
+
+/* covers (begin) */
+.b-covers {
+    width:960px;
+    padding:14px 0 0;
+    overflow:hidden;
+}
+    .b-covers .upload-cover {
+        position:relative;
+        min-height:44px;
+    }
+        .b-covers .upload-cover .upload-button {
+            z-index:-1;
+            position:absolute;
+            top:-3px;
+            left:0;
+            height:32px;
+            padding:13px 0 0 48px;
+            background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+            font-size:13px;
+        }
+    .b-covers .b-covers {
+        clear:both;
+        margin:0;
+        padding:12px 0 0;
+        list-style:none;
+    }
+        .b-covers .b-covers li {
+            position:relative;
+            display:inline-block;
+            height:100px;
+            width:100px;
+            margin:0 20px 20px 0;
+            vertical-align:top;
+            background:#999;
+        }
+        .b-covers .b-covers li .current {
+            position:absolute;
+            z-index:1;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            border:2px solid #C00;
+        }
+        .b-covers .b-covers li .delete {
+            position:absolute;
+            z-index:99;
+            bottom:3px;
+            left:4px;
+            display:block;
+            height:17px;
+            width:17px;
+            background:url('/img/artist/admin/icon-delete-bg-item.png') no-repeat center center;
+        }
+    .b-covers .b-button-set {
+        height:40px;
+        padding:0 20px 40px 0;
+    }
+        .b-covers .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* covers (end) */
+
+/* about (begin) */
+.b-edit-about {
+    width:700px;
+    padding:11px 0 10px;
+    overflow:hidden;
+}
+    .b-edit-about .lang-caption {
+        display: block;
+        margin: 0 0 8px;
+    }
+    .b-edit-about textarea {
+        display:block;
+        min-height:120px;
+        width:680px;
+        overflow:hidden;
+        margin:0;
+        padding:10px;;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+        font-family: Arial;
+        border-top: 1px solid #7d7d7d;
+        background: #fff;
+        zoom: 1;
+    }
+
+    .b-edit-about .b-button-set {
+        height:40px;
+        padding:20px 0 40px;
+    }
+        .b-edit-about .b-button-set .b-alert {
+            display: inline-block;
+            padding: 0 0 0 10px;
+            background:url('/img/artist/icon-help-star.png') no-repeat top left;
+        }
+        .b-edit-about .b-button-set .save-about {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* about (end) */
+
+/* radioshow (begin) */
+.b-edit-radioshow {
+    margin:0 -20px 0 0;
+    padding:10px 0 0;
+}
+    .b-edit-radioshow .add-radioshow {
+        display: block;
+        height: 31px;
+        padding: 13px 0 0 48px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-edit-radioshow .radioshows {
+        margin:15px 0 0;
+        padding:0;
+        list-style:none;
+    }
+        .b-edit-radioshow .radioshows > li {
+            position:relative;
+            display:inline-block;
+            width:445px;
+            margin:0 10px 10px 0;
+            padding: 0 10px 10px;
+            vertical-align:top;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border-radius:5px;
+            background:#CCC;
+        }
+        .b-edit-radioshow .radioshows > li.hidden {
+            display:none;
+        }
+            .b-edit-radioshow .radioshows li .radioshow-cover {
+                position:relative;
+                float:left;
+                height:100px;
+                width:100px;
+                margin:10px 10px 0 0;
+            }
+                .b-edit-radioshow .radioshows li .radioshow-cover .edit {
+                    position:absolute;
+                    top:5px;
+                    right:4px;
+                    height:22px;
+                    width:22px;
+                    background:url('/img/artist/admin/icon-radioshow-edit.png') no-repeat center center;
+                }
+            .b-edit-radioshow .radioshows li .draggable-area {
+                float:right;
+                height:100px;
+                width:10px;
+                margin:10px 0 0;
+                background:url('/img/artist/admin/bg-radioshow-draggable-area.png') no-repeat center left;
+                cursor:move;
+            }
+            .b-edit-radioshow .radioshows li .description {
+                overflow:hidden;
+                padding:10px 0 0;
+            }
+                .b-edit-radioshow .radioshows li .description h3 {
+                    margin:-7px 0 5px;
+                    font-weight:normal;
+                    font-size:13px;
+                    color:#000;
+                }
+                    .b-edit-radioshow .radioshows li .description h3 a {
+                        color:#000;
+                    }
+                    .b-edit-radioshow .radioshows li .description h3 sup {
+                        font-size:11px;
+                        color:#C00;
+                    }
+                .b-edit-radioshow .radioshows li .description i {
+                    display:block;
+                    margin:0 0 6px;
+                    font-size:12px;
+                }
+                .b-edit-radioshow .radioshows li .description a {
+                    color:#000;
+                }
+                .b-edit-radioshow .radioshows li .description .press-release {
+                    display:block;
+                    margin:0 0 11px;
+                    color:#000;
+                }
+                .b-edit-radioshow .radioshows li .description .techlinks {
+                    position:absolute;
+                    z-index:99;
+                    bottom:10px;
+                    left:120px;
+                    margin:0;
+                    padding:0;
+                    list-style:none;
+                }
+                    .b-edit-radioshow .radioshows li .description .techlinks li:first-child {
+                        margin:0;
+                        padding:0;
+                        background:none;
+                    }
+                    .b-edit-radioshow .radioshows li .description .techlinks li {
+                        display:inline-block;
+                        margin:0 0 0 7px;
+                        padding:0 0 0 10px;
+                        background:url('/img/artist/admin/bg-navigation-li.png') no-repeat center left;
+                    }
+                    .b-edit-radioshow .radioshows li .description .techlinks label input {
+                        margin:-2px 7px 0 0;
+                        vertical-align:middle;
+                    }
+                .b-edit-radioshow .radioshows li .description .delete {
+                    padding:0 0 0 22px;
+                    background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat top left;
+                    color:#000;
+                }
+                .b-edit-radioshow .radioshows li .description .edit {
+                    padding:0 0 0 22px;
+                    background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat top left;
+                    color:#000;
+                }
+                .b-edit-radioshow .radioshows li .description .hidden {
+                    font-style:italic;
+                    font-size:11px;
+                    color:#C00;
+                }
+    .b-edit-radioshow .b-button-set {
+        height:40px;
+        padding:10px 25px 40px 0;
+    }
+        .b-edit-radioshow .b-button-set .save-radioshows {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* radioshow (end) */
+
+/* inner radioshow (begin) */
+.b-radioshow-inner {
+    width:940px;
+}
+.b-radioshow-inner .hidden {
+    display:none;
+}
+.b-radioshow-inner .upload {
+    position:relative;
+    min-height:44px;
+    margin:15px 0 0 45px;
+}
+    .b-radioshow-inner  .upload .upload-button {
+        z-index:-1;
+        position:absolute;
+        top:-5px;
+        left:0;
+        height:32px;
+        padding:13px 0 0 48px;
+        background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+        font-size:13px;
+    }
+.b-radioshow-inner .items {
+        min-height:10px;
+        margin:10px 0 0;
+        padding:0;
+        list-style:none;
+    }
+    .b-radioshow-inner .items li {
+        display:block;
+        height:40px;
+        margin:9px 0 10px;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-radioshow-inner .items li.hidden {
+        display:none;
+    }
+        .b-radioshow-inner .items li .preview {
+            display:inline-block;
+            vertical-align:top;
+            margin:0 10px 0 0;
+        }
+        .b-radioshow-inner .items li .description {
+            display:inline-block;
+            vertical-align:top;
+        }
+            .b-radioshow-inner .items li .description .title {
+                font-size:13px;
+            }
+            .b-radioshow-inner .items li .description .date {
+                display:block;
+                margin:4px 0 0;
+                font-size:11px;
+                color:#666;
+            }
+        .b-radioshow-inner .items li .options {
+            float:right;
+            height:30px;
+            padding:5px 0 0 16px;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center right;
+        }
+            .b-radioshow-inner .items li .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-radioshow-inner .items li .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-radioshow-inner .items li .options .separator {
+                display:inline-block;
+                vertical-align:top;
+                width:1px;
+                height:20px;
+                margin:5px 9px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-radioshow-inner .items li .options a,
+            .b-radioshow-inner .items li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-radioshow-inner .items li .options a:hover {
+                text-decoration:none;
+            }
+            .b-radioshow-inner .items li .options a.delete-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+            .b-radioshow-inner .items li .options a.edit-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat center left;
+            }
+            .b-radioshow-inner .items li .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 43px;
+                cursor:move;
+            }
+    .b-radioshow-inner .b-button-set {
+            height:40px;
+            padding:10px 0 40px 0;
+        }
+            .b-radioshow-inner .b-button-set .save,
+            .b-radioshow-inner .b-button-set .cancel {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                padding:9px 20px 11px;
+                border:0;
+                margin:0;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+            .b-radioshow-inner .b-button-set .cancel {
+                margin:0 20px 0 0;
+            }
+/* inner radioshow (end) */
+
+/* releases (begin) */
+.b-edit-releases {
+    margin:0 -20px 0 0;
+    padding:10px 0 0;
+}
+    .b-edit-releases .beatport {
+        display: inline-block;
+        vertical-align: top;
+        width: 37px;
+        height: 37px;
+        margin: 0 10px 0 0;
+        padding: 4px 0 0;
+        background: url('/img/artist/admin/icon-beatport.png') no-repeat center bottom;
+        cursor: pointer;
+    }
+    .b-edit-releases .add-button {
+        display: inline-block;
+        vertical-align: top;
+        height: 31px;
+        width: 100px;
+        padding: 13px 0 0 48px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-edit-releases .releases {
+        margin:0;
+        padding:15px 0 0;
+        list-style:none;
+    }
+    .b-edit-releases .releases > li {
+        position:relative;
+        display:inline-block;
+        width:445px;
+        margin:0 10px 10px 0;
+        padding: 0 10px 10px;
+        vertical-align:top;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-edit-releases .releases > li.hidden {
+        display:none;
+    }
+        .b-edit-releases .releases li .radioshow-cover {
+            position:relative;
+            float:left;
+            height:100px;
+            width:100px;
+            margin:10px 10px 0 0;
+        }
+            .b-edit-releases .releases li .radioshow-cover .edit {
+                position:absolute;
+                top:5px;
+                right:4px;
+                height:22px;
+                width:22px;
+                background:url('/img/artist/admin/icon-radioshow-edit.png') no-repeat center center;
+            }
+        .b-edit-releases .releases li .draggable-area {
+            float:right;
+            height:100px;
+            width:10px;
+            margin:10px 0 0;
+            background:url('/img/artist/admin/bg-radioshow-draggable-area.png') no-repeat center left;
+            cursor:move;
+        }
+        .b-edit-releases .releases li .description {
+            overflow:hidden;
+            padding:12px 0 0;
+        }
+            .b-edit-releases .releases li .description h3 {
+                margin:-6px 0 5px;
+                font-weight:normal;
+                font-size:14px;
+                color:#000;
+            }
+                .b-edit-releases .releases li .description h3 span {
+                    color:#C00;
+                }
+                .b-edit-releases .releases li .description h3 i {
+                    font-size:14px;
+                    font-style:normal;
+                    color:#000;
+                }
+                .b-edit-releases .releases li .description h3 a {
+                    text-decoration:none;
+                }
+                .b-edit-releases .releases li .description h3 sup {
+                    font-size:10px;
+                    color:#C00;
+            }
+            .b-edit-releases .releases li .description .remixes {
+                display:block;
+                margin:0 0 3px;
+            }
+            .b-edit-releases .releases li .description .remixes span {
+                color:#666;
+            }
+            .b-edit-releases .releases li .description .infolinks {
+                margin:0;
+                padding:0;
+                background:none;
+            }
+                .b-edit-releases .releases li .description .infolinks > li {
+                    display:inline-block;
+                    margin:0 0 0 5px;
+                    padding:0 0 0 7px;
+                    background:url('/img/artist/admin/bg-navigation-li.png') no-repeat center left;
+                    font-size:11px;
+                    font-style:italic;
+                    color:#666;
+                }
+                .b-edit-releases .releases li .description .infolinks > li:first-child {
+                    margin:0;
+                    padding:0;
+                    background:none;
+                }
+                .b-edit-releases .releases li .description .infolinks > li.label {
+                    color:#C00;
+                }
+            .b-edit-releases .releases li .description .techlinks {
+                position:absolute;
+                z-index:99;
+                bottom:10px;
+                left:120px;
+                margin:0;
+                padding:0;
+                list-style:none;
+            }
+                .b-edit-releases .releases li .description .techlinks li:first-child {
+                    margin:0;
+                    padding:0;
+                    background:none;
+                }
+                .b-edit-releases .releases li .description .techlinks li {
+                    display:inline-block;
+                    margin:0 0 0 7px;
+                    padding:0 0 0 10px;
+                    background:url('/img/artist/admin/bg-navigation-li.png') no-repeat center left;
+                }
+                .b-edit-releases .releases li .description .techlinks label input {
+                    margin:-2px 7px 0 0;
+                    vertical-align:middle;
+                }
+            .b-edit-releases .releases li .description .delete {
+                padding:0 0 0 22px;
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat top left;
+                color:#000;
+            }
+            .b-edit-releases .releases li .description .edit {
+                padding:0 0 0 22px;
+                background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat top left;
+                color:#000;
+            }
+            .b-edit-releases .releases li .description .hidden {
+                font-style:italic;
+                font-size:11px;
+                color:#C00;
+            }
+    .b-edit-releases .b-button-set {
+        height:40px;
+        padding:10px 25px 40px 0;
+    }
+        .b-edit-releases .b-button-set .save-releases {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+        .b-edit-releases .b-button-set .disabled {
+            background-color:#999 !important;
+            background-image:none !important;
+            -moz-text-shadow:none !important;
+            -webkit-text-shadow:none !important;
+            text-shadow:none !important;
+            -moz-box-shadow:none !important;
+            -webkit-box-shadow:none !important;
+            box-shadow:none !important;
+            color:#CCC !important;
+            cursor:default !important;
+        }
+/* releases (end) */
+
+/* soundcloud */
+.soundcloud {float:left; display: block; width: 37px; height:37px; margin: -1px 0 0; background: url(/img/club/icons/soundcloud.png) no-repeat center center;}
+
+/* popup */
+.popup {width: 100%; height: 100%; overflow: hidden; left: -9999px; top: 0; position: fixed; z-index: 9999;}
+.popup-overlay {width: 100%; height: 100%; left: 0; top: 0; position: absolute; background: url(/img/club/popup/overlay.png) 50% 50%;}
+.popup-loading {width: 40px; height: 40px; margin: -20px 0 0 -20px; left: -9999px; top: 50%; position: absolute; z-index: 5; cursor: pointer; background: url(/img/club/popup/loading_bg.png) no-repeat;}
+.popup-loading .i {width: 16px; height: 16px; margin: -8px 0 0 -8px; left: 50%; top: 50%; position: absolute; background: url(/img/club/popup/loading.gif) no-repeat; font: 0/0 serif; display: block;}
+.popup-window {left: -9999px; top: 50%; position: absolute; z-index: 2;}
+.popup-close {width: 15px; height: 15px; right: 20px; top: 20px; position: absolute; z-index: 4; cursor: pointer;}
+.popup-close .i {width: 17px; height: 17px; left: -1px; position: absolute; background: url(/img/club/popup/close.png) no-repeat; font: 0/0 serif; display: block;}
+.popup-close:hover .i {background-position: 0 -100px;}
+.popup-content {margin: -11px -10px -11px 15px; position: relative; z-index: 3;}
+.popup-text {width: 280px; padding: 20px;}
+.popup-r {margin: 10px -15px 10px 0; background: url(/img/club/popup/r.png) repeat-y 100% 0;}
+.popup-l {margin: 0 25px 0 -15px; padding: 1px 0; background: url(/img/club/popup/l.png) repeat-y; zoom: 1;}
+.popup-rt,
+.popup-lt,
+.popup-rb,
+.popup-lb {height: 25px; background: url(/img/club/popup/corners.png) no-repeat;}
+.popup-rt {background-position: 100% 0;}
+.popup-lt {background-position: 0 -100px;}
+.popup-rb {background-position: 100% -200px;}
+.popup-lb {background-position: 0 -300px;}
+.popup-rt,
+.popup-rb {width: 100%; right: -15px; position: absolute;}
+.popup-rt {top: -15px;}
+.popup-rb {bottom: -15px;}
+.popup-lt,
+.popup-lb {margin: 0 25px 0 -30px;}
+.popup-src {display: none;}
+
+/* covers library */
+.covers-library-overlay {width: 100%; height: 100%; overflow: hidden;  top: 0; position: fixed; z-index: 999; background: url(/img/club/popup/overlay.png) 50% 50%;}
+.covers-library-wrap {position: absolute; z-index: 1000; left: 50%; top:50%; width:740px; border: 15px solid rgba(0, 0, 0, 0.6); border-radius:10px;}
+.covers-library { padding: 20px 0 20px 18px; border-radius:5px; background: #FFF;}
+.covers-library .covers-list img {display:inline-block; margin: 0 16px 20px 0; border:2px solid #FFF; }
+.covers-library .covers-list img.major {border:2px solid #C00; }
+.covers-library .ok {float:right; display:block; width:37px; height:37px; margin:0 20px 0 0; background:url('/img/artist/admin/bg-pop-up-ok.png') no-repeat center center;}
+.covers-library .cancel {display:block; width:37px; height:37px; background:url('/img/artist/admin/bg-pop-up-cancel.png') no-repeat center center;}
+
+/* alert-popup */
+.alert {zoom: 1;}
+.alert-content {padding: 20px 20px 0;}
+.alert-text {text-align: center; width: 280px;}
+.alert-buttons {padding: 20px; zoom: 1;}
+.alert-buttons:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.alert-ok {width: 35px; height: 35px; position: relative; float: right; display: inline;}
+.alert-ok .i {width: 37px; height: 37px; left: -1px; top: 0; position: absolute; cursor: pointer; background: url(/img/club/popup/ok.png) no-repeat; font: 0/0 serif; display: block;}
+.alert-ok:hover .i {background-position: 0 -100px;}
+
+/* confirm-popup */
+.confirm {zoom: 1;}
+.confirm-content {padding: 20px 20px 0;}
+.confirm-content .label-video,
+.confirm-content .label-soundcloud {display: block; margin: 0 0 7px; font-size: 12px; color:#666;}
+.confirm-content .input-video,
+.confirm-content .input-soundcloud {display:inline-block;width:300px;margin:0;padding:9px 10px 9px;border:0;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;-moz-box-shadow: 0px -1px 0px #7D7D7D;-webkit-box-shadow: 0px -1px 0px #7D7D7D;box-shadow: 0px -1px 0px #7D7D7D;}
+.confirm-content .template {width:460px; height: 40px; margin: 0 0 10px; overflow: hidden;}
+.confirm-content .template {width:460px; height: 40px; margin: 0 0 10px; overflow: hidden;}
+.confirm-content .template img {width:40px; height:40px; margin: 0 10px 0 0; vertical-align: middle;}
+.confirm-content .template span {font-size:14px; font-weight: bold; color: #333; text-shadow: 0 1px 0 #fff;}
+.confirm-content .template a {float: right; display:block; margin: 10px 0 0; padding: 0 0 2px 21px; color: #000; text-shadow: 0 1px 0 #fff; text-decoration: none; background: url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat bottom left;}
+
+.design-admin .remove-link {white-space: nowrap; padding: 0; position: relative; float: right; display: none;}
+.design-admin .remove-link span { padding-left: 30px; cursor: pointer;}
+.design-admin .remove-link .i {width: 17px; height: 17px; left: 9px; top: 10px; position: absolute; cursor: pointer;  font: 0/0 serif; display: block;}
+.design-admin .remove-link span:hover .i {background-position: 0 -100px;}
+
+.confirm-text {text-align: center; width: 280px;}
+.confirm-buttons {padding: 20px; zoom: 1;}
+.confirm-buttons:after {content: '.'; height: 0; overflow: hidden; clear: both; display: block;}
+.confirm-ok,
+.confirm-cancel {width: 35px; height: 35px; position: relative; float: left; display: inline;}
+.confirm-ok {float: right;}
+.confirm-ok .i,
+.confirm-cancel .i {width: 37px; height: 37px; left: -1px; top: 0; position: absolute; cursor: pointer; font: 0/0 serif; display: block;}
+.confirm-ok .i {background: url(/img/club/popup/ok.png) no-repeat;}
+.confirm-cancel .i {background: url(/img/club/popup/cancel.png) no-repeat;}
+.confirm-ok:hover .i,
+.confirm-cancel:hover .i {background-position: 0 -100px;}
+
+/* alert copy-paste */
+.alert-copy-paste {position:relative; padding:10px 0 0 20px; margin: 0 0 10px;}
+.alert-copy-paste span {color: #CC0000;}
+.alert-copy-paste i {
+    position: absolute;
+    top:10px;
+    left:-2px;
+    display: block;
+    background: url('/img/club/jwysiwyg/jquery.wysiwyg.gif') no-repeat -640px -800px;
+    background-position: -92px -68px;
+    width: 18px;
+    height: 18px;
+}
+
+
+
+/* releases inner (begin) */
+.b-edit-release {
+    width:940px;
+}
+    .b-edit-release .beatport {
+        float: left;
+        display: block;
+        width: 37px;
+        height: 37px;
+        margin: -1px 8px 0 0;
+        padding: 0 0 0;
+        background: url('/img/artist/admin/icon-beatport.png') no-repeat center bottom;
+        cursor: pointer;
+    }
+    .b-edit-release .upload {
+        position:relative;
+        min-height:44px;
+        margin:15px 0 0 45px;
+    }
+        .b-edit-release  .upload .upload-button {
+            z-index:-1;
+            position:absolute;
+            top:-5px;
+            left:0;
+            height:32px;
+            padding:13px 0 0 48px;
+            background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+            font-size:13px;
+        }
+    #adding-popup {
+        display: none;
+        position: absolute;
+        z-index: 101;
+        top:50%;
+        left:50%;
+        margin-left:-465px;
+        width: 890px;
+        padding: 20px 20px 15px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background: #E6E6E6;
+    }
+        #adding-popup span {
+            display: inline-block;
+            font-size:11px;;
+            font-style: italic;
+            color:#666;
+        }
+        #adding-popup .label-author,
+        #adding-popup .label-name,
+        #adding-popup .label-remix {
+            width:225px;
+        }
+        #adding-popup .label-style {
+            width:200px;
+        }
+        #adding-popup .video-name {
+            display:block;
+            width:380px;
+            margin:6px 0 10px;
+            padding:9px 10px 9px;
+            border:0;
+            outline:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup .gallery-name {
+            display:block;
+            width:420px;
+            margin:6px 0 10px;
+            padding:9px 10px 9px;
+            border:0;
+            outline:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup .video-link {
+            display:block;
+            width:840px;
+            margin:6px 0 0;
+            padding:10px;
+            border:0;
+            outline:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup .youtube-sync {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:19px 0 0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+        #adding-popup .date {
+            display:inline-block;
+            margin:0 0 0 10px;
+        }
+            #adding-popup .date .picker {
+                padding:3px 0 4px 28px;
+                background:url('/img/artist/admin/icon-calendar.png') no-repeat center left;
+                color:#000;
+            }
+            #adding-popup .date input {
+                width:80px;
+                margin:0 0 0 7px;
+                padding:0 0 0 10px;
+                border:none;
+                outline:none;
+                -moz-border-radius: 0 !important;
+                -webkit-border-radius: 0 !important;
+                border-radius: 0 !important;
+                -moz-box-shadow: 0px 0px #E6E6E6 !important;
+                -webkit-box-shadow: 0px 0px #E6E6E6 !important;
+                box-shadow: 0px 0px #E6E6E6 !important;
+                background:none;
+                font-style:italic;
+                font-size:12px;
+                color:#666;
+            }
+            #adding-popup .date .with-bg {
+                background:url('/img/artist/admin/bg-uploader-filename-pointer.png') no-repeat center left;
+            }
+        #adding-popup .label-stores {
+            display:block !important;
+            margin:10px 0 7px !important;
+        }
+        #adding-popup .store {
+            display:inline-block;
+            width:420px;
+            margin:0 0 10px;
+            padding:9px 10px 9px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup .store-one,
+        #adding-popup .store-three {
+            margin:0 10px 0 0;
+        }
+        #adding-popup .captions {
+            padding:0 0 8px;
+        }
+            #adding-popup .captions :first-child {
+                margin:0;
+            }
+            #adding-popup .captions span {
+                width:215px;
+                margin:0 0 0 10px;
+            }
+        #adding-popup div {
+            padding: 6px 0 0;
+        }
+        #adding-popup div .uploadifyQueue {
+            display: none;
+        }
+        #adding-popup div > input {
+            display:inline-block;
+            width:195px;
+            margin:0 0 0 10px;
+            padding:9px 10px 9px;
+            border:0;
+            outline:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup div > input:first-child {
+            margin:0;
+        }
+        #adding-popup .options {
+            padding: 13px 0 17px;
+        }
+            #adding-popup .options label {
+                display: inline-block;
+                margin:0 0 0 10px;
+                padding:0 0 0 10px;
+                background: url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top left;
+            }
+            #adding-popup .options label:first-child {
+                margin:0;
+                padding:0;
+                background:none;
+            }
+            #adding-popup .options input {
+                margin:0;
+                vertical-align: bottom;
+            }
+        #adding-popup .label-number {
+            display:inline-block;
+            width:70px;
+        }
+        #adding-popup .number {
+            display:inline-block;
+            width:40px;
+            margin:7px 10px 0 0;
+            padding:9px 10px 9px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup .comment {
+            display:inline-block;
+            width:575px;
+            margin:7px 10px 0 0;
+            padding:9px 10px 9px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+        #adding-popup .checkboxes {
+            padding:19px 0 0;
+        }
+            #adding-popup .checkboxes > :first-child {
+                margin:0 12px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            #adding-popup .checkboxes input {
+                margin:1px 4px 0 0;
+                vertical-align:top;
+                border:1px solid #8E8F8F;
+            }
+            #adding-popup .checkboxes .help {
+                display:inline-block;
+                vertical-align:top;
+                width:15px;
+                height:15px;
+                margin:0 0 0 5px;
+                background:url('/img/artist/admin/icon-question-mark.png') no-repeat center center;
+                text-indent:-9999px;
+            }
+        #adding-popup .cover {
+            position:relative;
+            height: 100px;
+            margin:20px 0 0;
+            padding:0 !important;
+        }
+            #release_uploadQueue {
+                display:none;
+            }
+            #adding-popup .cover img {
+                display:inline-block;
+                vertical-align: top;
+                height:100px;
+                width:100px;
+                background:#999;
+            }
+            #adding-popup .cover .select {
+                position:absolute;
+                z-index:-1;
+                display:block;
+                top:0px;
+                left:109px;
+                padding:3px 0 4px 27px;
+                color:#000;
+                background:url('/img/artist/admin/icon-upload-cover.png') no-repeat center left;
+            }
+            #adding-popup .cover .library {
+                position:absolute;
+                display:block;
+                bottom:-1px;
+                left:109px;
+                padding:3px 0 4px 27px;
+                color:#000;
+                background:url('/img/artist/admin/icon-radioshow-edit.png') no-repeat center left;
+            }
+            #adding-popup .cover .delete {
+                position:absolute;
+                bottom:3px;
+                left:4px;
+                display:block;
+                width:17px;
+                height:17px;
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center center;
+            }
+        #adding-popup .label-major {
+            display: block;
+            padding: 0 0 8px 0;
+            background: url('/img/artist/admin/bg-background-position-category.png') repeat-x bottom left;
+        }
+            #adding-popup .label-major input {
+                vertical-align: bottom;
+                margin: 0 5px 1px 0;
+            }
+        #adding-popup .b-category-column {
+            display: inline-block;
+            vertical-align: top;
+            width: 200px;
+            padding: 0;
+        }
+            #adding-popup .b-category-column label {
+                display: block;
+                margin: 0 0 8px 0;
+            }
+                #adding-popup .b-category-column label input {
+                    vertical-align: bottom;
+                    margin: 0 5px 1px 0;
+                }
+        #adding-popup .b-button-set {
+            height:40px;
+            padding:10px 0 0 0;
+        }
+            #adding-popup .b-button-set .save,
+            #adding-popup .b-button-set .cancel {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                padding:9px 20px 11px;
+                border:0;
+                margin:0 0 0 20px;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+            .b-edit-release .adding .b-button-set .cancel {
+                margin:0 20px 0 0;
+            }
+.b-edit-release .b-items {
+        min-height:10px;
+        margin:10px 0 0;
+        padding:0 0 10px;
+        list-style:none;
+    }
+    .b-edit-release .b-items li {
+        display:block;
+        height:40px;
+        margin:9px 0 0;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-edit-release .b-items li.hidden {
+        display:none;
+    }
+        .b-edit-release .b-items li .preview {
+            display:inline-block;
+            vertical-align:top;
+            margin:0 10px 0 0;
+        }
+        .b-edit-release .b-items li .description {
+            display:inline-block;
+            vertical-align:top;
+        }
+            .b-edit-release .b-items li .description .title {
+                font-size:13px;
+            }
+                .b-edit-release .b-items li .description .author {
+                    color:#C00;
+                }
+            .b-edit-release .b-items li .description .style {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                font-style:italic;
+                color:#666;
+            }
+            .b-edit-release .b-items li .description .date {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                font-style:italic;
+                color:#666;
+            }
+            .b-edit-release .b-items li .description .label {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                font-size:11px;
+                font-style:italic;
+                color:#C00;
+            }
+            .b-edit-release .b-items li .description .no-bg {
+                background: none !important;
+            }
+        .b-edit-release .b-items li .options {
+            float:right;
+            height:30px;
+            padding:5px 0 0 16px;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center right;
+        }
+            .b-edit-release .b-items li .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-edit-release .b-items li .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-edit-release .b-items li .options .separator {
+                display:inline-block;
+                vertical-align:top;
+                width:1px;
+                height:20px;
+                margin:5px 9px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-edit-release .b-items li .options a,
+            .b-edit-release .b-items li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-edit-release .b-items li .options a:hover {
+                text-decoration:none;
+            }
+            .b-edit-release .b-items li .options a.delete-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+            .b-edit-release .b-items li .options a.edit-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat center left;
+            }
+            .b-edit-release .b-items li .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 43px;
+                cursor:move;
+            }
+    .b-edit-release .b-press-release {
+        position: relative;
+    }
+        .b-edit-release .b-press-release .lang {
+            padding: 0 0 7px;
+        }
+    .b-edit-release .b-press-release .label {
+        display:block;
+        padding:16px 0 7px;
+        font-style:italic;
+        font-size:11px;
+        color:#666;
+    }
+        .b-edit-release .b-press-release .label span {
+            color:#C00;
+        }
+    .b-edit-release .b-press-release .label-incut {
+        float: left;
+        position: relative;
+        z-index: 10;
+        width: 225px;
+        margin: 15px 0 0;
+    }
+        .b-edit-release .b-press-release .label-incut input {
+            margin:0 5px 0 0;
+            vertical-align: bottom;
+        }
+    .b-edit-release .b-press-release .press-release-title {
+        clear:both;
+        width:920px;
+        margin:0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shad
+    }
+    .b-edit-release .b-press-release textarea {
+        clear:both;
+        width:940px;
+        min-height:110px;
+        margin:0;
+        padding:5px 10px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+        font-family:Arial;
+    }
+    .b-edit-release .b-press-release .wysiwyg {
+        clear:both;
+    }
+    .b-edit-release .b-press-release .wysiwyg,
+    .b-edit-release .b-press-release .wysiwyg iframe{
+        width: 940px !important;
+    }
+    .b-edit-release .b-press-release .mceEditor {
+        clear: both;
+        display: block;
+        margin: -27px 0 0;
+    }
+    .b-edit-release .b-press-release .incut {
+        float: right;
+        position:relative;
+        width: 460px;
+        height:102px;
+        margin:17px 0;
+        padding:20px 0;
+        background:url('/img/artist/admin/bg-incut.png') repeat-x center left;
+    }
+        .b-edit-release .b-press-release .incut img {
+            float:left;
+            margin:0 15px 0 0;
+        }
+        .b-edit-release .b-press-release .incut span {
+            font-size:13px;
+            font-style:italic;
+        }
+        .b-edit-release .b-press-release .incut a {
+            position:absolute;
+            right:0px;
+            bottom:20px;
+            display:block;
+            padding:0 20px 0 15px;
+            background:url('/img/artist/admin/bg-incut-username.png') no-repeat center center;
+            font-size:11px;
+            font-style:italic;
+            color:#000;
+        }
+        .b-edit-release .b-press-release .b-button-set {
+            width: 700px;
+            padding:17px 0 5px;
+        }
+        .b-edit-release .b-press-release .cancel-press-release {
+            float: right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            margin:0 -117px 0 0;
+            padding:9px 20px 11px;
+            border:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+    .b-edit-release .b-button-set {
+        position: relative;
+        height:40px;
+        padding:10px 0 40px 0;
+    }
+        .b-edit-release .b-button-set .save-release {
+            position: absolute;
+            z-index: 99;
+            top: 10px;
+            right: 0;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:-55px 0 0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+        .b-edit-release .b-button-set .no-margin {
+            margin: 0 !important;
+        }
+        .b-edit-release .b-add-press-release {
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:10px 0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+         .b-edit-release .b-button-set .disabled {
+            background-color:#999 !important;
+            background-image:none !important;
+            -moz-text-shadow:none !important;
+            -webkit-text-shadow:none !important;
+            text-shadow:none !important;
+            -moz-box-shadow:none !important;
+            -webkit-box-shadow:none !important;
+            box-shadow:none !important;
+            color:#CCC !important;
+            cursor:default !important;
+        }
+/* releases inner (end) */
+
+/* contact us (begin) */
+.b-contacts {
+    width: 940px;
+    padding:10px 0 0;
+}
+    .b-contacts .add-contact {
+        display: block;
+        height: 32px;
+        padding: 13px 0 0 48px;
+        margin: 0 0 13px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-label-name,
+    .b-label-phone,
+    .b-label-email {
+        display: inline-block;
+        width: 220px;
+        padding: 0 0 0 10px;
+    }
+    .b-contacts .b-items {
+        min-height:10px;
+        margin:6px 0 0;
+        padding:0;
+        list-style:none;
+    }
+    .b-contacts .b-items li {
+        display:block;
+        height:35px;
+        margin:0 0 10px;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+        .b-contacts .b-items li.hidden {
+            display: none;
+        }
+        .b-contacts .b-items li > input{
+                display: inline-block;
+                width: 200px;
+                margin: 0 10px 0 0;
+                padding: 9px 10px;
+                border: 0;
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+                -moz-box-shadow: 0px -1px 0px #7D7D7D;
+                -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+                box-shadow: 0px -1px 0px #7D7D7D;
+            }
+            .b-contacts .b-items li .options {
+                float:right;
+                height:30px;
+                padding:5px 10px 0 16px;
+                background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center right;
+            }
+            .b-contacts .b-items .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-contacts .b-items .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-contacts .b-items .options .separator {
+                display:inline-block;
+                vertical-align:top;
+                width:1px;
+                height:20px;
+                margin:5px 9px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-contacts .b-items .options a,
+            .b-contacts .b-items .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+            .b-contacts .b-items .options a:hover {
+                text-decoration:none;
+            }
+            .b-contacts .b-items .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 23px;
+                cursor:move;
+            }
+        .b-contacts .b-button-set {
+            height:40px;
+            padding:10px 0 40px 0;
+        }
+            .b-contacts .b-button-set .save {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                margin:0;
+                padding:9px 20px 11px;
+                border:0;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+/* contact us (end) */
+
+/* news (begin) */
+.b-news-edit {
+    width:940px;
+    padding:10px 0 0;
+    overflow:hidden;
+}
+    .b-news-edit .add-news {
+        display: block;
+        height: 31px;
+        width: 110px;
+        padding: 13px 0 0 48px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-news-edit .b-news {
+        min-height:10px;
+        margin:15px 0 0;
+        padding:0;
+        list-style:none;
+    }
+    .b-news-edit .b-news li {
+        display:block;
+        height:40px;
+        margin:9px 0 10px;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-news-edit .b-news li.hidden {
+        display:none;
+    }
+        .b-news-edit .b-news li .preview {
+            display:inline-block;
+            vertical-align:top;
+            margin:0 10px 0 0;
+        }
+        .b-news-edit .b-news li .description {
+            display:inline-block;
+            vertical-align:top;
+        }
+            .b-news-edit .b-news li .description .title {
+                font-size:13px;
+            }
+            .b-news-edit .b-news li .description .draft {
+                display:block;
+                margin:4px 0 0;
+                font-size:11px;
+                color:#C00;
+            }
+            .b-news-edit .b-news li .description .date {
+                display:block;
+                margin:4px 0 0;
+                font-size:11px;
+                color:#666;
+            }
+        .b-news-edit .b-news li .options {
+            float:right;
+            height:30px;
+            padding:5px 10px 0 16px;
+        }
+            .b-news-edit .b-news li .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-news-edit .b-news li .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-news-edit .b-news li .options .separator {
+                display:inline-block;
+                vertical-align:top;
+                width:1px;
+                height:20px;
+                margin:5px 9px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-news-edit .b-news li .options a,
+            .b-news-edit .b-news li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-news-edit .b-news li .options a:hover {
+                text-decoration:none;
+            }
+            .b-news-edit .b-news li .options a.delete-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+            .b-news-edit .b-news li .options a.edit-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat center left;
+            }
+            .b-news-edit .b-news li .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 43px;
+                cursor:move;
+            }
+    .b-news-edit .b-button-set {
+        height:40px;
+        padding:10px 0 40px 0;
+    }
+        .b-news-edit .b-button-set .save-news {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* news (end) */
+
+/* news adding (begin) */
+.b-news-add {
+    width: 940px;
+}
+    .b-news-text .lang {
+        position:relative;
+    }
+        .b-news-text .lang > :first-child {
+            padding: 3px 0 8px !important;
+        }
+    .b-news-text label {
+        display: block;
+        margin: 10px 0 0 0;
+    }
+        .b-news-text label input {
+            margin:0 5px 0 0;
+            vertical-align:bottom;
+        }
+
+    .b-news-text .incut-wrap {
+        display: none;
+    }
+    .b-news-text .incut {
+        position: relative;
+        height:102px;
+        margin:17px 0 0 240px;
+        padding:20px 0;
+        background:url('/img/artist/admin/bg-incut.png') repeat-x center left;
+    }
+        .b-news-text .incut img {
+            float:left;
+            margin:0 15px 0 0;
+        }
+        .b-news-text .incut span {
+            font-size:13px;
+            font-style:italic;
+        }
+        .b-news-text .incut a {
+            position:absolute;
+            right:0px;
+            bottom:20px;
+            display:block;
+            padding:0 20px 0 15px;
+            background:url('/img/artist/admin/bg-incut-username.png') no-repeat center center;
+            font-size:11px;
+            font-style:italic;
+            color:#000;
+        }
+    .b-news-text i {
+        display:block;
+        padding:14px 0 8px;
+        color:#666;
+    }
+    .b-news-text .wysiwyg {
+        clear:both;
+    }
+    .b-news-text .wysiwyg,
+    .b-news-text .wysiwyg iframe{
+        width: 940px !important;
+    }
+    .b-news-text .title {
+        display: inline-block;
+        width:700px;
+        margin:0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+    }
+    .b-news-text .date {
+            display:inline-block;
+            margin:0 0 0 20px;
+        }
+            .b-news-text .date .picker {
+                padding:3px 0 4px 28px;
+                background:url('/img/artist/admin/icon-calendar.png') no-repeat center left;
+                color:#000;
+            }
+            .b-news-text .date input {
+                width:70px;
+                margin:0 0 0 7px;
+                padding:0 0 0 10px;
+                border:none;
+                outline:none;
+                -moz-border-radius: 0 !important;
+                -webkit-border-radius: 0 !important;
+                border-radius: 0 !important;
+                -moz-box-shadow: 0px 0px #E6E6E6 !important;
+                -webkit-box-shadow: 0px 0px #E6E6E6 !important;
+                box-shadow: 0px 0px #E6E6E6 !important;
+                background:none;
+                font-style:italic;
+                font-size:12px;
+                color:#666;
+            }
+            .b-news-text .date .with-bg {
+                background:url('/img/artist/admin/bg-uploader-filename-pointer.png') no-repeat center left;
+            }
+    .b-news-text .tags,
+    .b-news-text .youtube {
+        clear:both;
+        width:920px;
+        margin:0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+    }
+    .b-news-text textarea {
+        clear:both;
+        width:920px;
+        min-height:110px;
+        margin:0;
+        padding:5px 10px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+        font-family:Arial;
+    }
+    .b-news-text .mceEditor {
+        clear: both;
+        display: block;
+        margin: -27px 0 0;
+    }
+
+
+    .b-news-photos  .upload-news-image {
+        position:relative;
+        min-height:44px;
+        margin: 36px 0 0;
+    }
+        .b-news-photos .upload-news-image .upload-button {
+            z-index:-1;
+            position:absolute;
+            left:0;
+            height:32px;
+            padding:13px 0 0 48px;
+            background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+            font-size:13px;
+        }
+    .b-news-photos .b-photos {
+        clear:both;
+        min-height: 3px;
+        margin:0;
+        padding:12px 0 2px;
+        list-style:none;
+    }
+        .b-news-photos .b-photos li {
+            position:relative;
+            display:inline-block;
+            height:100px;
+            width:220px;
+            margin:0 20px 20px 0;
+            vertical-align:top;
+            background:#999;
+            cursor: move;
+        }
+        .b-news-photos .b-photos li.hidden {
+            display:none;
+        }
+        .b-news-photos .b-photos li .edit {
+            position:absolute;
+            top:5px;
+            right:4px;
+            display:block;
+            height:22px;
+            width:22px;
+            background:url('/img/artist/admin/icon-edit-bg-item.png') no-repeat center center;
+        }
+        .b-news-photos .b-photos li .delete {
+            position:absolute;
+            bottom:3px;
+            left:4px;
+            display:block;
+            height:17px;
+            width:17px;
+            background:url('/img/artist/admin/icon-delete-bg-item.png') no-repeat center center;
+        }
+
+
+    .b-news-tracks .upload-button {
+        width: 150px;
+        height:32px;
+        margin: 14px 0 10px;
+        padding:13px 0 0 48px;
+        background:url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        cursor: pointer;
+    }
+    .b-news-tracks .select-track {
+        display: none;
+        height: 40px;
+        padding: 14px 0 5px;
+    }
+        .b-news-tracks .select-track select {
+            float: left;
+            display: block;
+            width: 700px;
+            margin: 0;
+            padding: 9px 10px 9px;
+            border:1px solid #E6E6E6;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+            outline: none;
+        }
+            .b-news-tracks .select-track select option {
+                line-height: 2;
+            }
+        .b-news-tracks .select-track .b-button-set {
+                float: right;
+                height: 40px;
+                padding:1px 0 0;
+            }
+            .b-news-tracks .select-track .b-button-set .save,
+            .b-news-tracks .select-track .b-button-set .cancel {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                padding:9px 20px 11px;
+                border:0;
+                margin:0 0 0 20px;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px black;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:white;
+                cursor:pointer;
+                zoom:1;
+            }
+    .b-news-tracks .b-tracks {
+        margin:14px 0 14px;
+        padding:0;
+        list-style:none;
+    }
+    .b-news-tracks .b-tracks li {
+        display:block;
+        height:40px;
+        margin:0 0 10px;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-news-tracks .b-tracks li.hidden {
+        display:none;
+    }
+        .b-news-tracks .b-tracks li:last-child {
+            margin:0 0 20px;
+        }
+        .b-news-tracks .b-tracks li .preview {
+            display:inline-block;
+            vertical-align:top;
+            margin:0 10px 0 0;
+        }
+        .b-news-tracks .b-tracks li .description {
+            display:inline-block;
+            vertical-align:top;
+        }
+            .b-news-tracks .b-tracks li .description .title {
+                font-size:13px;
+            }
+                .b-news-tracks .b-tracks li .description .author {
+                    color:#C00;
+                }
+            .b-news-tracks .b-tracks li .description .style {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                font-style:italic;
+                color:#666;
+            }
+            .b-news-tracks .b-tracks li .description .date {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                padding:0 8px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                font-style:italic;
+                color:#666;
+            }
+            .b-news-tracks .b-tracks li .description .label {
+                display:inline-block;
+                margin:4px 7px 0 0;
+                font-size:11px;
+                font-style:italic;
+                color:#C00;
+            }
+        .b-news-tracks .b-tracks li .options {
+            float:right;
+            height:30px;
+            padding:5px 0 0 16px;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center right;
+        }
+            .b-news-tracks .b-tracks li .options a,
+            .b-news-tracks .b-tracks li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-news-tracks .b-tracks li .options a:hover {
+                text-decoration:none;
+            }
+            .b-news-tracks .b-tracks li .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 43px;
+                cursor:move;
+            }
+
+
+    .b-news-add .b-button-set {
+        clear: both;
+        height: 40px;
+        padding: 0 0 50px;
+    }
+        .b-news-add .b-button-set .save {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                padding:9px 20px 11px;
+                border:0;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+        .b-news-add .b-button-set .disabled {
+            background-color:#999;
+            background-image:none;
+            -moz-text-shadow:none;
+            -webkit-text-shadow:none;
+            text-shadow:none;
+            -moz-box-shadow:none;
+            -webkit-box-shadow:none;
+            box-shadow:none;
+            color:#CCC;
+            cursor:default;
+        }
+        .b-news-add .b-button-set label {
+            float:right;
+            display:block;
+            padding:7px 30px 0 0;
+        }
+            .b-news-add .b-button-set label input {
+                margin:0;
+                vertical-align:bottom;
+            }
+/* news adding (end) */
+
+/* error popup (begin) */
+.g-overlay-superblack {
+    position:absolute;
+    z-index:99;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background:url('/img/artist/bg-grid-overlay.png') repeat top left;
+}
+.g-overlay-border {
+    display:none;
+    position:absolute;
+    z-index: 99;
+    top:50%;
+    left: 50%;
+    background: #000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+.b-error-box {
+    display:none;
+    position:absolute;
+    top:100px;
+    left:100px;
+    z-index:100;
+    height:160px;
+    width:420px;
+    padding:20px 20px 10px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    -moz-box-shadow:0px 1px 3px #3F3F3F;
+    -webkit-box-shadow:0px 1px 3px #3F3F3F;
+    box-shadow:0px 1px 3px #3F3F3F;
+    background:#E6E6E6;
+}
+    .b-error-box .close {
+        float:right;
+        display:block;
+        height:17px;
+        width:17px;
+        background:url('/img/artist/bg-login-popup-close.png') no-repeat center center;
+        text-indent:-9999px;
+        outline: 0;
+    }
+    .b-error-box .message {
+        clear:both;
+        display:block;
+        min-height:40px;
+        padding:35px 0 0;
+        text-align:center;
+        color:red;
+    }
+    .b-error-box .button-set {
+        height:40px;
+        overflow:hidden;
+        padding:25px 0 0;
+    }
+        .b-error-box  .button-set .submit {
+            float:right;
+            padding:8px 35px 9px;
+            border:0;
+            background:url('/img/artist/bg-login-box-submit.png') repeat-x center left;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #3F3F3F;
+            -webkit-box-shadow:0px 1px 2px #3F3F3F;
+            box-shadow:0px 1px 2px #3F3F3F;
+            color:#FFF;
+            cursor:pointer;
+        }
+/* error popup (end) */
+
+/* limit reached popup (begin) */
+.b-limit-reached-border {
+    display:none;
+    position:absolute;
+    z-index: 99;
+    top:50%;
+    left: 50%;
+    background: #000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+.b-limit-reached {
+    display:none;
+    position:absolute;
+    top:100px;
+    left:100px;
+    z-index:100;
+    height:80px;
+    width:420px;
+    padding:20px 20px 10px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    -moz-box-shadow:0px 1px 3px #3F3F3F;
+    -webkit-box-shadow:0px 1px 3px #3F3F3F;
+    box-shadow:0px 1px 3px #3F3F3F;
+    background:#E6E6E6;
+}
+    .b-limit-reached .close {
+        float:right;
+        display:block;
+        height:17px;
+        width:17px;
+        background:url('/img/artist/bg-login-popup-close.png') no-repeat center center;
+        text-indent:-9999px;
+        outline: 0;
+    }
+    .b-limit-reached p {
+        clear: both;
+        display: block;
+        margin: 0;
+    }
+/* limit reached popup (end) */
+
+/* datepicker (begin) */
+.ui-datepicker {
+    display:none;
+    padding:10px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    -moz-box-shadow:0px 0px 2px #a3a3a3;
+    -webkit-box-shadow:0px 0px 2px #a3a3a3;
+    box-shadow:0px 0px 2px #a3a3a3;
+    background:#E6E6E6;
+}
+    .ui-datepicker .ui-datepicker-header {
+        position:relative;
+        margin:0 0 8px;
+    }
+    .ui-datepicker .ui-datepicker-title {
+        overflow:hidden;
+        text-align:center;
+    }
+    .ui-datepicker .ui-datepicker-next {
+        position:absolute;
+        top:0;
+        right:0;
+        display:block;
+        width:17px;
+        height:17px;
+        background:url('/img/artist/admin/bg-date-month-next.png') no-repeat center center;
+    }
+        .ui-datepicker .ui-datepicker-next span {
+            display:none;
+        }
+    .ui-datepicker .ui-datepicker-prev {
+        position:absolute;
+        top:0;
+        left:0;
+        display:block;
+        width:17px;
+        height:17px;
+        background:url('/img/artist/admin/bg-date-month-previous.png') no-repeat center center;
+    }
+        .ui-datepicker .ui-datepicker-prev span {
+            display:none;
+        }
+    .ui-datepicker .ui-datepicker-calendar {
+        border-collapse:collapse;
+    }
+        .ui-datepicker .ui-datepicker-calendar th {
+            padding:6px 8px;
+        }
+        .ui-datepicker .ui-datepicker-calendar td {
+            padding:6px 8px;
+            border:1px solid #090909;
+            background:#696969 url('/img/artist/admin/bg-calendar-cell.png') no-repeat top left;
+            text-align:center;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+        }
+        .ui-datepicker .ui-datepicker-calendar .ui-datepicker-unselectable {
+            border:none;
+            background:none;
+        }
+            .ui-datepicker .ui-datepicker-calendar td a {
+                text-decoration:none;
+                color:#FFF;
+            }
+/* datepicker (end) */
+
+/* autocomplete (begin) */
+.ui-autocomplete {
+    position: absolute;
+    cursor: default;
+}
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+    background: #FFF;
+    -moz-border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.0 8px 5px;
+	line-height:1.5;
+	zoom:1;
+    outline: none;
+    cursor: pointer;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+    color: #8EC0CF;
+}
+/* autocomplete (end) */
+
+/* color picker (begin) */
+.b-color-picker {
+    padding: 2px 0 0;
+}
+.b-color-picker .submit {
+    position:absolute;
+    display:block;
+    top:auto !important;
+    right:auto !important;
+    bottom:13px !important;
+    left:247px !important;
+    height:35px;
+    overflow:hidden;
+    padding:9px 18px 11px 19px;
+    border:0;
+    margin:0;
+    background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    -moz-text-shadow:0px -1px 0px #000;
+    -webkit-text-shadow:0px -1px 0px #000;
+    text-shadow:0px -1px 0px #000;
+    -moz-box-shadow:0px 1px 2px #a3a3a3;
+    -webkit-box-shadow:0px 1px 2px #a3a3a3;
+    box-shadow:0px 1px 2px #a3a3a3;
+    font-size:13px;
+    color:#FFF;
+    cursor:pointer;
+    zoom:1;
+}
+.colorpicker {
+    width: 356px;
+    height: 176px;
+    overflow: hidden;
+    position: absolute;
+    background: url(/img/artist/admin/colorpicker_background.png);
+    font-family: Arial, Helvetica, sans-serif;
+    display: none;
+}
+.colorpicker_color {
+    width: 150px;
+    height: 150px;
+    left: 14px;
+    top: 13px;
+    position: absolute;
+    background: #f00;
+    overflow: hidden;
+    cursor: crosshair;
+}
+.colorpicker_color div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: url(/img/artist/admin/colorpicker_overlay.png);
+}
+.colorpicker_color div div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
+    overflow: hidden;
+    background: url(/img/artist/admin/colorpicker_select.gif);
+    margin: -5px 0 0 -5px;
+}
+.colorpicker_hue {
+    position: absolute;
+    top: 13px;
+    left: 171px;
+    width: 35px;
+    height: 150px;
+    cursor: n-resize;
+}
+.colorpicker_hue div {
+    position: absolute;
+    width: 35px;
+    height: 9px;
+    overflow: hidden;
+    background: url(/img/artist/admin/colorpicker_indic.gif) left top;
+    margin: -4px 0 0 0;
+    left: 0px;
+}
+.colorpicker_new_color {
+    position: absolute;
+    width: 100px;
+    height: 35px;
+    left: 247px;
+    top: 13px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    -moz-box-shadow: 0px -1px 0px #7D7D7D;
+    -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+    box-shadow: 0px -1px 0px #7D7D7D;
+    background: #f00;
+}
+.colorpicker input {
+    background-color: transparent;
+    border: 1px solid transparent;
+    position: absolute;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #898989;
+    top: 4px;
+    right: 11px;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    height: 11px;
+}
+.colorpicker_hex {
+    position: absolute;
+    width: 114px;
+    height: 35px;
+    left: 233px;
+    top: 59px;
+}
+.colorpicker_hex span {
+    display:block;
+    padding:9px 0 0;
+    font-size:15px;
+    color:#333;
+}
+.colorpicker_hex input {
+    top:0;
+    right:0;
+    width:80px;
+    height:auto;
+    margin:0;
+    padding:9px 10px 9px;
+    border:0;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    -moz-box-shadow: 0px -1px 0px #7D7D7D;
+    -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+    box-shadow: 0px -1px 0px #7D7D7D;
+    background:#FFF;
+    text-align:left;
+    font-size:15px;
+    color:#333;
+}
+.colorpicker_field {
+    height: 22px;
+    width: 62px;
+    background-position: top;
+    position: absolute;
+}
+.colorpicker_field span {
+    position: absolute;
+    width: 12px;
+    height: 22px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    cursor: n-resize;
+}
+.colorpicker_focus {
+    background-position: center;
+}
+.colorpicker_hex.colorpicker_focus {
+    background-position: bottom;
+}
+.colorpicker_slider {
+    background-position: bottom;
+}
+.colorpicker_current_color,
+.colorpicker_submit,
+.colorpicker_rgb_r,
+.colorpicker_rgb_g,
+.colorpicker_rgb_b,
+.colorpicker_hsb_h,
+.colorpicker_hsb_s,
+.colorpicker_hsb_b {
+    display:none;
+}
+/* color picker (end) */
+
+/* url settings (begin) */
+.b-url-settings {
+    width:700px;
+    padding:13px 0 0;
+}
+    .b-url-settings .caption-url {
+        display:inline-block;
+        width:480px;
+    }
+        .b-url-settings .caption-url img {
+            vertical-align:middle;
+        }
+    .b-url-settings .caption-ip {
+    }
+        .b-url-settings .caption-ip img {
+            vertical-align:middle;
+        }
+    .b-url-settings .url {
+        display:inline-block;
+        width:440px;
+        margin:8px 20px 0 0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+    }
+        .b-url-settings .ip-adress {
+        display:inline-block;
+        width:200px;
+        margin:8px 0 0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+        background:#CCC;
+    }
+    .b-url-settings .b-button-set {
+        height:40px;
+        padding:20px 0 40px;
+    }
+        .b-url-settings .b-button-set .alert {
+            float: left;
+            display: block;
+            width: 590px;
+        }
+        .b-url-settings .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* url settings (end) */
+
+/* uploadify (begin) */
+.uploadifyQueueItem .fileName {
+    display:inline-block;
+    min-height:15px;
+}
+.uploadifyQueueItem .percentage {
+    float:right;
+    color:#C00;
+}
+.uploadifyQueueItem .cancel {
+    display:none;
+}
+.uploadifyError {
+    background: #FDE5DD !important;
+    border: 2px solid #FBCBBC !important;
+}
+.uploadifyQueueItem .cancel {
+    float:right;
+}
+.uploadifyQueue {
+    position:absolute;
+    top:9px;
+    right:0;
+    width:460px;
+    height: 25px;
+    overflow: hidden;
+}
+.uploadifyQueue .completed {
+    background:#E5E5E5;
+}
+.uploadifyProgress {
+    width:100%;
+    margin-top:4px;
+    background:#333;
+    -moz-box-shadow:1px 1px 2px #a3a3a3;
+    -webkit-box-shadow:1px 1px 2px #a3a3a3;
+    box-shadow:1px 1px 2px #a3a3a3;
+}
+.uploadifyProgressBar {
+    width:1px;
+    height:3px;
+    background:#D90000;
+}
+/* uploadify (end) */
+
+/* logo upload (begin) */
+.b-logo-edit {
+    width:940px;
+    padding:15px 0 0;
+    font-size:13px;
+}
+    .b-logo-edit .upload {
+        z-index:-1;
+        position:absolute;
+        top:-4px;
+        left:0;
+        height:32px;
+        padding:13px 0 0 48px;
+        background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+        text-decoration: none;
+        font-size:13px;
+        color: #333;
+    }
+    .b-logo-edit .upload-wrap {
+        position:relative;
+        height:40px;
+        padding: 0 0 15px;
+    }
+    .b-logo-edit .b-alert {
+        display: block;
+        margin: -10px 0 0;
+        padding: 0 0 16px 10px;
+        background:url('/img/artist/icon-help-star.png') no-repeat top left;
+    }
+    .b-logo-edit .b-position {
+        float: right;
+        width: 160px;
+    }
+        .b-logo-edit .b-position label {
+            clear:both;
+            display:block;
+            width: 160px;
+            overflow:hidden;
+            padding:0 0 14px;
+        }
+        .b-logo-edit .b-position input {
+            margin:0 5px 1px 0;
+            padding:0;
+            vertical-align:bottom;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+        }
+    .b-logo-canvas {
+        position: relative;
+        width: 760px;
+        height: 360px;
+        overflow: hidden;
+        background: #5F5F5F url('/img/artist/admin/bg-logo-canvas.png') repeat top left;
+    }
+        .b-logo-canvas .grid-left {
+            position: absolute;
+            z-index: 100;
+            width: 760px;
+            height: 360px;
+            background: url('/img/artist/admin/bg-logo-grid-left.png') no-repeat center center;
+        }
+        .b-logo-canvas .grid-right {
+            display: none;
+            position: absolute;
+            z-index: 100;
+            width: 760px;
+            height: 360px;
+            background: url('/img/artist/admin/bg-logo-grid-right.png') no-repeat center center;
+        }
+        .b-logo-canvas .logo-image-left {
+            position: absolute;
+            z-index: 101;
+            top: 40px;
+            left: 40px;
+        }
+        .b-logo-canvas .logo-image-right {
+            position: absolute;
+            z-index: 101;
+            top: 40px;
+            right: 40px;
+        }
+        .b-logo-canvas .bg {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+    .b-logo-edit .b-button-set {
+        position: relative;
+        height:40px;
+        padding:20px 180px 40px 0;
+    }
+        .b-logo-edit .b-button-set .delete {
+            position: absolute;
+            top: -16px;
+            right: 40px;
+            display: block;
+            width: 100px;
+            padding: 1px 0 2px 20px;
+            background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            text-decoration: none;
+            color: #000;
+        }
+        .b-logo-edit .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* logo upload (end) */
+
+/* downloads (begin) */
+.b-downloads {
+    width: 940px;
+}
+.b-downloads .b-add-file .upload {
+    position:relative;
+    min-height:44px;
+    margin:15px 0 0;
+}
+    .b-downloads .b-add-file .upload-button {
+        z-index:-1;
+        position:absolute;
+        top:-5px;
+        left:0;
+        height:32px;
+        padding:13px 0 0 48px;
+        background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+        font-size:13px;
+    }
+.b-downloads .b-files {
+        min-height:10px;
+        margin:10px 0 0;
+        padding:0;
+        list-style:none;
+    }
+    .b-downloads .b-files li {
+        display:block;
+        height:35px;
+        margin:9px 0 10px;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+    .b-downloads .b-files li.hidden {
+        display:none;
+    }
+        .b-downloads .b-files li .filename {
+            clear:both;
+            width:290px;
+            margin:0 10px 0 0;
+            padding:9px 10px 9px 39px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+            background-position: 7px 8px;
+            background-repeat: no-repeat;
+        }
+        .b-downloads .b-files li .description {
+            display:inline-block;
+            vertical-align:top;
+        }
+            .b-downloads .b-files li .description .date {
+                display: inline-block;
+                margin:11px 10px 0 0;
+                padding:0 9px 0 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+                font-size:11px;
+                color:#666;
+            }
+        .b-downloads .b-files li .options {
+            float:right;
+            height:30px;
+            padding:5px 0 0 16px;
+            background:url('/img/artist/admin/bg-draggable-area.png') no-repeat center right;
+        }
+            .b-downloads .b-files li .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-downloads .b-files li .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-downloads .b-files li .options .separator {
+                display:inline-block;
+                vertical-align:top;
+                width:1px;
+                height:20px;
+                margin:5px 9px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-downloads .b-files li .options a,
+            .b-downloads .b-files li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-downloads .b-files li .options a:hover {
+                text-decoration:none;
+            }
+            .b-downloads .b-files li .options a.delete-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+            .b-downloads .b-files li .options a.edit-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat center left;
+            }
+            .b-downloads .b-files li .options .draggable-area {
+                display:inline-block;
+                height:35px;
+                width:19px;
+                margin:-5px 0 0 43px;
+                cursor:move;
+            }
+    .b-downloads .b-button-set {
+            height:40px;
+            padding:10px 0 40px 0;
+        }
+            .b-downloads .b-button-set .save,
+            .b-downloads .b-button-set .cancel {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                padding:9px 20px 11px;
+                border:0;
+                margin:0;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+            .b-downloads .b-button-set .cancel {
+                margin:0 20px 0 0;
+            }
+/* downloads (end) */
+
+/* gigs (begin) */
+.b-gigs {
+    width: 940px;
+    padding: 10px 0 0;
+ }
+    .b-gigs .add-gig {
+        display: block;
+        height: 31px;
+        width: 110px;
+        margin: 0 0 3px;
+        padding: 13px 0 0 48px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-gigs .b-label-place {
+        display: inline-block;
+        width: 228px;
+        padding: 0 0 0 280px;
+    }
+    .b-gigs .b-label-city {
+        display: inline-block;
+        width: 200px;
+    }
+    .b-gigs .b-giglist {
+        min-height:10px;
+        margin:7px 0 0;
+        padding:0;
+        list-style:none;
+    }
+    .b-gigs .b-giglist li {
+        display:block;
+        height:35px;
+        margin:0 0 10px;
+        padding:10px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        background:#CCC;
+    }
+        .b-gigs .b-giglist li.hidden {
+            display: none;
+        }
+        .b-gigs .b-giglist li .date {
+                display:inline-block;
+                width: 260px;
+                margin:0 0 0 11px;
+            }
+                 .b-gigs .b-giglist li .date .picker {
+                    padding:3px 0 4px 28px;
+                    background:url('/img/artist/admin/icon-calendar.png') no-repeat center left;
+                    color:#000;
+                }
+                 .b-gigs .b-giglist li .date input {
+                    width:80px;
+                    margin:0 0 0 7px;
+                    padding:0 0 0 10px;
+                    border:none;
+                    outline:none;
+                    background:none;
+                    font-style:italic;
+                    font-size:12px;
+                    color:#666;
+                }
+                 .b-gigs .b-giglist li .date .with-bg {
+                    background:url('/img/artist/admin/bg-uploader-filename-pointer.png') no-repeat center left;
+                }
+        .b-gigs .b-giglist li .place,
+        .b-gigs .b-giglist li .city {
+            display: inline-block;
+            width:195px;
+            margin:0 10px 0 0;
+            padding:9px 10px;
+            border:0;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            border-radius:4px;
+            -moz-box-shadow: 0px -1px 0px #7D7D7D;
+            -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+            box-shadow: 0px -1px 0px #7D7D7D;
+            background-position: 7px 8px;
+            background-repeat: no-repeat;
+        }
+        .b-gigs .b-giglist li .options {
+            float:right;
+            height:30px;
+            padding:5px 10px 0 16px;
+        }
+            .b-gigs .b-giglist li .options label {
+                display:inline-block;
+                vertical-align:top;
+                margin:3px 11px 0 0;
+                padding:3px 11px 2px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-gigs .b-giglist li .options input {
+                vertical-align:top;
+                width:14px;
+                height:14px;
+                margin:0;
+            }
+            .b-gigs .b-giglist li .options .separator {
+                display:inline-block;
+                vertical-align:top;
+                width:1px;
+                height:20px;
+                margin:5px 9px 0;
+                background:url('/img/artist/admin/bg-accounts-item-options.png') no-repeat top right;
+            }
+            .b-gigs .b-giglist li .options a,
+            .b-gigs .b-giglist li .options a:visited {
+                display:inline-block;
+                vertical-align:top;
+                margin:5px 0 0;
+                padding:1px 0 2px 20px;
+                text-decoration:underline;
+                color:#000;
+            }
+            .b-gigs .b-giglist li .options a:hover {
+                text-decoration:none;
+            }
+            .b-gigs .b-giglist li .options a.delete-item {
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center left;
+            }
+        .b-gigs .b-button-set {
+            height:40px;
+            padding:10px 0 40px 0;
+        }
+            .b-gigs .b-button-set .save {
+                float:right;
+                display:block;
+                height:35px;
+                overflow:hidden;
+                margin:0;
+                padding:9px 20px 11px;
+                border:0;
+                background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+                -moz-border-radius:3px;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                -moz-text-shadow:0px -1px 0px #000;
+                -webkit-text-shadow:0px -1px 0px #000;
+                text-shadow:0px -1px 0px #000;
+                -moz-box-shadow:0px 1px 2px #a3a3a3;
+                -webkit-box-shadow:0px 1px 2px #a3a3a3;
+                box-shadow:0px 1px 2px #a3a3a3;
+                color:#FFF;
+                cursor:pointer;
+                zoom:1;
+            }
+/* gigs (end) */
+
+
+/* gallery (begin) */
+.b-gallery {
+    margin: 0 -20px 0 0;
+    padding: 10px 0 0;
+}
+    .b-gallery .add-gallery {
+        display: block;
+        width: 160px;
+        height: 32px;
+        padding: 13px 0 0 48px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-gallery .b-items {
+            margin:14px 0 0;
+            padding:0;
+            list-style:none;
+        }
+        .b-gallery .b-items > li {
+            position:relative;
+            display:inline-block;
+            width:445px;
+            margin:0 10px 10px 0;
+            padding: 0 10px 10px;
+            vertical-align:top;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border-radius:5px;
+            background:#CCC;
+        }
+        .b-gallery .b-items .draggable-area {
+                float:right;
+                height:100px;
+                width:10px;
+                margin:10px 0 0;
+                background:url('/img/artist/admin/bg-radioshow-draggable-area.png') no-repeat center left;
+                cursor:move;
+            }
+            .b-gallery .b-items .gallery-cover {
+                float: left;
+                width: 170px;
+            }
+            .b-gallery .b-items .gallery-cover img {
+                margin: 10px 0 0;
+            }
+            .b-gallery .b-items .description {
+                float: left;
+            }
+                .b-gallery .b-items .description a {
+                    text-decoration: none;
+                }
+                .b-gallery .b-items .description h3 {
+                    margin: 7px 0 0;
+                    font-weight: normal;
+                    font-size: 14px;
+                    color: #000;
+                }
+            .b-gallery .b-items .techlinks {
+                float: left;
+                width: 350px;
+                padding: 12px 0 0;
+            }
+                .b-gallery .b-items .techlinks span:first-child {
+                    margin:0;
+                    padding:0;
+                    background:none;
+                }
+                .b-gallery .b-items .techlinks span {
+                    display:inline-block;
+                    margin:0 0 0 7px;
+                    padding:0 0 0 10px;
+                    background:url('/img/artist/admin/bg-navigation-li.png') no-repeat center left;
+                }
+                .b-gallery .b-items .techlinks label input {
+                    margin:-2px 7px 0 0;
+                    vertical-align:middle;
+                }
+                .b-gallery .b-items .techlinks .delete {
+                    padding:0 0 0 22px;
+                    background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat top left;
+                    color:#000;
+                }
+                .b-gallery .b-items .techlinks .edit {
+                    padding:0 0 0 22px;
+                    background:url('/img/artist/admin/bg-accounts-item-options-edit.png') no-repeat top left;
+                    color:#000;
+                }
+                .b-gallery .b-items .techlinks .hidden {
+                    font-style:italic;
+                    font-size:11px;
+                    color:#C00;
+                }
+        .b-gallery .b-items > li.hidden {
+            display:none;
+        }
+    .b-gallery .b-button-set {
+        height:40px;
+        padding:10px 25px 40px 0;
+    }
+        .b-gallery .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* gallery (end) */
+
+/* gallery inner (begin) */
+.b-gallery-inner {
+    margin: 0 -20px 0 0;
+}
+    .b-gallery-inner .upload {
+        position:relative;
+        min-height:40px;
+        margin:15px 0 0;
+    }
+        .b-gallery-inner  .upload .upload-button {
+            z-index:-1;
+            position:absolute;
+            top:-5px;
+            left:0;
+            height:32px;
+            padding:13px 0 0 48px;
+            background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+            font-size:13px;
+        }
+    .b-gallery-inner .b-items {
+        margin:14px 0 0;
+        padding:0;
+        list-style:none;
+    }
+    .b-gallery-inner .b-items > li {
+        position:relative;
+        display:inline-block;
+        width:220px;
+        height: 100px;
+        margin:0 20px 20px 0;
+        padding: 0;
+        vertical-align:top;
+    }
+        .b-gallery-inner .b-items > li img {
+            cursor: move;
+        }
+    .b-gallery-inner .b-items > li.hidden {
+        display: none;
+    }
+        .b-gallery-inner .b-items > li .delete {
+            position:absolute;
+            z-index:99;
+            bottom:3px;
+            left:4px;
+            display:block;
+            height:17px;
+            width:17px;
+            background:url('/img/artist/admin/icon-delete-bg-item.png') no-repeat center center;
+        }
+    .b-gallery-inner .b-button-set {
+        height:40px;
+        padding:0 25px 40px 0;
+    }
+        .b-gallery-inner .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* gallery inner (end) */
+
+/* video (begin) */
+.b-video {
+    width: 940px;
+    padding: 10px 0 0;
+}
+    .b-video .add-video-button {
+        display: block;
+        height: 31px;
+        padding: 13px 0 0 48px;
+        background: url('/img/artist/admin/bg-add-gig.png') no-repeat center left;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000;
+    }
+    .b-video .upload-field {height: 55px;}
+    .b-video .upload-field .youtube {float:left; display: block; width: 37px; height:37px; margin: 0 10px 0 0; background: url(/img/club/icons/youtube.png) no-repeat center center; cursor: pointer;}
+    .b-video .upload-field .vimeo {float:left; display: block; width: 37px; height:37px; margin: 0 10px 0 0; background: url(/img/club/icons/vimeo.png) no-repeat center center; cursor: pointer;}
+    .b-video .upload-field .upload-label {float: left; display: block; padding: 10px 0 0; color: #000; font-size: 13px;}
+    .b-video .add-video {
+        /*display: none;*/
+    }
+    .b-video .add-video .name {
+        display:block;
+        width:320px;
+        margin:5px 0 10px 0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+    }
+    .b-video .add-video .link {
+        display:block;
+        width:920px;
+        margin:5px 0 20px 0;
+        padding:9px 10px 9px;
+        border:0;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        -moz-box-shadow: 0px -1px 0px #7D7D7D;
+        -webkit-box-shadow: 0px -1px 0px #7D7D7D;
+        box-shadow: 0px -1px 0px #7D7D7D;
+    }
+    .b-video .add-video .cover {
+            position:relative;
+        }
+            #radioshow_upload,
+            #radioshow_uploadUploader {
+                display:inline-block;
+                vertical-align:top;
+            }
+            #radioshow_uploadQueue {
+                display:none;
+            }
+            .b-video .add-video .cover img {
+                display:inline-block;
+                vertical-align: top;
+                height:110px;
+                width:220px;
+                background:#999;
+            }
+            .b-video .add-video .cover .select {
+                position:absolute;
+                z-index:-1;
+                display:block;
+                top:0px;
+                left:229px;
+                padding:3px 0 4px 27px;
+                color:#000;
+                background:url('/img/artist/admin/icon-upload-cover.png') no-repeat center left;
+            }
+            .b-video .add-video .cover .library {
+                position:absolute;
+                display:block;
+                bottom:2px;
+                left:229px;
+                padding:3px 0 4px 27px;
+                color:#000;
+                background:url('/img/artist/admin/icon-radioshow-edit.png') no-repeat center left;
+            }
+            .b-video .add-video .cover .delete {
+                position:absolute;
+                bottom:6px;
+                left:4px;
+                display:block;
+                width:17px;
+                height:17px;
+                background:url('/img/artist/admin/bg-accounts-item-options-delete.png') no-repeat center center;
+            }
+        .b-video .add-video .b-button-set {
+            height: 40px;
+            padding:10px 0 15px 0;
+        }
+        .b-video .add-video .save,
+        .b-video .add-video .cancel {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0 0 0 20px !important;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px black;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:white;
+            cursor:pointer;
+            zoom:1;
+        }
+        .b-video .add-video .separator {
+            height:1px;
+            overflow:hidden;
+            border-top:1px solid #313131;
+            background:#161616;
+        }
+    .b-video .b-items {
+        clear:both;
+        margin:0 -20px 0 0;
+        padding:20px 0 0;
+        list-style:none;
+    }
+        .b-video .b-items li {
+            position:relative;
+            display:inline-block;
+            height:133px;
+            width:220px;
+            margin:0 20px 20px 0;
+            vertical-align:top;
+        }
+        .b-video .b-items li.hidden {
+            display: none;
+        }
+        .b-video .b-items .current {
+            position:absolute;
+            z-index:1;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            border:2px solid #C00;
+        }
+        .b-video .b-items li > img {
+            cursor: move;
+        }
+        .b-video .b-items li .title {
+            display: block;
+            padding: 4px 0 0;
+            font-size: 13px;
+        }
+        .b-video .b-items li .edit {
+            position:absolute;
+            top:5px;
+            right:4px;
+            display:block;
+            height:22px;
+            width:22px;
+            background:url('/img/artist/admin/icon-edit-bg-item.png') no-repeat center center;
+        }
+        .b-video .b-items li .delete {
+            position:absolute;
+            z-index:99;
+            bottom:36px;
+            left:4px;
+            display:block;
+            height:17px;
+            width:17px;
+            background:url('/img/artist/admin/icon-delete-bg-item.png') no-repeat center center;
+        }
+    .b-video .b-button-set {
+        height:40px;
+        padding:0 20px 40px 0;
+    }
+        .b-video .b-button-set .save,
+        .b-video .b-button-set .save-videos {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+    .b-video .b-button-set .save-videos {
+        margin: 0 -20px 0 0;
+    }
+/* video (end) */
+
+/* favicon upload (begin) */
+.b-favicon {
+    width:940px;
+    padding:16px 0 0;
+    font-size:13px;
+}
+    .b-favicon .upload-button {
+        z-index:-1;
+        position:absolute;
+        top:-5px;
+        left:0;
+        height:32px;
+        padding:13px 0 0 48px;
+        background:url('/img/artist/admin/bg-upload-background.png') no-repeat center left;
+        font-size:13px;
+    }
+    .b-favicon .upload-wrap {
+        position:relative;
+        height:40px;
+    }
+    .b-favicon .b-advice {
+        display: block;
+        margin: 5px 0 0;
+        padding: 2px 0 0 7px;
+        background: url('/img/artist/admin/icon-help-star.png') no-repeat top left;
+    }
+    .b-favicon .b-button-set {
+        height:40px;
+        padding:14px 0 40px;
+    }
+        .b-favicon .b-button-set .save {
+            float:right;
+            display:block;
+            height:35px;
+            overflow:hidden;
+            padding:9px 20px 11px;
+            border:0;
+            margin:0;
+            background:url('/img/artist/admin/bg-button.png') repeat-x center left;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-text-shadow:0px -1px 0px #000;
+            -webkit-text-shadow:0px -1px 0px #000;
+            text-shadow:0px -1px 0px #000;
+            -moz-box-shadow:0px 1px 2px #a3a3a3;
+            -webkit-box-shadow:0px 1px 2px #a3a3a3;
+            box-shadow:0px 1px 2px #a3a3a3;
+            color:#FFF;
+            cursor:pointer;
+            zoom:1;
+        }
+/* favicon upload (end) */
+
+/* covers library (begin) */
+#covers-library {
+    position:absolute;
+    z-index:110;
+    top:50%;
+    left:50%;
+    margin-top:-175px;
+    margin-left:-371px;
+    width:722px;
+    min-height:320px;
+    padding:20px 0 20px 18px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    background:#FFF;
+}
+    #covers-library .covers {
+        min-height:258px;
+    }
+    #covers-library img {
+        display:inline-block;
+        margin:0 16px 20px 0;
+        border:2px solid #FFF;
+    }
+    #covers-library .pager {
+        margin:0;
+        padding:0 0 20px;
+        list-style:none;
+        text-align:center;
+    }
+        #covers-library .pager li {
+            display:inline-block;
+            margin:0 10px 0 0;
+        }
+            #covers-library .pager li a {
+                font-size:13px;
+                color:#000;
+            }
+    #covers-library .cancel {
+        display:block;
+        width:37px;
+        height:37px;
+        background:url('/img/artist/admin/bg-pop-up-cancel.png') no-repeat center center;
+    }
+    #covers-library .ok {
+        float:right;
+        display:block;
+        width:37px;
+        height:37px;
+        margin:0 20px 0 0;
+        background:url('/img/artist/admin/bg-pop-up-ok.png') no-repeat center center;
+    }
+/* covers library (end) */
+
+/* jQuery images crop (begin) */
+.g-crop {
+    position:absolute;
+    z-index:99;
+    top:50%;
+    left:50%;
+}
+    .g-crop .cancel {
+        display:block;
+        overflow:hidden;
+        width:37px;
+        height:37px;
+        margin:20px 0 0;
+        background:url('/img/artist/admin/bg-pop-up-cancel.png') no-repeat center center;
+    }
+    .g-crop .save {
+        float: right;
+        display:block;
+        width:37px;
+        height:37px;
+        margin:20px 0 0;
+        background:url('/img/artist/admin/bg-pop-up-ok.png') no-repeat center center;
+    }
+
+.jcrop-holder {
+    text-align: left;
+}
+.jcrop-vline,
+.jcrop-hline {
+    font-size: 0px;
+    position: absolute;
+    background: #FFF top left repeat;
+}
+.jcrop-vline {
+    height: 100%;
+    width: 1px !important;
+}
+.jcrop-hline {
+    width: 100%;
+    height: 1px !important;
+}
+.jcrop-vline.right {
+    right: 0px;
+}
+.jcrop-hline.bottom {
+    bottom: 0px;
+}
+.jcrop-handle {
+    font-size: 1px;
+    width: 7px !important;
+    height: 7px !important;
+    border: 1px #eee solid;
+    background-color: #333;
+}
+.jcrop-tracker {
+    width: 100%;
+    height: 100%;
+}
+.custom .jcrop-vline,
+.custom .jcrop-hline {
+    background: yellow;
+}
+.custom .jcrop-handle
+{
+    border-color: black;
+    background-color: #C7BB00;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+/* jQuery images crop (end) */
+
+/* jWYSIWYG */
+div.wysiwyg { border-top: 1px solid #999; padding: 0; background: #fff url('/img/club/jwysiwyg/jquery.wysiwyg.bg.png') repeat-x top; border-radius: 5px; }
+div.wysiwyg * { margin: 0; padding: 0; }
+div.wysiwyg ul.toolbar li.jwysiwyg-custom-command { overflow: hidden; }
+div.wysiwyg ul.toolbar { border-bottom: 1px solid #ccc; float: left; width: 100%; padding: 0; }
+div.wysiwyg ul.toolbar li { list-style: none; float: left; margin: 1px 2px 3px 0;  background: rgb(240, 240, 240); -moz-user-select: none; -webkit-user-select: none; user-select: none; clear: none; padding: 0 }
+div.wysiwyg ul.toolbar li.separator { background: none; width: 1px; height: 20px; margin: 0 4px 0px 5px; border: none; border-left: 1px solid #ccc; }
+div.wysiwyg ul.toolbar li { text-indent: -5000px; display: block; width: 18px; height: 18px; background: url('/img/club/jwysiwyg/jquery.wysiwyg.gif') no-repeat -640px -800px; border: 1px solid transparent; cursor: pointer; margin: 0px; }
+div.wysiwyg ul.toolbar li.wysiwyg-button-hover, div.wysiwyg ul.toolbar li.active { background-color: #DDD; border: 1px solid transparent; }
+div.wysiwyg ul.toolbar li.active { background-color: rgb(255, 255, 64); border: 1px solid rgb(208, 208, 208); border-left-color: #aaa; border-top-color: #aaa; height: 18px; width: 18px; padding: -1px 0 0 -1px; margin: 0; }
+div.wysiwyg ul.toolbar li.disabled, div.wysiwyg ul.toolbar li.wysiwyg-button-hover.disabled, div.wysiwyg ul.toolbar li.active.disabled { opacity: 0.5; filter:alpha(opacity=50); border: 0px none transparent; padding: 1px; cursor: auto; }
+div.wysiwyg ul.toolbar li.bold { background-position: -1px -15px; }
+div.wysiwyg ul.toolbar li.italic { background-position: -18px -15px; }
+div.wysiwyg ul.toolbar li.strikeThrough { background-position: -36px -15px; }
+div.wysiwyg ul.toolbar li.underline { background-position: -55px -15px; }
+div.wysiwyg ul.toolbar li.highlight { background-position: -48px -96px; }
+div.wysiwyg ul.toolbar li.justifyLeft { background-position: 0 2px; }
+div.wysiwyg ul.toolbar li.justifyCenter { background-position: -18px 2px; }
+div.wysiwyg ul.toolbar li.justifyRight { background-position: -36px 2px; }
+div.wysiwyg ul.toolbar li.justifyFull { background-position: -55px 2px; }
+div.wysiwyg ul.toolbar li.indent { background-position: -74px 1px; }
+div.wysiwyg ul.toolbar li.outdent { background-position: -92px 1px; }
+div.wysiwyg ul.toolbar li.subscript { background-position: -74px -15px; }
+div.wysiwyg ul.toolbar li.superscript { background-position: -92px -15px; }
+div.wysiwyg ul.toolbar li.undo { background-position: 0px -68px; }
+div.wysiwyg ul.toolbar li.redo { background-position: -18px -69px; }
+div.wysiwyg ul.toolbar li.insertOrderedList { background-position: -36px -49px; }
+div.wysiwyg ul.toolbar li.insertUnorderedList { background-position: -19px -49px; }
+div.wysiwyg ul.toolbar li.insertHorizontalRule { background-position: 0 -49px; }
+div.wysiwyg ul.toolbar li.h1 { background-position: 0px -31px; }
+div.wysiwyg ul.toolbar li.h2 { background-position: -18px -31px; }
+div.wysiwyg ul.toolbar li.h3 { background-position: -36px -31px; }
+div.wysiwyg ul.toolbar li.h4 { background-position: -55px -31px; }
+div.wysiwyg ul.toolbar li.h5 { background-position: -74px -31px; }
+div.wysiwyg ul.toolbar li.h6 { background-position: -92px -31px; }
+div.wysiwyg ul.toolbar li.paragraph { background-position: 0px -106px; }
+div.wysiwyg ul.toolbar li.colorpicker { background-position: -18px -106px; }
+div.wysiwyg ul.toolbar li.fullscreen { background-position: -36px -106px; }
+div.wysiwyg ul.toolbar li.cut { background-position: -36px -68px; }
+div.wysiwyg ul.toolbar li.copy { background-position: -55px -68px; }
+div.wysiwyg ul.toolbar li.paste { background-position: -74px -68px; }
+div.wysiwyg ul.toolbar li.insertTable { background-position: -74px -49px; }
+div.wysiwyg ul.toolbar li.increaseFontSize { background-position: -18px -87px; }
+div.wysiwyg ul.toolbar li.decreaseFontSize { background-position: -36px -87px; }
+div.wysiwyg ul.toolbar li.createLink { background-position: -92px -48px; }
+div.wysiwyg ul.toolbar li.unLink { background-position: -74px -87px; }
+div.wysiwyg ul.toolbar li.insertImage { background-position: -92px -87px; }
+div.wysiwyg ul.toolbar li.html { background-position: -55px -49px; }
+div.wysiwyg ul.toolbar li.removeFormat { background-position: -92px -68px; }
+div.wysiwyg ul.toolbar li.empty { background-position: -73px -86px; }
+div.wysiwyg ul.toolbar li.code { background-position: -74px -106px; }
+div.wysiwyg ul.toolbar li.cssWrap { background-position: -92px -106px; }
+div.wysiwyg-dialogRow { float:left; width:100%; font-size: 16px; }
+div.wysiwyg iframe { clear: left; font:12px Arial; /*-moz-box-shadow    :inset 0 0 10px rgba(0, 0, 0, 0.4);-webkit-box-shadow :inset 0 0 10px rgba(0, 0, 0, 0.4);box-shadow         :inset 0 0 10px rgba(0, 0, 0, 0.4);*/background-color:white; padding:0px; margin:0; display:block; width: 90%;}
+div.wysiwyg iframe p {margin: 0; padding: 0;}
+.wysiwyg-dialog { position:fixed; top:50px; left:50px; width:450px; height:300px; background:transparent; font:14px "Helvetic Neue", Helvetica,Arial,sans-serif; }
+.wysiwyg-dialog .wysiwyg-dialog-topbar { background:#333; border:1px #111 solid; color:white; padding:10px; position:relative; }
+.wysiwyg-dialog .wysiwyg-dialog-topbar .wysiwyg-dialog-close-wrapper .wysiwyg-dialog-close-button { color:white; text-decoration:none; display:block; padding:6px 10px; position:absolute; right:12px; top:50%; height:14px; margin-top:-12px; }
+.wysiwyg-dialog .wysiwyg-dialog-topbar .wysiwyg-dialog-close-wrapper a.wysiwyg-dialog-close-button:hover { background:#666; }
+.wysiwyg-dialog .wysiwyg-dialog-topbar .wysiwyg-dialog-title { font-size:20px; font-weight:bold; padding:5px; }
+.wysiwyg-dialog .wysiwyg-dialog-content { border:1px #ccc solid; border-top:0; padding:15px; background:white; }
+.wysiwyg-dialog-modal-div { position:absolute; top:0px; left:0px; width:100%; height:100%; background-color:rgb(255,255,255); background-color:rgba(0,0,0,0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";}
+.wysiwyg-dialog-content form.wysiwyg fieldset { border:1px #ccc solid; }
+.wysiwyg-dialog-content form.wysiwyg legend { padding:7px; }
+.wysiwyg-dialog-content form.wysiwyg .form-row { clear:both; padding:4px 0; }
+.wysiwyg-dialog-content form.wysiwyg .form-row label, .wysiwyg-dialog form.wysiwyg .form-row .form-row-key { display:block; float:left; width:35%; text-align:right; padding:4px 5px; }
+.wysiwyg-dialog-content form.wysiwyg .form-row .form-row-value { display:block; float:left; width:55%; }
+.wysiwyg-dialog-content form.wysiwyg .form-row input.width-auto { width:auto; }
+.wysiwyg-dialog-content form.wysiwyg input.width-small { width:50px; min-width:50px; max-width:50px; }
+.wysiwyg-dialog-content form.wysiwyg input, .wysiwyg-dialog form.wysiwyg select { padding:2px; width:100%; margin:2px; }
+.wysiwyg-dialog-content form.wysiwyg input[type=submit], .wysiwyg-dialog form.wysiwyg input[type=reset] { padding:2px 7px; width:auto; }
+
+/* notifications (begin) */
+.b-notifications {
+    width: 940px;
+    padding: 29px 0 0;
+}
+.notifications { border-spacing: 0; border-collapse: collapse; width: 100%; margin-bottom: 16px;}
+.notifications th,
+.notifications td {white-space: nowrap; vertical-align: top; padding: 10px; border: 1px solid #bbb;}
+.notifications a {text-decoration: none; margin: -10px -10px -10px -11px; padding: 10px 10px 10px 11px; position: relative; zoom: 1; display: block;}
+.notifications a,
+.notifications a:hover {color: #333;}
+.notifications th {font-size: 11px; line-height: 14px; font-weight: normal; font-style: italic; color: #666; text-align: left;}
+.notifications th {padding-top: 0; border-top: 0;}
+.notifications td {background: #fff;}
+.notifications .new td {background: #f5ccd6;}
+.notifications .num {width: 80px; border-left: 0;}
+.notifications .num a {margin-left: -10px; padding-left: 10px;}
+.notifications .date {width: 100px;}
+.notifications .message {white-space: normal; border-right: 0;}
+.notifications .title {float: left; display: inline;}
+.notifications .note {position: relative; float: right; display: inline;}
+.notifications .note .i {width: 7px; height: 7px; left: -12px; top: 0; position: absolute; background: url(/img/reactor/icons/note.gif) no-repeat; font: 0/0 serif; display: block;}
+/* notifications (end) */
+
+/* footer (begin) */
+.g-footer-wrap {
+    position:relative;
+    height:40px;
+    margin:-40px 0 0;
+    background:url('/img/artist/admin/bg-header-footer.png') repeat-x top left;
+}
+.g-footer {
+    height:20px;
+    margin:0;
+    padding:10px 20px 10px;
+    overflow:hidden;
+    list-style:none;
+    -moz-text-shadow:0px 1px 0px #000;
+    -webkit-text-shadow:0px 1px 0px #000;
+    text-shadow:0px 1px 0px #000;
+}
+    .g-footer li {
+        display:inline;
+        margin:0 0 0 10px;
+        padding:0 0 0 11px;
+        background:url('/img/artist/admin/bg-footer-item.gif') repeat-y 0 0;
+        font-size:11px;
+        color:#999;
+    }
+    .g-footer li:first-child {
+        margin:0;
+        padding:0;
+        background:none;
+    }
+        .g-footer li a {
+            text-decoration: none;
+            font-size:13px;
+            color:#FFF;
+        }
+        .g-footer li a:hover {
+            text-decoration:none;
+            color:#CCC;
+        }
+        .g-footer .copyright {
+            float:right;
+            margin:0;
+            padding:2px 0 0;
+            background:none;
+        }
+            .g-footer .copyright a {
+                display:inline-block;
+                vertical-align:top;
+                width:7px;
+                height:7px;
+                margin:4px 0 0 7px;
+                background:url('/img/artist/admin/icon-copyright-arrow.png') no-repeat center center;
+            }
+/* footer (end) */
