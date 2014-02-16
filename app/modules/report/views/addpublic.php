@@ -45,7 +45,7 @@
                 <div class="groups-filter radios">
                     <div class="field"><label><input type="radio" name="groups-filter" value="1" <?=($this->view->publicinner['filtertype']<2)?" checked='checked'":"";?>> Для всех групп <b>(<span class="count allgroups-count"><?=$this->view->othergroups;?></span>)</b></label></div>
 					<div class="field"><label><input type="radio" name="groups-filter" value="2" <?=($this->view->publicinner['filtertype']==2)?" checked='checked'":"";?>> Для избранных групп <b>(<span class="count favgroups-count"><?=tools::int($this->view->favnum);?></span>)</b></label></div>
-					<div class="field"><label><input type="radio" name="groups-filter" value="3" <?=($this->view->publicinner['filtertype']==3)?" checked='checked'":"";?>> Для конкретных групп</label></div>
+					<div class="field"><label><input type="radio" name="groups-filter" value="3" <?=($this->view->publicinner['filtertype']==3) || $_GET['group_id'] > 0 ? " checked='checked'":"";?>> Для конкретных групп</label></div>
 				</div>
 				
 				<div class="general-groups">
