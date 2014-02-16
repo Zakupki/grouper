@@ -63,6 +63,10 @@ Class Index_Controller Extends BaseReport_Controller {
             $this->content=$this->view->AddView('about', $this);
             $this->view->renderLayout('layout', $this);
 		}
+        function howitworksAction() {
+            $this->content=$this->view->AddView('howitworks', $this);
+            $this->view->renderLayout('layout', $this);
+        }
 		function contactsAction() {
 			$this->System=new System;
         	$this->supporttypes=$this->System->getSupporttypes();

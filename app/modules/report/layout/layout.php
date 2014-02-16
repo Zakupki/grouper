@@ -104,7 +104,7 @@ $bodyclass="feedback contact";*/
 				<nav>
 					<div class="clearfix">
 						<ul class="buttons gray">
-							<li class="first"><a class="button" href="<?=($this->registry->controller=='index' && $this->registry->action=='index')?'#instruments':'/#instruments';?>">Как это работает?</a></li>
+							<li class="first"><a class="button" href="/howitworks/">Как это работает?</a></li>
 							<li><a class="button" href="/groups/"><?=$this->registry->trans['groups'];?></a></li>
 							<li class="last"><a class="button" href="/contacts/"><?=$this->registry->trans['contacts'];?></a></li>
 						</ul>
