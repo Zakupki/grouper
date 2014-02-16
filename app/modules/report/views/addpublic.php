@@ -125,6 +125,9 @@
 <?  }
 }
 ?>
+                        <?if($this->view->groupdata['id']>0){?>
+                        <div class="item" data-id="<?=$this->view->groupdata['id'];?>"><a class="link vk" href="#" target="_blank"><?=$this->view->groupdata['name'];?></a><a class="remove"></a></div>
+                        <?}?>
 					</div>
 					<div class="field special-group-field">
 						<input class="txt special-group-input" name="specialGroup" value="">

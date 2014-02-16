@@ -38,6 +38,10 @@ Class Public_Controller Extends BaseReport_Controller {
 		}
         function addAction() {
             $this->Group=new Group;
+            if($_GET['group_id']>0){
+                $this->groupdata=$this->Group->getGroupInner($_GET['group_id']);
+                $this->publicinner['filtertype']=3;
+            }
             if($_GET['id']>0){
                 $this->Publics=new Publics;
                 $this->publicinner=$this->Publics->getPublicRequestData($_GET['id']);
