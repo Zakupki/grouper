@@ -1,0 +1,4 @@
+<?
+Class Basemodel Extends Model {
+}
+?>
