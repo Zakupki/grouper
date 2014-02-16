@@ -114,7 +114,7 @@ class user {
 		
 
 		$subject = "Подтверждение регистрации";
-		$message = "Здравствуйте! Спасибо за регистрацию на сайте ".$_SERVER['HTTP_HOST']."\n\nВаш логин: ".$data['login']."\n\nДля того чтобы войти в свой аккуант его нужно активировать.\n\nЧтобы активировать ваш аккаунт, перейдите по ссылке:\n\nhttp://".$_SERVER['HTTP_HOST']."/activate/?act=".$data['activationcode']."\n\nС уважением, Администрация сайта ".$_SERVER['HTTP_HOST']."";
+		$message = "Здравствуйте! Спасибо за регистрацию на сайте ".$_SERVER['HTTP_HOST']."\n\nДля того чтобы войти в свой аккуант его нужно активировать.\n\nЧтобы активировать ваш аккаунт, перейдите по ссылке:\n\nhttp://".$_SERVER['HTTP_HOST']."/activate/?act=".$data['activationcode']."\n\nС уважением, Администрация сайта ".$_SERVER['HTTP_HOST']."";
 		$smtp=new smtp;
 		$smtp->Connect(SMTP_HOST);
 		$smtp->Hello(SMTP_HOST);
