@@ -982,7 +982,6 @@ $_SESSION['Site']['disk']=$size->size($_SERVER['DOCUMENT_ROOT'].'/uploads/sites/
 			if($row['id']>0){
 				$db->exec('DELETE FROM z_keys WHERE userid='.$row['userid'].'');
 				$newpassword=tools::generatePassword();
-                echo MD5_KEY;
                 $db->exec('UPDATE z_user SET password="'.tools::str(md5($newpassword.MD5_KEY)).'" WHERE id='.tools::int($row['userid']).'');
 				$subject = "Новый пароль!";
 				$message = "Здравствуйте! Ваш новый пароль для входа: ".$newpassword."\n\nВы можете сменить эго в любой момент в кабинете пользователя.\n\nС уважением, Администрация сайта GROUPER";

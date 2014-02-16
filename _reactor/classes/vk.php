@@ -98,8 +98,8 @@ Class Vk {
             else{
                 $ress=$db->exec('
                     INSERT INTO z_user
-                    (firstName,familyName) VALUES
-                    ("'.tools::str($params['profile']->first_name).'","'.tools::str($params['profile']->last_name).'")
+                    (firstName,familyName,activation) VALUES
+                    ("'.tools::str($params['profile']->first_name).'","'.tools::str($params['profile']->last_name).'",1)
                 ');
                 /*echo ('
                     INSERT INTO z_user
