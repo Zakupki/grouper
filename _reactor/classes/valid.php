@@ -2,7 +2,8 @@
 final class valid{
 	
 	function isEmail($email){
-		return (preg_match("/^(\w+((-\w+)|(\w.\w+))*)\@(\w+((\.|-)\w+)*\.\w+$)/",$email));
+        $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+        return (preg_match($regex,$email));
 	} 
 	function emailExists($email){
 		$db=db::init();
