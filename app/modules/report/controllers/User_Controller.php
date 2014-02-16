@@ -99,6 +99,7 @@ Class User_Controller Extends BaseReport_Controller {
 				return;*/
 				
 				if (tools::IsAjaxRequest()) {
+
 						$userData=$this->registry->user->loginUser($this->Post->email, trim($this->Post->password), $this->Post->remember);
 						
 						if($userData){
@@ -160,11 +161,12 @@ Class User_Controller Extends BaseReport_Controller {
 		}
 		function getnewpasswordAction(){
 			$this->user=new user;
+            $this->texttitle='Восстановление пароля';
 			if($this->user->setnewpassword($_GET['key']))
 			$this->text='Новый пароль выслан на Ваш email';
 			else
 			$this->text='Ссылка для восстановления пароля устарела';
-			$this->content =$this->view->AddView('blank', $this);
+			$this->content =$this->view->AddView('text', $this);
 			$this->view->renderLayout('layout', $this);	
 	}
 	function sendfeedbackAction(){

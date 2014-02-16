@@ -239,8 +239,8 @@ class user {
 		}
 	}
 	function loginUser($email, $password, $remember){
-		$password=md5($password.MD5_KEY);
-		$db=db::init();
+        $password=md5($password.MD5_KEY);
+        $db=db::init();
 		$row=$db->queryFetchRow(
 		'SELECT 
 		  z_user.id,
@@ -954,14 +954,14 @@ $_SESSION['Site']['disk']=$size->size($_SERVER['DOCUMENT_ROOT'].'/uploads/sites/
 				$db->exec('INSERT INTO z_keys
 				(token,userid,siteid) VALUES ("'.$key.'",'.$row['id'].','.tools::int($_SESSION['Site']['id']).')');
 				$subject = "Восстановление пароля!";
-				$message = "Здравствуйте! На сайте ".$_SERVER['HTTP_HOST']." был выполнен запрос на восстановление пароля. Если это сделали Вы, то перейдите по ссылке в конце письма, после чего на Ваш email прийдет новый пароль для входа.\n\n Если Вы этого не делали, то просто проигнорируйте это письмо.\n\n Ссылка для восстановления пароля: http://".$_SERVER['HTTP_HOST']."/user/getnewpassword?key=".$key."\n\nС уважением, Администрация сайта REACTOR PRO";
+				$message = "Здравствуйте! На сайте ".$_SERVER['HTTP_HOST']." был выполнен запрос на восстановление пароля. Если это сделали Вы, то перейдите по ссылке в конце письма, после чего на Ваш email прийдет новый пароль для входа.\n\n Если Вы этого не делали, то просто проигнорируйте это письмо.\n\n Ссылка для восстановления пароля: http://".$_SERVER['HTTP_HOST']."/user/getnewpassword?key=".$key."\n\nС уважением, Администрация сайта GROUPER";
 				$smtp=new smtp;
 				$smtp->Connect(SMTP_HOST);
 				$smtp->Hello(SMTP_HOST);
-				$smtp->Authenticate('reactor@reactor-pro.ru', '123qwe123');
-				$smtp->Mail('reactor@reactor-pro.ru');
+                $smtp->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+                $smtp->Mail('info@group.reactor.ua');
 				$smtp->Recipient($email);
-				$smtp->Data($message, $subject);	
+				$smtp->Data($message, $subject);
 			}
 			
 		}
@@ -982,14 +982,15 @@ $_SESSION['Site']['disk']=$size->size($_SERVER['DOCUMENT_ROOT'].'/uploads/sites/
 			if($row['id']>0){
 				$db->exec('DELETE FROM z_keys WHERE userid='.$row['userid'].'');
 				$newpassword=tools::generatePassword();
-				$db->exec('UPDATE z_user SET password="'.tools::str(md5($newpassword.MD5_KEY)).'" WHERE id='.tools::int($row['userid']).'');
+                echo MD5_KEY;
+                $db->exec('UPDATE z_user SET password="'.tools::str(md5($newpassword.MD5_KEY)).'" WHERE id='.tools::int($row['userid']).'');
 				$subject = "Новый пароль!";
-				$message = "Здравствуйте! Ваш новый пароль для входа: ".$newpassword."\n\nВы можете сменить эго в любой момент в кабинете пользователя.\n\nС уважением, Администрация сайта REACTOR PRO";
+				$message = "Здравствуйте! Ваш новый пароль для входа: ".$newpassword."\n\nВы можете сменить эго в любой момент в кабинете пользователя.\n\nС уважением, Администрация сайта GROUPER";
 				$smtp=new smtp;
 				$smtp->Connect(SMTP_HOST);
 				$smtp->Hello(SMTP_HOST);
-				$smtp->Authenticate('reactor@reactor-pro.ru', '123qwe123');
-				$smtp->Mail('reactor@reactor-pro.ru');
+                $smtp->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+                $smtp->Mail('info@group.reactor.ua');
 				$smtp->Recipient($row['email']);
 				$smtp->Data($message, $subject);
 				return true;
