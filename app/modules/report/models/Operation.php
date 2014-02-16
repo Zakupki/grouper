@@ -126,7 +126,6 @@ Class Operation Extends Basemodel {
     public function addWithdraw($data){
         if(intval($data['value'])>0)
         {
-            echo 1;
             if(self::getBalanceTotal()>$data['value']){
                 $db=db::init();
                 $w_res=$db->exec('INSERT INTO z_withdraw (userid,account,firstname,name,value,detail_text)
@@ -138,20 +137,22 @@ Class Operation Extends Basemodel {
                 '.$data['value'].',
                 "'.tools::str($data['comments']).'"
                 )');
-                echo ('INSERT INTO z_withdraw (userid,account,firstname,name,value,detail_text)
-                VALUES (
-                '.tools::int($_SESSION['User']['id']).',
-                "'.tools::str($data['account']).'",
-                "'.tools::str($data['firstname']).'",
-                "'.tools::str($data['name']).'",
-                '.$data['value'].',
-                "'.tools::str($data['comments']).'"
-                )');
             }
         }
         //echo $db->exec('INSERT INTO z_withdraw (userid,paytypeid,firstname,name,value) VALUES ('.tools::int($_SESSION['User']['id']).',1,'.$result['price'].','.$result['userid'].',2)');
-        if($w_res)
+        if($w_res){
+            $oper_id=$db->lastInsertId();
+            $message3 = "В системе grouper.com.ua была подана заявка на вывод средств c ID ".$oper_id.".\n\n Ссылка для просмотра: http://".$_SERVER['HTTP_HOST']."/admin/payrequest/";
+            $subject3 = "Заявка на вывод денег";
+            $smtp3=new smtp;
+            $smtp3->Connect(SMTP_HOST);
+            $smtp3->Hello(SMTP_HOST);
+            $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+            $smtp3->Mail('info@group.reactor.ua');
+            $smtp3->Recipient('dmitriy.bozhok@gmail.com');
+            $smtp3->Data($message3, $subject3,);
             return true;
+        }
         else
             return false;
     }

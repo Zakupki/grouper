@@ -99,15 +99,26 @@ Class Payrequest Extends Basemodel {
                         (
                         operationtypeid,active,value,userid,status,withdrawid
                         ) VALUES (
-                        4,1,-'.tools::int($wdr['value']).','.tools::int($wdr['userid']).',2,'.tools::int($wdr['id']).'
+                        4,1,-'.$wdr['value'].','.tools::int($wdr['userid']).',2,'.tools::int($wdr['id']).'
                         )');
-                        if($op)
+                        if($op){
                             $wu=$db->exec('
                             UPDATE
                             z_withdraw
                             SET z_withdraw.confirm=1
                             WHERE z_withdraw.id='.tools::int($id).'
                             ');
+
+                            $message3 = "Ваша заявка на вывод денег была успешно подтерждена. В ближайшее время вы получите запрошеные средства на ваш счет";
+                            $subject3 = "Заявка на вывод денег";
+                            $smtp3=new smtp;
+                            $smtp3->Connect(SMTP_HOST);
+                            $smtp3->Hello(SMTP_HOST);
+                            $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
+                            $smtp3->Mail('info@group.reactor.ua');
+                            $smtp3->Recipient('dmitriy.bozhok@gmail.com');
+                            $smtp3->Data($message3, $subject3,);
+                        }
                     }
 		if($wu)
 		    return true;

@@ -4,14 +4,15 @@
 		$mtime = $mtime[1] + $mtime[0];
 		$starttime = $mtime;
 		/*---------------------------------------------------------------------------------*/
-		/*$ipArr=array('77.90.194.106','77.52.149.200','193.34.72.205','95.133.181.99','46.200.215.212','94.248.2.34'); 
-		if(!in_array($_SERVER['REMOTE_ADDR'], $ipArr)){
-			require_once 'atelier.html';
-			die();
-		}*/
+		$ipArr=array('91.209.51.1572');
+		if(in_array($_SERVER['REMOTE_ADDR'], $ipArr)){
+			//require_once 'atelier.html';
+			//die();
+		}else{
+            error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+            ini_set('display_errors', 1);
+        }
 		ini_set("memory_limit", "132M");
-		error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-		ini_set('display_errors', 1);
 		define ('DIRSEP', DIRECTORY_SEPARATOR);
 		$lib_paths = array();
 		$lib_paths[] = "{$_SERVER['DOCUMENT_ROOT']}/app/";
@@ -23,6 +24,7 @@
 		define('MD5_KEY', 'osdgkadhgk');
 		define('SMTP_HOST', 'ds139.mirohost.net');
 		define('MAIN_HOST','reactor.ua');
+        define('MAIN_NAME','Grouper.com.ua');
 		define('MAIN_DEBUG', true);
 		include_once "classes/loader.php";
 		Loader::initialize();
