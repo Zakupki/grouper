@@ -88,7 +88,7 @@ $bodyclass="feedback contact";*/
 							
 							
 						</ul>
-						<a class="orange button" href="/public/add/">Разместить публикацию</a>
+						<a class="orange button" href="/public/add/<?=isset($this->view->groupdata['id']) ? '?group_id='.$this->view->groupdata['id']:'';?>">Разместить публикацию</a>
 						<!--<? if($this->registry->controller=='banners'){?>
 						<a class="button orange popup" href="#new-banner"><?=$this->registry->trans['locatebanner'];?></a>
 						<?}elseif($this->registry->controller=='events'){?>
