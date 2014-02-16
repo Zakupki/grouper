@@ -1,5 +1,6 @@
 <?
 require_once 'modules/base/models/Basemodel.php';
+require_once 'modules/report/models/Users.php';
 
 Class Payrequest Extends Basemodel {
 	
@@ -109,15 +110,18 @@ Class Payrequest Extends Basemodel {
                             WHERE z_withdraw.id='.tools::int($id).'
                             ');
 
+                            $users=new Users;
+                            $userdata=$users->getUserMinInfo($wdr['userid']);
+
                             $message3 = "Ваша заявка на вывод денег была успешно подтерждена. В ближайшее время вы получите запрошеные средства на ваш счет";
-                            $subject3 = "Заявка на вывод денег";
+                            $subject3 = "Подтверждение заявки на вывод денег";
                             $smtp3=new smtp;
                             $smtp3->Connect(SMTP_HOST);
                             $smtp3->Hello(SMTP_HOST);
                             $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
                             $smtp3->Mail('info@group.reactor.ua');
-                            $smtp3->Recipient('dmitriy.bozhok@gmail.com');
-                            $smtp3->Data($message3, $subject3,);
+                            $smtp3->Recipient($userdata['email']);
+                            $smtp3->Data($message3, $subject3);
                         }
                     }
 		if($wu)

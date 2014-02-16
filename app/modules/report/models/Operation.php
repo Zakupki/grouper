@@ -149,7 +149,7 @@ Class Operation Extends Basemodel {
             $smtp3->Hello(SMTP_HOST);
             $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
             $smtp3->Mail('info@group.reactor.ua');
-            $smtp3->Recipient('dmitriy.bozhok@gmail.com');
+            $smtp3->Recipient('support@grouper.com.ua');
             $smtp3->Data($message3, $subject3,);
             return true;
         }
