@@ -193,7 +193,7 @@ public function getPublicRequest($id){
 		  z_public.date_start,
 		  z_public.filtertype,
 		  z_public.file_name,
-		  CONCAT("/uploads/users/",z_public.userid,"/",z_public.file_name) AS fileurl
+		  CONCAT("/uploads/users/",z_public.userid,"/img/",z_public.file_name) AS fileurl
 		FROM
 		  z_public
 		INNER JOIN z_public_group
