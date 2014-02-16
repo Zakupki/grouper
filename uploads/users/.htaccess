@@ -1,0 +1,13 @@
+<IfModule mod_mime.c>
+	AddType application/x-httpd-php .php .php3 .php4 .php5 .php6 .phtml .pl .asp .aspx .cgi .exe .ico
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  Options FollowSymLinks
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/img.php$
+  RewriteRule ^(.*)$ /uploads/users/img.php [L]
+</IfModule>
