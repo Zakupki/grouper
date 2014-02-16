@@ -5,6 +5,9 @@
 				<!--<p>Здесь можно изменить свои данные.</p>-->
 				<div class="profile-form col6">
           <form class="" action="/user/updateprofile/" method="post">
+              <?if($_SESSION['User']['noemail']){?>
+                  Для окончания регистрации в системе Grouper.com.ua необходиомо указать ваш email<br/><br/>
+              <?}?>
               <label for="field-email">Email:</label>
               <input class="txt" id="field-email" type="text" value="<?=$this->view->profile['email'];?>" <?=($_SESSION['User']['noemail'])?'':'disabled="disabled"';?> name="email">
               <? if(!$this->view->profile['email']){?>
