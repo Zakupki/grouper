@@ -2086,6 +2086,25 @@ function doForms(){
 
 	$('form.validate').validationSetup();
 
+	$('.form-forgot form').unbind().bind('submit', function(){
+		$(this).ajaxSubmit({
+			complete: function(data){
+				if(data && data.responseText){
+					data = $.parseJSON(data.responseText);
+					if(data.error !== true){
+						$.modal.close();
+						$dom.window.one('modal-closed', function(){
+							$.alert({
+								content: data.status
+							});
+						});
+					}
+				}
+			}
+		});
+		return false;
+	});
+
 }
 
 
@@ -2154,6 +2173,7 @@ $.fn.userForm = function(){
 										}
 								},
 								email: {
+										email: false,
 										remote: {
 												url: formAction,
 												type: 'post',

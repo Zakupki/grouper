@@ -267,9 +267,9 @@ $bodyclass="feedback contact";*/
 				<li><a href="/register/"><?=$this->registry->trans['register'];?></a></li>
 			</ul>
 		</nav>		
-		<form class="validate">
+		<form class="validate" action="/user/retrieve" method="post">
 			<label for="forgot-email">E-mail</label>
-			<input class="txt required" id="forgot-email" type="text" name="email">
+			<input class="txt required" id="forgot-email" type="text" name="retrieve-email">
 			<div class="actions">
 				<input class="visuallyhidden" type="submit" value="">
 				<a class="button submit" href="#"><?=$this->registry->trans['retrievepass'];?></a>
