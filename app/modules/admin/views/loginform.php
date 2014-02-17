@@ -43,7 +43,7 @@
 						
 						<ul class="form_menu">
 							<li><span class="button"><span><span>Войти</span></span><input type="submit" name=""/></span></li>
-							<li><a href="#"><span><span>Напомнить</span></span></a></li>
+							<!--<li><a href="#"><span><span>Напомнить</span></span></a></li>-->
 						</ul>
 						
 						</div>
