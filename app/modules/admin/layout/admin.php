@@ -73,7 +73,11 @@
 							<li><a href="/admin/payrequest/" class="selected"><span><span>Вывод денег</span></span></a></li>
 						<?}else{?>
 							<li><a href="/admin/payrequest/"><span><span>Вывод денег</span></span></a></li>
-						<?}?>
+                        <?} if($this->view->registry->controller=='public'){?>
+                            <li><a href="/admin/public/" class="selected"><span><span>Запросы</span></span></a></li>
+                        <?}else{?>
+                            <li><a href="/admin/public/"><span><span>Запросы</span></span></a></li>
+                        <?}?>
 						
 						<!--<li><a href="#"><span><span>Server Settings</span></span></a></li>
 						<li><a href="#"><span><span>Product Management</span></span></a></li>
