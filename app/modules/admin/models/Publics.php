@@ -24,6 +24,7 @@ Class Publics Extends Basemodel {
 				z_public.id,
 				z_public.detail_text,
 				z_user.email,
+				if(CHAR_LENGTH(z_public.file_name)>0,CONCAT("/uploads/users/",z_public.userid,"/img/",z_public.file_name),null) AS fileurl,
 				date_format(z_public.date_create,"%d.%m.%Y") AS date_create,
 				date_format(z_public.date_start,"%d.%m.%Y") AS date_start
 				FROM z_public

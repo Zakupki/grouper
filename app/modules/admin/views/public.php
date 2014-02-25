@@ -24,6 +24,7 @@
 														<tbody><tr>
 															<th style="width: 36px;">Id</th>
 															<th>Описание</th>
+                                                            <th>Файл</th>
 															<th>E-mail</th>
                                                             <th style="width: 100px;">Дата события</th>
 															<th style="width: 100px;">Дата создания</th>
@@ -37,7 +38,8 @@
                                                         <tr class="<?=$linecss[$cnt];?>">
 															<td><?=$publicdata['id'];?></td>
                                                             <td><?=$publicdata['detail_text'];?></td>
-															<td><?=$publicdata['email'];?></td>
+                                                            <td><?=($publicdata['fileurl'])?'<a targe="_blank" href="'.$publicdata['fileurl'].'">Скачать</a>':'';?></td>
+                                                            <td><?=$publicdata['email'];?></td>
                                                             <td><?=$publicdata['date_start'];?></td>
 															<td><?=$publicdata['date_create'];?></td>
 															<td>
