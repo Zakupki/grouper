@@ -86,6 +86,8 @@
 		$router->addRewrite('adminbrandoffer',"^admin\/brands\/offer\/(\d+)?$", array('admin','brands','offerinner'));
 		$router->addRewrite('adminbrandnew',"^admin\/brand\/?$", array('admin','brands','brandinner'));
 		$router->addRewrite('adminbrand',"^admin\/brand\/(\d+)?$", array('admin','brands','brandinner'));
+
+        $router->addRewrite('adminpublic',"^admin\/public\/(\d+)?$", array('admin','public','publicinner'));
 		$router->addRewrite('404',"404$", array('report','index','notfound'));
 		$router->addRewrite('index',"^$", array('main','releases','index'));
 		

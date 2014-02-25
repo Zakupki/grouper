@@ -25,9 +25,9 @@ Class Public_Controller Extends BaseAdmin_Controller {
 			$this->content =$this->view->AddView('public', $this);
 			$this->view->renderLayout('admin', $this);
 		}
-		function userinnerAction() {
-			$this->userinner=$this->Publics->getPublicInner($this->registry->rewrites[1]);
-			$this->content =$this->view->AddView('userinner', $this);
+		function publicinnerAction() {
+			$this->groups=$this->Publics->getPublicInner($this->registry->rewrites[1]);
+            $this->content =$this->view->AddView('publicinner', $this);
 			$this->view->renderLayout('admin', $this);
 		}
 }

@@ -1,7 +1,7 @@
 <div class="section table_section">
 						<!--[if !IE]>start title wrapper<![endif]-->
 						<div class="title_wrapper">
-							<h2>Запросы</h2>
+							<h2>Группы запроса</h2>
 							<span class="title_wrapper_left"></span>
 							<span class="title_wrapper_right"></span>
 						</div>
@@ -23,26 +23,28 @@
 													<table cellpadding="0" cellspacing="0" width="100%">
 														<tbody><tr>
 															<th style="width: 36px;">Id</th>
-															<th>Описание</th>
+															<th>Название</th>
 															<th>E-mail</th>
-                                                            <th style="width: 100px;">Дата события</th>
-															<th style="width: 100px;">Дата создания</th>
-															<th style="width: 40px;"></th>
+                                                            <th style="width: 100px;">Цена</th>
+                                                            <th>Отчет</th>
+															<th style="width: 100px;">Статус</th>
+															<th style="width: 40px;">Оплачено</th>
 														</tr>
-														<? if(is_array($this->view->publiclist['publics'])){
+														<? if(is_array($this->view->groups)){
 														$linecss=array(0=>'first', 1=>'second');
+                                                        $statusArr=array(1=>'Новый', 2=>'Отклоненный', 3=>'Принятый');
+                                                        $stateArr=array(0=>'Нет', 1=>'Да');
 														$cnt=0;
-														foreach($this->view->publiclist['publics'] as $publicdata){
+														foreach($this->view->groups as $group){
 														?>
                                                         <tr class="<?=$linecss[$cnt];?>">
-															<td><?=$publicdata['id'];?></td>
-                                                            <td><?=$publicdata['detail_text'];?></td>
-															<td><?=$publicdata['email'];?></td>
-                                                            <td><?=$publicdata['date_start'];?></td>
-															<td><?=$publicdata['date_create'];?></td>
-															<td>
-																<a href="/admin/public/<?=$publicdata['id'];?>/">Группы</a></li>
-															</td>
+															<td><?=$group['id'];?></td>
+                                                            <td><?=$group['name'];?></td>
+															<td><?=$group['email'];?></td>
+                                                            <td><?=$group['price'];?></td>
+                                                            <td><?=(strlen($group['link'])>0)?'<a href="">'.$group['link'].'</a>':'';?></td>
+                                                            <td><?=$statusArr[$group['status']];?></td>
+															<td><?=$stateArr[$group['payed']];?></td>
 														</tr>
 														<?
 														$cnt++;

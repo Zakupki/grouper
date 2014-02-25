@@ -35,131 +35,35 @@ Class Publics Extends Basemodel {
     foreach($result as $row){
         $publicArr[$row['id']]=$row['id'];
     }
-    echo implode(',',$publicArr);
 
         $data['publics']=$result;
 
     if($data)
 	return $data;
 }
-	public function getAllUsers(){
+	public function getPublicInner($id){
 	$db=db::init();
 	$result=$db->queryFetchAllAssoc('
 				SELECT
-				z_user.id,
-				z_user.login,
-				z_user.email,
-				z_user.firstName,
-				z_user.familyName,
-				z_user.secondName,
-				z_user.active,
-				z_user.recommend,
-				CONCAT(
-					"/uploads/users/3_",
-					z_user.file_name
-					) AS url
-				FROM z_user
-				WHERE char_length(z_user.email)>0 AND z_user.id>1
-				Order by z_user.email');
-	if($result)
-	return $result;
-}
-	public function getUserDiscounts(){
-	$db=db::init();
-	$result=$db->queryFetchAllAssoc('
-				SELECT
-				z_user.id,
-				z_user.login,
-				z_user.email,
-				z_user.firstName,
-				z_user.familyName,
-				z_user.secondName,
-				z_discount.value,
-				z_discount.code,
-				CONCAT(
-					"/uploads/users/3_",
-					z_user.file_name
-					) AS url
-				FROM z_user
-				INNER JOIN z_discount
-				ON z_discount.userid=z_user.id
-				Order by z_user.id
+				  z_group.id,
+                  z_group.name,
+                  z_user.`email`,
+                  z_public_group.price,
+                  z_public_group.payed,
+                  z_public_group.`status`,
+                  z_public_report.`link`
+                FROM
+                  `z_public_group`
+                  INNER JOIN z_group
+                    ON z_group.id = z_public_group.`groupid`
+                  INNER JOIN z_user
+                    ON z_user.id = z_group.`userid`
+                  LEFT JOIN `z_public_report`
+                    ON z_public_report.`publicrequestid`=z_public_group.`id`
+                WHERE z_public_group.`publicid` ='.tools::int($id).'
 				');
 	if($result)
 	return $result;
 }
-	public function getUsersBalance(){
-	$db=db::init();
-	$result=$db->queryFetchAllAssoc('
-				SELECT
-				z_operation.id,
-				z_operationstatustype.name AS status,
-				z_operation.value,
-				DATE_FORMAT(z_operation.date_create,"%d.%m.%Y") AS date_create,
-				z_operationtype.name AS operationtype,
-				z_user.login
-				FROM z_operation
-				INNER JOIN z_operationtype
-				ON z_operationtype.id=z_operation.operationtypeid
-				INNER JOIN z_user
-				ON z_user.id=z_operation.userid
-				INNER JOIN z_operationstatustype
-				ON z_operationstatustype.id=z_operation.status
-				WHERE z_operation.status>1 AND z_operation.xml IS NOT NULL
-				ORDER BY z_operation.date_create desc
-				');
-	if($result)
-	return $result;
-}
-	public function getUserInner($id){
-	$db=db::init();
-	$result=$db->queryFetchRowAssoc('
-				SELECT
-				z_user.id,
-				z_user.login,
-				z_user.recommend
-				FROM z_user
-				WHERE id='.tools::int($id).'
-				');
-	if($result)
-	return $result;
-}
-	public function updateUserInner($data){
-		if($data['id']>0){
-			$db=db::init();
-			$db->exec('UPDATE z_user SET recommend='.tools::int($data['recommend']).'
-			WHERE z_user.id='.tools::int($data['id']).'');
-		}else{
-			$this->user=new user;
-			$this->user->AdminAddUser($data);
-		}
-
-	}
-	public function sendAccess($id,$type){
-		$db=db::init();
-		if($type=1){
-			$result=$db->queryFetchRowAssoc('
-				SELECT 
-				z_user.id,
-				z_user.activationcode,
-				z_user.activation,
-				z_user.password,
-				z_user.email
-				FROM z_user
-				WHERE id='.tools::int($id).'
-				');
-			if($result['activationcode'] && !$result['activation'] && !$result['password']){
-				$subject = "Регистрация в системе Clubsreport";
-				$message = "Здравствуйте!\n\nВы были зарегистрированы в системе Clubsreport администратором.\n\nДля завершения регистрации и создания пароля перейдите по ссылке http://clubsreport.com/activate/?code=".$result['activationcode']."\n\nС уважением, Администрация сайта Clubsreport";
-				$smtp=new smtp;
-				$smtp->Connect(SMTP_HOST);
-				$smtp->Hello(SMTP_HOST);
-				$smtp->Authenticate('support@clubsreport.com', 'Z1IRldqU');
-				$smtp->Mail('support@clubsreport.com');
-				$smtp->Recipient($result['email']);
-				$smtp->Data($message, $subject,"Clubsreport");
-			}
-		}
-	}
 }
 ?>
