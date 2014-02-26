@@ -179,65 +179,58 @@ Class Groups_Controller Extends BaseReport_Controller {
                     $this->groupdata->remote=0;
                 } 
                 else{
-                $this->groupdata=$this->Group->checkGroup($_REQUEST);
+                        $this->groupdata=$this->Group->checkGroup($_REQUEST);
 
-                    #ДОПОЛНИТЕЛЬНЫЕ ДАННЫЕ
-                    $Vkapi=new Vkapi;
-                    #Пользователи группы
-                    $resp = $Vkapi->api('groups.getMembers',
-                        array('gid'=>$this->groupdata->gid,
-                            'access_token'=>$this->groupdata->token
-                        ));
-                    $userids=implode(',',$resp['response']['users']);
-
-                    $userArrs=array_chunk($resp['response']['users'],300);
-                    $sexArr=array();
-                    $countryArr=array();
-                    $ageTotal=0;
-                    $cnt=0;
-                    $ageCnt=0;
-                    #Данные поьзователей
-                    foreach($userArrs as $ur){
-                        $resp2 = $Vkapi->api('users.get',
-                            array("uids"=>implode(',',$ur),
-                                'access_token'=>"4dc42f74b6591c828ebb86859d9f9f788cc1fe2ce96f247011129af7f2c6731637f1fc35dd190f0786184",
-                                'fields'=>'sex,country,bdate'
+                        #ДОПОЛНИТЕЛЬНЫЕ ДАННЫЕ
+                        $Vkapi=new Vkapi;
+                        #Пользователи группы
+                        $resp = $Vkapi->api('groups.getMembers',
+                            array('gid'=>$this->groupdata->gid,
+                                'access_token'=>$this->groupdata->token
                             ));
-                        foreach($resp2['response'] as $user){
-                            $sexArr[$user['sex']]++;
-                            $countryArr[$user['country']]++;
-                            $birthDate = explode(".", $user['bdate']);
-                            if(count($birthDate)==3){
-                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
-                                $ageTotal=$ageTotal+$age;
-                                $ageCnt++;
+                        $userids=implode(',',$resp['response']['users']);
+
+                        $userArrs=array_chunk($resp['response']['users'],300);
+                        $sexArr=array();
+                        $countryArr=array();
+                        $ageTotal=0;
+                        $cnt=0;
+                        $ageCnt=0;
+                        #Данные поьзователей
+                        foreach($userArrs as $ur){
+                            $resp2 = $Vkapi->api('users.get',
+                                array("uids"=>implode(',',$ur),
+                                    'access_token'=>"4dc42f74b6591c828ebb86859d9f9f788cc1fe2ce96f247011129af7f2c6731637f1fc35dd190f0786184",
+                                    'fields'=>'sex,country,bdate'
+                                ));
+                            foreach($resp2['response'] as $user){
+                                $sexArr[$user['sex']]++;
+                                $countryArr[$user['country']]++;
+                                $birthDate = explode(".", $user['bdate']);
+                                if(count($birthDate)==3){
+                                    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                    $ageTotal=$ageTotal+$age;
+                                    $ageCnt++;
+                                }
+                                $cnt++;
                             }
-                            $cnt++;
                         }
-                    }
-                    $maxs = array_keys($sexArr, max($sexArr));
-                    #Возраст
-                    if($maxs[0]==2)
-                        $maxs[0]=1;
-                    else
-                        $maxs[0]=0;
-                    $this->groupdata->gender=$maxs[0];
-                    $maxcountry =array_keys($countryArr, max($countryArr));
-                    #vkCountries
-                    $vkCountries=array(2=>112);
-                    $this->groupdata->countryid=$vkCountries[$maxcountry[0]];
-                    /*print_r($Vkapi->api('places.getCountryById',
-                            array("cids"=>$maxcountry[0],
-                                'access_token'=>"4dc42f74b6591c828ebb86859d9f9f788cc1fe2ce96f247011129af7f2c6731637f1fc35dd190f0786184"
-                            ))
-                    );*/
-                    #Возраст
-                    $this->groupdata->age=intval($ageTotal/$ageCnt);
+                        $maxs = array_keys($sexArr, max($sexArr));
+                        #Возраст
+                        if($maxs[0]==2)
+                            $maxs[0]=1;
+                        else
+                            $maxs[0]=0;
+                        $this->groupdata->gender=$maxs[0];
+                        $maxcountry =array_keys($countryArr, max($countryArr));
+                        #vkCountries
+                        $vkCountries=array(2=>112);
+                        $this->groupdata->countryid=$vkCountries[$maxcountry[0]];
+                        #Возраст
+                        $this->groupdata->age=intval($ageTotal/$ageCnt);
 
-                //tools::print_r($this->groupdata);
-
-                $this->groupdata->url=$_REQUEST['url'];
-                $this->groupdata->remote=1;
+                        $this->groupdata->url=$_REQUEST['url'];
+                        $this->groupdata->remote=1;
                 }
                 $this->content=$this->view->AddView('/groups/update', $this);
                 $this->view->renderLayout('layout', $this);
