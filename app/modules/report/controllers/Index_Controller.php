@@ -20,18 +20,15 @@ Class Index_Controller Extends BaseReport_Controller {
 		}
 
         function indexAction() {
-        	if($_SESSION['User']['id']>0)
+            if($_SESSION['User']['id']>0)
 			$this->registry->get->redirect('/groups/');
 			else {
                 $memcache_obj = new Memcache;
 
-                //Соединяемся с нашим сервером
                 $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect");
-                //Попытаемся получить объект с ключом our_var
-                //$return = @$memcache_obj->get('Report_about');
                 $return=null;
-                //$memcache_obj->delete('site_twit_'.$_SESSION['Site']['id']);
                 $this->logocolor='-white';
+
                 if(empty($return))
                 {
 

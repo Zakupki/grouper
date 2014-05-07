@@ -33,7 +33,7 @@
 		
 		
 		$sitedomains[1]=array(0=>'en.clubsreport.com',1=>'report',2=>2);
-		$sitedomains[2]=array(0=>'grouper.com.ua',1=>'report',2=>1);
+		$sitedomains[2]=array(0=>'reactor-pro.com',1=>'report',2=>1);
         //$sitedomains[12]=array(0=>'grouper.com.ua',1=>'report',2=>1);
 		$sitedomains[3]=array(0=>'test.clubsreport.com',1=>'report',2=>1);
 		$sitedomains[4]=array(0=>'reactor-pro.ru',1=>'main',2=>1);

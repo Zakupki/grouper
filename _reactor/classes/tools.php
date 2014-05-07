@@ -2,43 +2,43 @@
 class tools
 {
 	protected $registry;
-	
+
 	function _construct(){
 	}
 	/*function __get($name){
 		$this->db=new db;
 		return $this->db;
 	}*/
-	static function getSqlDate($y,$m,$d,$h='00',$i='00',$s='00'){
+	public static function getSqlDate($y,$m,$d,$h='00',$i='00',$s='00'){
 		if($m<10)$m='0'.intval($m);
 		if($d<10)$d='0'.intval($d);
 		return $y.'-'.$m.'-'.$d.' '.$h.':'.$i.':'.$s;
 	}
 
-    static function GetDate($date,$langid=1) {
+    public static function GetDate($date,$langid=1) {
 	$months[1] = Array ("01" => "января",
-					"02" => "февраля", 
-					"03" => "марта", 
-					"04" => "апреля", 
-					"05" => "мая", 
-					"06" => "июня", 
-					"07" => "июля", 
-					"08" => "августа", 
-					"09" => "сентября", 
-					"10" => "октября", 
-					"11" => "ноября", 
+					"02" => "февраля",
+					"03" => "марта",
+					"04" => "апреля",
+					"05" => "мая",
+					"06" => "июня",
+					"07" => "июля",
+					"08" => "августа",
+					"09" => "сентября",
+					"10" => "октября",
+					"11" => "ноября",
 					"12" => "декабря");
 	$months[2] = Array ("01" => "january",
-					"02" => "february", 
-					"03" => "march", 
-					"04" => "april", 
-					"05" => "may", 
-					"06" => "june", 
-					"07" => "july", 
-					"08" => "august", 
-					"09" => "september", 
-					"10" => "october", 
-					"11" => "november", 
+					"02" => "february",
+					"03" => "march",
+					"04" => "april",
+					"05" => "may",
+					"06" => "june",
+					"07" => "july",
+					"08" => "august",
+					"09" => "september",
+					"10" => "october",
+					"11" => "november",
 					"12" => "december");
 	$date1=explode(" ", $date);
 	$out=explode("-",$date1['0']);
@@ -48,75 +48,75 @@ class tools
 	$newdate=self::int($out['2'])." ".$months[$langid][$out['1']]." ".$out['0'];
 	return $newdate;
 	}
-	public function GetTime($date) {
+    public static function GetTime($date) {
 	$date1=explode(" ", $date);
 	$out=explode(":",$date1['1']);
 	$newdate=intval($out['0']).":".$out['1'];
 	return $newdate;
 	}
-	public function GetMonth($date,$langid=1) {
+    public static function GetMonth($date,$langid=1) {
 	if(self::int($langid)<1)
-	$langid=1;	
+	$langid=1;
 	$months[1] = Array ("1" => "января",
-					"2" => "февраля", 
-					"3" => "марта", 
-					"4" => "апреля", 
-					"5" => "мая", 
-					"6" => "июня", 
-					"7" => "июля", 
-					"8" => "августа", 
-					"9" => "сентября", 
-					"10" => "октября", 
-					"11" => "ноября", 
+					"2" => "февраля",
+					"3" => "марта",
+					"4" => "апреля",
+					"5" => "мая",
+					"6" => "июня",
+					"7" => "июля",
+					"8" => "августа",
+					"9" => "сентября",
+					"10" => "октября",
+					"11" => "ноября",
 					"12" => "декабря");
 	$months[2] = Array ("1" => "januarry",
-					"2" => "february", 
-					"3" => "march", 
-					"4" => "april", 
-					"5" => "may", 
-					"6" => "june", 
-					"7" => "july", 
-					"8" => "august", 
-					"9" => "september", 
-					"10" => "october", 
-					"11" => "november", 
+					"2" => "february",
+					"3" => "march",
+					"4" => "april",
+					"5" => "may",
+					"6" => "june",
+					"7" => "july",
+					"8" => "august",
+					"9" => "september",
+					"10" => "october",
+					"11" => "november",
 					"12" => "december");
-	
+
 	return $months[$langid][self::int($date)];
 	}
-	public function GetDayOfWeek($date,$langid=1) {
+    public static function GetDayOfWeek($date,$langid=1) {
 	if(self::int($langid)<1)
-	$langid=1;	
+	$langid=1;
 	$months[1] = Array ("2" => "Понедельник",
-					"3" => "Вторник", 
-					"4" => "Среда", 
-					"5" => "Четверг", 
-					"6" => "Пятница", 
-					"7" => "Суббота", 
+					"3" => "Вторник",
+					"4" => "Среда",
+					"5" => "Четверг",
+					"6" => "Пятница",
+					"7" => "Суббота",
 					"1" => "Воскресенье");
 	$months[2] = Array ("2" => "Monday",
-					"3" => "Tuesday", 
-					"4" => "Wednesdey", 
-					"5" => "Thirthday", 
-					"6" => "Friday", 
-					"7" => "Saturday", 
+					"3" => "Tuesday",
+					"4" => "Wednesdey",
+					"5" => "Thirthday",
+					"6" => "Friday",
+					"7" => "Saturday",
 					"1" => "Sunday");
-	
+
 	return $months[$langid][$date];
 	}
-	static function delMp3($file) {
+    public static function delMp3($file) {
 		if(file_exists($_SERVER['DOCUMENT_ROOT'].$file)){
-			unlink($_SERVER['DOCUMENT_ROOT'].$file);			
+			unlink($_SERVER['DOCUMENT_ROOT'].$file);
 		}
 	}
-	static function delImg($file) {
+    public static function delImg($file) {
 		$imgArr=array(1,2,3,4,5,6,7,8,9,10,11,12,13);
-		
+
 		if(preg_match('/(\d+?)_(.+?)$/', trim($file), $match)){
 		$file=str_replace($match['1'].'_','',$file);
 		}
 		if(file_exists($_SERVER['DOCUMENT_ROOT'].$file)){
-			unlink($_SERVER['DOCUMENT_ROOT'].$file);			
+			unlink($_SERVER['DOCUMENT_ROOT'].$file);
 		}
 		$filedata=pathinfo($file);
 		foreach($imgArr as $f){
@@ -124,11 +124,11 @@ class tools
 			unlink($_SERVER['DOCUMENT_ROOT'].$filedata['dirname'].'/'.$f.'_'.$filedata['basename']);
 		}
 	}
-	
-	static function int($str) {
+
+    public static function int($str) {
 		return (!preg_match('/^\-?\d+$/u', trim($str))) ? '0' : intval($str);
 	}
-	public function trans($key,$langid)
+    public static function trans($key,$langid)
 	{
 		$lang[1]['reply']='ответить';
 		$lang[1]['deleted_comment']='Комментарий удален';
@@ -140,10 +140,10 @@ class tools
 		$lang[2]['todayat']='today at';
 		$lang[2]['today']='today';
 		$lang[2]['newcomment']="New comment";
-		
+
 		return $lang[$langid][$key];
 	}
-	public function GetComments($data, $incut=0, $newsowner=0, $parentid=0, $level=0) {
+    public static function GetComments($data, $incut=0, $newsowner=0, $parentid=0, $level=0) {
 		if(is_array($data[$parentid])){
 			$level++;
 			$cnt=1;
@@ -154,7 +154,7 @@ class tools
 				if($v['pro'])$user_pro_icon='<i class="i-pro"></i>';else$user_pro_icon='';
 				$v['date_create']=tools::getDate($v['date_create'],$_SESSION['langid']).' '.tools::getTime($v['date_create']);
 				if($level==5 && is_array($data[$v['id']])){
-					$collapsed='ti-collapsed '; 
+					$collapsed='ti-collapsed ';
 					$expand='<div class="expand-link"><i class="i"></i><i class="i-root"></i></div>';}
 				else{$collapsed=''; $expand='';}
 				if($cnt==count($data[$parentid]))$last='ti-last '; else $last='';
@@ -166,7 +166,7 @@ class tools
 				else
   				$userpic='<div class="userpic-na userpic"><a href="/users/'.$v['userid'].'/"></a></div>';
         if($level>1)$branch='<div class="branch"></div>';else$branch='';
-		
+
 		if($v['deleted']){
 		$comStr.='
 		<div class="'.$collapsed.$last.'ti" id="comment'.$v['id'].'">
@@ -184,7 +184,7 @@ class tools
                 <p>'.$v['preview_text'];
                   if($v['new']==1 && tools::int($_SESSION['User']['id'])>0)
                     $comStr.=' <span class="new">('.self::trans('newcomment',$_SESSION['langid']).')</span>';
-                $comStr.='	
+                $comStr.='
   				</p>
               </div>
   			      <div class="reply-link"><span>'.self::trans('reply',$_SESSION['langid']).'<i class="i"></i></span></div>
@@ -197,7 +197,7 @@ class tools
 		else{
 		  /*if($level>1)
 		  	$branch='<div class="branch-removed branch"></div>';else $branch='';
-			
+
 			$comStr.='<div class="'.$last.'ti" id="comment'.$id.'">
 		          '.$branch.'
 		          <div class="'.$content_hasreply_class.$content_pro_class.'content-removed content">
@@ -231,7 +231,7 @@ class tools
 		$iparr[]='31.42.52.10';
 		//$iparr[]='78.27.188.214';
 		return $iparr;
-		
+
 	}
 
 	public static function print_r($arr){
@@ -240,7 +240,7 @@ class tools
 			print_r($arr);
 			echo "</pre>";
 		}
-		
+
 	}
 	public static function var_dump($arr){
 		//if($_SERVER['SERVER_ADDR']=='192.168.1.99'){
@@ -248,7 +248,7 @@ class tools
 			var_dump($arr);
 			echo "</pre>";
 		//}
-		
+
 	}
 	public static function keyOneSort($a, $b) {
 	    return $b[1]-$a[1];
@@ -259,7 +259,7 @@ class tools
 	public static function sortAsc($a, $b) {
 	    return $a['sort']-$b['sort'];
 	}
-	function getDomain($domain){
+    public static function getDomain($domain){
 		// get host name from URL
 		if(preg_match('@^(?:https://)?([^/]+)@i', $domain, $matches1))
 		$matches= $matches1;
@@ -273,7 +273,7 @@ class tools
 		preg_match('/[^.]+\.[^.]+$/', $host, $subdom);
 		if(in_array($subdom[0],$hostArr))
 		return $subdom[0];
-		else 
+		else
 		return $host;
 	}
 	public static function  newend($num,$langid=1)
@@ -287,7 +287,7 @@ class tools
 		}elseif($langid==2)
 		return 'new';
 	}
-	function IsAjaxRequest() {
+	public static function IsAjaxRequest() {
      return isset($_SERVER['HTTP_X_REQUESTED_WITH'])?$_SERVER['HTTP_X_REQUESTED_WITH']==='XMLHttpRequest' : false;
 	}
 	public static function toJSON($o) {
@@ -298,7 +298,7 @@ class tools
 		case 'double':
 			return strval($o);
 		case 'string':
-			$o = str_replace(array('\\', '/', '"', "'", "\r", "\n", "\b", "\f", "\t"), 
+			$o = str_replace(array('\\', '/', '"', "'", "\r", "\n", "\b", "\f", "\t"),
 	                         array('\\\\\\\\', '/', '\\\"', "\'", '\r', '\n', '\b', '\f', '\t'), $o);
 			return '"' . $o . '"';
 		case 'boolean':
@@ -332,12 +332,12 @@ class tools
 			}
 	}
 }
-  /*function toJSON($value) 
+  /*function toJSON($value)
     {
         if (is_int($value)) {
-            return (string)$value;   
+            return (string)$value;
         } elseif (is_string($value)) {
-	        $value = str_replace(array('\\', '/', '"', "\r", "\n", "\b", "\f", "\t"), 
+	        $value = str_replace(array('\\', '/', '"', "\r", "\n", "\b", "\f", "\t"),
 	                             array('\\\\', '/', '\"', '\r', '\n', '\b', '\f', '\t'), $value);
 	        $convmap = array(0x80, 0xFFFF, 0, 0xFFFF);
 	        $result = "";
@@ -349,9 +349,9 @@ class tools
 	                $result = $mb_char . $result;
 	            }
 	        }
-	        return '"' . addslashes($result) . '"';                
+	        return '"' . addslashes($result) . '"';
         } elseif (is_float($value)) {
-            return str_replace(",", ".", $value);         
+            return str_replace(",", ".", $value);
         } elseif (is_null($value)) {
             return 'null';
         } elseif (is_bool($value)) {
@@ -373,12 +373,12 @@ class tools
         $result = array();
         if ($with_keys) {
             foreach ($value as $key => $v) {
-                $result[] = self::toJSON((string)$key) . ':' . self::toJSON($v);    
+                $result[] = self::toJSON((string)$key) . ':' . self::toJSON($v);
             }
-            return '{' . implode(',', $result) . '}';                
+            return '{' . implode(',', $result) . '}';
         } else {
             foreach ($value as $key => $v) {
-                $result[] = self::toJSON($v);    
+                $result[] = self::toJSON($v);
             }
             return '[' . implode(',', $result) . ']';
         }
@@ -399,24 +399,24 @@ class tools
 		return mysql_escape_string(str_replace(array("\r\n", "\n", "\r"),'<br/>',trim($str)));
 	}
 	public static function tojs($str){
-		$str=str_replace(array('\\', '/', '"', "'", "\r", "\n", "\b", "\f", "\t"), 
+		$str=str_replace(array('\\', '/', '"', "'", "\r", "\n", "\b", "\f", "\t"),
 	                         array('\\\\\\\\', '/', '\\\"', "\'", '\r', '\n', '\b', '\f', '\t'), trim($str));
 		return $str;
 	}
 	public static function getFbCount($url=null){
-			if(!$url)
+            if(!$url)
 			$url=$_SERVER['HTTP_HOST'];
 			$url=str_replace('http://','',$url);
 			//Создаём новый объект. Также можно писать и в процедурном стиле
 		    $memcache_obj = new Memcache;
-		 
+
 		    //Соединяемся с нашим сервером
-		    $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect");
-		 
+		    $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect0");
+
 		    //Попытаемся получить объект с ключом our_var
 		    $return = @$memcache_obj->get('FbCount_'.$url);
 		 	//$memcache_obj->delete('site_twit_'.$_SESSION['Site']['id']);
-		   
+
 			if(!empty($return))
 					   {
 						   $memcache_obj->close();
@@ -424,7 +424,7 @@ class tools
 					   }
 					   else
 					   {
-		   
+
 		    	$json=file_get_contents('https://api.facebook.com/method/fql.query?query=select%20total_count%20from%20link_stat%20where%20url="http://'.urlencode($url).'"&format=json');
 				//tools::print_r('https://api.facebook.com/method/fql.query?query=select%20total_count%20from%20link_stat%20where%20url="http://'.urlencode($url).'"&format=json');
 				$result=json_decode($json);
@@ -437,15 +437,16 @@ class tools
 		    }
 	}
 	public static function getTwCount($url=null){
+
 			if(!$url)
 			$url=$_SERVER['HTTP_HOST'];
 			$url=str_replace('http://','',$url);
 		 	//Создаём новый объект. Также можно писать и в процедурном стиле
 		    $memcache_obj = new Memcache;
-		 
+
 		    //Соединяемся с нашим сервером
-		    $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect");
-		 
+		    $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect1");
+
 		    //Попытаемся получить объект с ключом our_var
 		    $return = @$memcache_obj->get('TwCount_'.$url);
 		 	//$memcache_obj->delete('site_twit_'.$_SESSION['Site']['id']);
@@ -457,7 +458,7 @@ class tools
 		    }
 		    else
 		    {
-		
+
 				$json=file_get_contents('http://urls.api.twitter.com/1/urls/count.json?url='.urlencode($url).'');
 				$result=json_decode($json);
 			    $memcache_obj->set('TwCount_'.$url, ' '.self::int($result->count).' ', false, 30*60*6000000);
@@ -468,15 +469,15 @@ class tools
 			}
 	}
 	public static function getVkCount($url=null){
-			if(!$url)
+            if(!$url)
 			$url=$_SERVER['HTTP_HOST'];
 			$url=str_replace('http://','',$url);
 			//Создаём новый объект. Также можно писать и в процедурном стиле
 		    $memcache_obj = new Memcache;
-		 
+
 		    //Соединяемся с нашим сервером
-		    $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect");
-		 
+		    $memcache_obj->connect('127.0.0.1', 11211) or die("Could not connect2");
+
 		    //Попытаемся получить объект с ключом our_var
 		    $return = @$memcache_obj->get('VkCount_'.$url);
 		 	//$memcache_obj->delete('site_twit_'.$_SESSION['Site']['id']);
@@ -491,7 +492,7 @@ class tools
 		    	$vk_request = file_get_contents('http://vkontakte.ru/share.php?act=count&index=1&url=http://'.urlencode($url).'');
 				$tmp = array();
 				preg_match('/^VK.Share.count\(1, (\d+)\);$/i',$vk_request,$tmp);
-			
+
 			 	$memcache_obj->set('VkCount_'.$url, " ".self::int($tmp[1])." ", false, 30*60*6000000);
 		 		$return=$memcache_obj->get('VkCount_'.$url);
 		        //Выведем закэшированные данные
@@ -500,7 +501,7 @@ class tools
 			}
 	}
 	public static function youtube_id_from_url($url) {
-    $pattern = 
+    $pattern =
         '%^# Match any youtube URL
         (?:https?://)?  # Optional scheme. Either http or https
         (?:
@@ -533,7 +534,7 @@ class tools
 	 * @param string f3 - существительное для остальных чисел:5 голосов
 	 * @param int v - число
 	 */
-	static public function word_render($f1, $f2, $f3, $v)
+    public static function word_render($f1, $f2, $f3, $v)
 	{
 		$v = str_pad((int)$v, 2, '0', STR_PAD_LEFT);
 		$s2 = intval(substr($v, -2, 1));
@@ -542,8 +543,8 @@ class tools
 		if ($s1 == 1) return $f1;
 		if ($s1 >= 2 && $s1 <= 4) return $f2;
 	}
-	static public function encodestring($file_name) 
-  	{ 
+    public static function encodestring($file_name)
+  	{
      $tr = array(
         "А"=>"A","Б"=>"B","В"=>"V","Г"=>"G",
         "Д"=>"D","Е"=>"E","Ж"=>"J","З"=>"Z","И"=>"I",
@@ -561,11 +562,11 @@ class tools
     );
     return strtr($file_name,$tr);
   	}
-	static function getStreamParam($id){
+    public static function getStreamParam($id){
 		$params=array(234=>'?client_id=525b3f847036860020a8812bd249f85f');
 		return $params[$id];
 	}
-	static function GetImageFromUrl($link,$size=null)
+    public static function GetImageFromUrl($link,$size=null)
  	{
  	$linkArr=explode('?',trim($link));
 	$link=$linkArr[0];
@@ -576,7 +577,7 @@ class tools
 	curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
 	$result=curl_exec($ch);
 	curl_close($ch);
-	
+
 		$targetPath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/temp/';
 		$path_parts=pathinfo($link);
 		$newfilename=md5(uniqid().microtime()).".".$path_parts['extension'];
@@ -587,7 +588,7 @@ class tools
 	$size=$size.'_';
 	return '/uploads/temp/'.$size.$newfilename;
 	}
-	static function GetFacebookImageFromUrl($link,$size=null)
+    public static function GetFacebookImageFromUrl($link,$size=null)
  	{
  	$ch = curl_init();
 	curl_setopt($ch,CURLOPT_URL,$link);
@@ -597,14 +598,14 @@ class tools
 	$content = curl_exec ($ch);
 	preg_match('/Location: ([^\s]+)/',$content,$match);
 	$link=($match[1]);
-	
+
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_POST, 0);
 	curl_setopt($ch,CURLOPT_URL,$link);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	$result=curl_exec($ch);
 	curl_close($ch);
-	
+
 		$targetPath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/temp/';
 		$path_parts=pathinfo($link);
 		$newfilename=md5(uniqid().microtime()).".".$path_parts['extension'];
@@ -615,66 +616,66 @@ class tools
 	$size=$size.'_';
 	return '/uploads/temp/'.$size.$newfilename;
 	}
-	
-	static function vimeo_id_from_url($url){
+
+    public static function vimeo_id_from_url($url){
 		if(!$url)
 		return;
 		preg_match('/vimeo.com\/(\d+)?/', trim($url), $match);
 		if($match['1']>0)
 		return $match['1'];
 	}
-	function generatePassword ($length = 8)
+    public static function generatePassword ($length = 8)
 	  {
-	
+
 	    // start with a blank password
 	    $password = "";
-	
+
 	    // define possible characters - any character in this string can be
 	    // picked for use in the password, so if you want to put vowels back in
 	    // or add special characters such as exclamation marks, this is where
 	    // you should do it
 	    $possible = "2346789bcdfghjkmnpqrtvwxyzBCDFGHJKLMNPQRTVWXYZ";
-	
+
 	    // we refer to the length of $possible a few times, so let's grab it now
 	    $maxlength = strlen($possible);
-	  
+
 	    // check for length overflow and truncate if necessary
 	    if ($length > $maxlength) {
 	      $length = $maxlength;
 	    }
-		
+
 	    // set up a counter for how many characters are in the password so far
-	    $i = 0; 
-	    
+	    $i = 0;
+
 	    // add random characters to $password until $length is reached
-	    while ($i < $length) { 
-	
+	    while ($i < $length) {
+
 	      // pick a random character from the possible ones
 	      $char = substr($possible, mt_rand(0, $maxlength-1), 1);
-	        
+
 	      // have we already used this character in $password?
-	      if (!strstr($password, $char)) { 
+	      if (!strstr($password, $char)) {
 	        // no, so it's OK to add it onto the end of whatever we've already got...
 	        $password .= $char;
 	        // ... and increase the counter by one
 	        $i++;
 	      }
-	
+
 	    }
-	
+
 	    // done!
 	    return $password;
-	
+
 	  }
-	
-	
-	
-	
-	static function getDirectorySize($path,$save=false)
+
+
+
+
+    public static function getDirectorySize($path,$save=false)
 	{
-	 
+
 	}
-	static function sizeFormat($size)
+    public static function sizeFormat($size)
 	{
     if($size<1024)
     {
@@ -698,22 +699,22 @@ class tools
     }
 
 	}
-	
-	
-	
+
+
+
 	#dir size
-	function calculate_whole_directory($directory)
+    public static function calculate_whole_directory($directory)
     {
-    	
-        if ($handle = opendir($directory)) 
+
+        if ($handle = opendir($directory))
         {
         $size = 0;
 		$folders = 0;
 		$files = 0;
 
-        while (false !== ($file = readdir($handle))) 
+        while (false !== ($file = readdir($handle)))
 		{
-            if ($file != "." && $file != ".." && !is_link ($directory.$file)) 
+            if ($file != "." && $file != ".." && !is_link ($directory.$file))
 			{
 			    if(is_dir($directory.$file))
 			    {
@@ -757,12 +758,12 @@ class tools
 			$size = (($size_in_bytes / 1024) / 1024) / 1024;
 			}
 				  $size = round($size, $this->decimals);
-	
+
 			return $size;
 		}*/
-	
 
-	function size($directory)
+
+    public static function size($directory)
 	{
 	set_time_limit(10000);
 	$array = $this->calculate_whole_directory($directory);
@@ -774,7 +775,7 @@ class tools
 	$db->query('UPDATE z_site SET disk='.tools::int($size).' WHERE id='.$_SESSION['Site']['id'].'');
 	return $size;
 	}
-	
-	  
+
+
 }
 ?>
