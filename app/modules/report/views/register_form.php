@@ -64,7 +64,7 @@ if (is_array($this->view->error)) {
   </div>
   <div class="col8 last-col">
     <div class="login-via">
-      <a class="login-via-vk" href="/social/vkconnect/">Войти через <b>Vkontakte</b></a>
+      <!--<a class="login-via-vk" href="/social/vkconnect/">Войти через <b>Vkontakte</b></a>-->
       <!--<a class="login-via-facebook" href="/social/fbconnect/">Войти через <b>Facebook</b></a>-->
     </div>
   </div>
