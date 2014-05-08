@@ -56,8 +56,8 @@
 				<div class="number-inputs clearfix">
 					<div class="field col2">
 						<label for="group-age-input">Средний возраст:</label>
-						<input id="group-age-input" type="text" name="age" class="txt short" value="<?=$this->view->groupdata->age;?>" <?=($this->view->groupdata->socialid==257)?' disabled':'';?>>
-						<?if($this->view->groupdata->socialid==257){?>
+						<input id="group-age-input" type="text" name="age" class="txt short" value="<?=$this->view->groupdata->age;?>" <?=($this->view->groupdata->socialid==1257)?' disabled':'';?>>
+						<?if($this->view->groupdata->socialid==1257){?>
                         <input type="hidden" name="age" value="<?=$this->view->groupdata->age;?>">
                         <?}?>
 					</div>

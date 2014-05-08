@@ -181,7 +181,7 @@ Class Groups_Controller Extends BaseReport_Controller {
                 else{
                         $this->groupdata=$this->Group->checkGroup($_REQUEST);
 
-                        if($this->groupdata->socialid==275){
+                        if($this->groupdata->socialid==257){
                             #ДОПОЛНИТЕЛЬНЫЕ ДАННЫЕ
                             $Vkapi=new Vkapi;
                             #Пользователи группы
