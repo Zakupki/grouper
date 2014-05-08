@@ -42,14 +42,14 @@
 				</div>
                 <div class="radios clearfix">
 					<div class="field col4">
-						<input type="radio" name="gender" value="1" id="radio-gender-1"<?=($this->view->groupdata->gender==1)?' checked':'';?>  <?=($this->view->groupdata->socialid==257)?' disabled':'';?>>
+						<input type="radio" name="gender" value="1" id="radio-gender-1"<?=($this->view->groupdata->gender==1)?' checked':'';?>  <?=($this->view->groupdata->socialid==1257)?' disabled':'';?>>
 						<label for="radio-gender-1">В этой группе больше мужчин</label>
 					</div>
 					<div class="field col4 last-col">
-						<input type="radio" name="gender" value="0" id="radio-gender-2"<?=(!$this->view->groupdata->gender)?' checked':'';?>  <?=($this->view->groupdata->socialid==257)?' disabled':'';?>>
+						<input type="radio" name="gender" value="0" id="radio-gender-2"<?=(!$this->view->groupdata->gender)?' checked':'';?>  <?=($this->view->groupdata->socialid==1257)?' disabled':'';?>>
 						<label for="radio-gender-2">В этой группе больше женщин</label>
 					</div>
-                    <?if($this->view->groupdata->socialid==257){?>
+                    <?if($this->view->groupdata->socialid==1257){?>
 					<input type="hidden" name="gender" value="<?=$this->view->groupdata->gender;?>">
                     <?}?>
 				</div>
