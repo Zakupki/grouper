@@ -78,7 +78,8 @@ Class Index_Controller Extends Base_Controller {
 						//$this->registry->get->redirect('/');
 						echo json_encode(array(
 						'error'=>false, 
-						'status'=>'Вы успешно зарегистрированы! На ваш email отправлено письмо с активацией вашего аккаунта.',
+						//'status'=>'Вы успешно зарегистрированы! На ваш email отправлено письмо с активацией вашего аккаунта.',
+                        'status'=>'Вы успешно зарегистрированы!',
 						'redirect'=>'/'
 						));
 						die();

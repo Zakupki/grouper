@@ -12,7 +12,7 @@ final class valid{
 					  id 
 					FROM
 					  z_user 
-					WHERE email = "'.mysql_escape_string($email).'"
+					WHERE email = "'.$email.'"
 					LIMIT 0,1');
 		if($row['id']>0)
 			return false;
@@ -29,7 +29,7 @@ final class valid{
 					  id 
 					FROM
 					  z_user 
-					WHERE login = "'.mysql_escape_string($login).'"
+					WHERE login = "'.$login.'"
 					LIMIT 0,1');
 		if($row['id']>0)
 			return false;

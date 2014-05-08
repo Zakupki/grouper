@@ -113,7 +113,7 @@ class user {
 		$data['password']=md5($data['password'].MD5_KEY);
 		
 
-		$subject = "Подтверждение регистрации";
+		/*$subject = "Подтверждение регистрации";
 		$message = "Здравствуйте! Спасибо за регистрацию на сайте ".$_SERVER['HTTP_HOST']."\n\nДля того чтобы войти в свой аккуант его нужно активировать.\n\nЧтобы активировать ваш аккаунт, перейдите по ссылке:\n\nhttp://".$_SERVER['HTTP_HOST']."/activate/?act=".$data['activationcode']."\n\nС уважением, Администрация сайта ".$_SERVER['HTTP_HOST']."";
 		$smtp=new smtp;
 		$smtp->Connect(SMTP_HOST);
@@ -121,17 +121,17 @@ class user {
         $smtp->Authenticate('info@group.reactor.ua', 'gykTNpbG');
         $smtp->Mail('info@group.reactor.ua');
 		$smtp->Recipient($data['email']);
-		$smtp->Data($message, $subject);
+		$smtp->Data($message, $subject);*/
 		
 		$db=db::init();
 		$db->exec('INSERT INTO z_user (login, password, firstName, email, familyName, secondName, country, city, phone, question, answer, cash, activation, activationcode)
 		 values ("'.$data['login'].'", "'.$data['password'].'", "'.$data['firstName'].'", "'.$data['email'].'", "'.$data['familyName'].'", "'.$data['secondName'].'", 
-		 "'.$data['country'].'", "'.$data['city'].'", "'.$data['phone'].'", "'.$data['question'].'", "'.$data['answer'].'", "'.$data['cash'].'", 0, "'.$data['activationcode'].'")');
+		 "'.$data['country'].'", "'.$data['city'].'", "'.$data['phone'].'", "'.$data['question'].'", "'.$data['answer'].'", "'.$data['cash'].'", 1, "'.$data['activationcode'].'")');
 		$newuserid=$db->lastInsertId();
 		//$db->exec('INSERT INTO z_usertype_user (userid, usertypeid) VALUES ('.$newuserid.',2)');
 		if($newuserid>0){
 
-            $message3 = "В системе grouper.com.ua был зарегистрирован новый пользователь с ID ".$newuserid.", email: ".$data['email'].".\n\nПросмотреть всех пользователей: http://".$_SERVER['HTTP_HOST']."/admin/users/";
+            /*$message3 = "В системе grouper.com.ua был зарегистрирован новый пользователь с ID ".$newuserid.", email: ".$data['email'].".\n\nПросмотреть всех пользователей: http://".$_SERVER['HTTP_HOST']."/admin/users/";
             $subject3 = "Регистрация нового пользователя";
             $smtp3=new smtp;
             $smtp3->Connect(SMTP_HOST);
@@ -139,7 +139,7 @@ class user {
             $smtp3->Authenticate('info@group.reactor.ua', 'gykTNpbG');
             $smtp3->Mail('info@group.reactor.ua');
             $smtp3->Recipient('support@grouper.com.ua');
-            $smtp3->Data($message3, $subject3);
+            $smtp3->Data($message3, $subject3);*/
 
 		    mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads/users/'.$newuserid.'/');
             mkdir($_SERVER['DOCUMENT_ROOT'].'/uploads/users/'.$newuserid.'/img/');

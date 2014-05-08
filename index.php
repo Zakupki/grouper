@@ -10,7 +10,7 @@
 			//die();
 		}else{
             error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-            ini_set('display_errors', 1);
+            ini_set('display_errors', 0);
         }
 		ini_set("memory_limit", "132M");
 		define ('DIRSEP', DIRECTORY_SEPARATOR);
