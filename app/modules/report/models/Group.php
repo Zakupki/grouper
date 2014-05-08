@@ -703,6 +703,25 @@ Class Group Extends Basemodel {
                 $socialid=257;
                 $id=$match[1];
             }
+            elseif(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                vk\.com/  # or youtube.com
+                | facebook\.com/
+                )
+                ([\w\d_.-]+)?
+                %xui', $data['url'], $match))
+            {
+                $socialid=255;
+                $id=$match[1];
+            }
+
+            if($id && $socialid==255){
+
+            }
 
             if($id && $socialid==257){
                 $sUrl='https://api.vk.com/method/groups.getById?gid='.$id.'&access_token=a1173ba0be6f05b7127fae01cfceaeaebea18f5ffb76931a3492b8a06a07e259e91b34c37212079be16d7';
