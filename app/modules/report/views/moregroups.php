@@ -1,7 +1,8 @@
 						<?
 						$total=0;
 						foreach($this->view->clubs['sites'] as $club){
-						$total++;	
+						$total++;
+                        $socicons=array(257=>'vk',255=>'facebook');
 						?>
 						<li rel="<?=$club['id'];?>" class="group<?=(!$this->view->clubs['hasmore'] && $total==count($this->view->clubs['sites']))?' last':'';?><?=($club['userid']==$_SESSION['User']['id'])?' user-group':'';?>">
 							<a class="logo" href="/group/<?=$club['id'];?>/">
@@ -20,7 +21,7 @@
 										<?}?>
 									</a>
 								</div>
-								<a class="address i vk"><?=$club['subject'];?></a>
+								<a class="address i <?=$socicons[$club['socialid']];?>"><?=$club['subject'];?></a>
 							</div>
 							<a class="hl stats" href="/group/<?=$club['id'];?>/">
 								<div class="col age">

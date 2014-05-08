@@ -84,9 +84,7 @@ $bodyclass="feedback contact";*/
 					<div class="clearfix">
 						<ul class="buttons gray">
 						    <li class="first"><a class="button" href="/groups/">Все группы</a></li>
-							<!--<li class="last"><a class="button" href="/groups/create/">Добавить группу</a></li>-->
-							
-							
+							<li class="last"><a class="button" href="/groups/create/">Добавить группу</a></li>
 						</ul>
 						<a class="orange button" href="/public/add/<?=(isset($this->view->groupdata) && ($this->registry->controller!='group' && $this->registry->action!='update')) ? '?group_id='.$this->view->groupdata['id']:'';?>">Разместить публикацию</a>
 						<!--<? if($this->registry->controller=='banners'){?>

@@ -181,56 +181,62 @@ Class Groups_Controller Extends BaseReport_Controller {
                 else{
                         $this->groupdata=$this->Group->checkGroup($_REQUEST);
 
-                        #ДОПОЛНИТЕЛЬНЫЕ ДАННЫЕ
-                        $Vkapi=new Vkapi;
-                        #Пользователи группы
-                        $resp = $Vkapi->api('groups.getMembers',
-                            array('gid'=>$this->groupdata->gid,
-                                'access_token'=>$this->groupdata->token
-                            ));
-                        $userids=implode(',',$resp['response']['users']);
-
-                        $userArrs=array_chunk($resp['response']['users'],300);
-                        $sexArr=array();
-                        $countryArr=array();
-                        $ageTotal=0;
-                        $cnt=0;
-                        $ageCnt=0;
-                        #Данные поьзователей
-                        foreach($userArrs as $ur){
-                            $resp2 = $Vkapi->api('users.get',
-                                array("uids"=>implode(',',$ur),
-                                    'access_token'=>"4dc42f74b6591c828ebb86859d9f9f788cc1fe2ce96f247011129af7f2c6731637f1fc35dd190f0786184",
-                                    'fields'=>'sex,country,bdate'
+                        if($this->groupdata->socialid==275){
+                            #ДОПОЛНИТЕЛЬНЫЕ ДАННЫЕ
+                            $Vkapi=new Vkapi;
+                            #Пользователи группы
+                            $resp = $Vkapi->api('groups.getMembers',
+                                array('gid'=>$this->groupdata->gid,
+                                    'access_token'=>$this->groupdata->token
                                 ));
-                            foreach($resp2['response'] as $user){
-                                $sexArr[$user['sex']]++;
-                                $countryArr[$user['country']]++;
-                                $birthDate = explode(".", $user['bdate']);
-                                if(count($birthDate)==3){
-                                    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
-                                    $ageTotal=$ageTotal+$age;
-                                    $ageCnt++;
-                                }
-                                $cnt++;
-                            }
-                        }
-                        $maxs = array_keys($sexArr, max($sexArr));
-                        #Возраст
-                        if($maxs[0]==2)
-                            $maxs[0]=1;
-                        else
-                            $maxs[0]=0;
-                        $this->groupdata->gender=$maxs[0];
-                        $maxcountry =array_keys($countryArr, max($countryArr));
-                        #vkCountries
-                        $vkCountries=array(2=>112);
-                        $this->groupdata->countryid=$vkCountries[$maxcountry[0]];
-                        #Возраст
-                        $this->groupdata->age=intval($ageTotal/$ageCnt);
+                            $userids=implode(',',$resp['response']['users']);
 
-                        $this->groupdata->url=$_REQUEST['url'];
-                        $this->groupdata->remote=1;
+                            $userArrs=array_chunk($resp['response']['users'],300);
+                            $sexArr=array();
+                            $countryArr=array();
+                            $ageTotal=0;
+                            $cnt=0;
+                            $ageCnt=0;
+                            #Данные поьзователей
+                            foreach($userArrs as $ur){
+                                $resp2 = $Vkapi->api('users.get',
+                                    array("uids"=>implode(',',$ur),
+                                        'access_token'=>"4dc42f74b6591c828ebb86859d9f9f788cc1fe2ce96f247011129af7f2c6731637f1fc35dd190f0786184",
+                                        'fields'=>'sex,country,bdate'
+                                    ));
+                                foreach($resp2['response'] as $user){
+                                    $sexArr[$user['sex']]++;
+                                    $countryArr[$user['country']]++;
+                                    $birthDate = explode(".", $user['bdate']);
+                                    if(count($birthDate)==3){
+                                        $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                        $ageTotal=$ageTotal+$age;
+                                        $ageCnt++;
+                                    }
+                                    $cnt++;
+                                }
+                            }
+                            $maxs = array_keys($sexArr, max($sexArr));
+                            #Возраст
+                            if($maxs[0]==2)
+                                $maxs[0]=1;
+                            else
+                                $maxs[0]=0;
+                            $this->groupdata->gender=$maxs[0];
+                            $maxcountry =array_keys($countryArr, max($countryArr));
+                            #vkCountries
+                            $vkCountries=array(2=>112);
+                            $this->groupdata->countryid=$vkCountries[$maxcountry[0]];
+                            #Возраст
+                            $this->groupdata->age=intval($ageTotal/$ageCnt);
+
+                            $this->groupdata->url=$_REQUEST['url'];
+                            $this->groupdata->remote=1;
+                        }elseif($this->groupdata->socialid==255){
+                            $this->groupdata->remote=1;
+                            //print_r($this->groupdata);
+                        }
+
                 }
                 $this->content=$this->view->AddView('/groups/update', $this);
                 $this->view->renderLayout('layout', $this);
@@ -245,10 +251,12 @@ Class Groups_Controller Extends BaseReport_Controller {
                 echo 1;
             else echo 2;*/
             $group=$this->Group->checkGroup($_POST);
-            if($group->type=='group' || $group->type=='page')
-            echo 'true';
+            if(($group->type=='group' || $group->type=='page') && $group->socialid==257)
+                echo 'true';
+            elseif($group->socialid==255)
+                echo 'true';
             else {
-             echo '"Ссылка не является группой"';
+                echo '"Ссылка не является группой"';
             }
             
         }

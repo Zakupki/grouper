@@ -88,6 +88,25 @@ Class Test_Controller Extends BaseReport_Controller {
 			tools::print_r($brandnames2);
 			//tools::print_r($brandnames);
 		}
-		
+		function testfbAction(){
+            $sUrl='https://graph.facebook.com/v1.0/hromadsketv';
+            //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+            $oResponce=null;
+            $oResponce = json_decode(file_get_contents($sUrl));
+            echo $oResponce->id;
+
+            $picUrl='https://graph.facebook.com/'.$oResponce->id.'/?fields=picture.type(large)';
+            //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+            $picResponce=null;
+            $picResponce = json_decode(file_get_contents($picUrl));
+
+
+
+            echo tools::GetImageFromUrl($picResponce->picture->data->url);
+
+            echo "<pre>";
+            //print_r($picResponce->picture->data->url);
+            echo "</pre>";
+        }
 }
 ?>

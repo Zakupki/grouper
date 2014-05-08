@@ -1,6 +1,7 @@
 <?
 require_once 'modules/base/models/Basemodel.php';
 require_once 'modules/report/models/Users.php';
+require_once 'modules/report/models/Users.php';
 
 Class Group Extends Basemodel {
 
@@ -390,7 +391,7 @@ Class Group Extends Basemodel {
                     ON z_social_stats.groupid=z_group.id AND z_social_stats.date="'.$date['date'].'"
                     '.$favJoinType.' JOIN z_favgroups
                     ON z_favgroups.groupid=z_group.id AND z_favgroups.userid='.tools::int($_SESSION['User']['id']).'
-                    WHERE z_group.socialid IN(257) AND z_group.notconnected=0
+                    WHERE z_group.socialid IN(257,255) /*AND z_group.notconnected=0*/
                     '.$whereStr.'
                     '.$oderStr.'
                     LIMIT '.$params['start'].','.$params['take'].'
@@ -536,7 +537,7 @@ Class Group Extends Basemodel {
         }
         
         if($data['remoteimage']==1){
-          $image=tools::GetImageFromUrl($data['image']);
+            $image=tools::GetImageFromUrl($data['image']);
         }else{
           $image=str_replace("12_","",$data['image']);
         }
@@ -720,7 +721,28 @@ Class Group Extends Basemodel {
             }
 
             if($id && $socialid==255){
+                $sUrl='https://graph.facebook.com/v1.0/'.$id;
+                //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+                $oResponce=null;
+                $oResponce = json_decode(file_get_contents($sUrl));
+                if($oResponce->id>0){
+                    if(self::groupExist($oResponce->id,$socialid))
+                        die('"Такая группа уже есть в базе"');
+                    $oResponce->socialid=$socialid;
+                    $oResponce->gid=$oResponce->id;
+                    $oResponce->screen_name=$oResponce->username;
+                    $oResponce->photo_big=$oResponce->cover->source;
 
+                    $picUrl='https://graph.facebook.com/'.$oResponce->id.'/?fields=picture.type(large)';
+                    //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+                    $picResponce=null;
+                    $picResponce = json_decode(file_get_contents($picUrl));
+                    if(isset($picResponce->picture->data->url))
+                    $oResponce->photo_big=$picResponce->picture->data->url;
+
+                    unset($oResponce->id);
+                    return $oResponce;
+                }
             }
 
             if($id && $socialid==257){

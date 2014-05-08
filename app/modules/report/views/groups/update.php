@@ -14,7 +14,7 @@
                     <? if($this->view->groupdata->code)
                         $this->view->groupdata->screen_name=$this->view->groupdata->code;
                     ?>  
-					<input id="group-url-input" type="text" name="url" class="txt" value="<?=($this->view->groupdata->socialid==257)?'http://vk.com/'.$this->view->groupdata->screen_name:'';?>" disabled>
+					<input id="group-url-input" type="text" name="url" class="txt" value="<?=($this->view->groupdata->socialid==255)?'http://facebook.com/'.$this->view->groupdata->screen_name:'';?><?=($this->view->groupdata->socialid==257)?'http://vk.com/'.$this->view->groupdata->screen_name:'';?>" disabled>
 				</div>
 				<div class="field">
 					<label for="group-name-input">Название:</label>
@@ -34,7 +34,7 @@
 						<label>Большинство пользователей из</label>
 						<select name="countryid" disabled>
 							<? foreach($this->view->countrylist as $country){?>
-							<option<?=($this->view->groupdata->countryid==$country['id'])?' selected="selected"':'';?> value="<?=$country['id'];?>"><?=$country['name'];?></option>
+							<option<?=($this->view->groupdata->countryid==$country['id'] || $country['name_en']==$this->view->groupdata->location->country)?' selected="selected"':'';?> value="<?=$country['id'];?>"><?=$country['name'];?></option>
 							<?}?>
 						</select>
 						<input type="hidden" name="countryid" value="<?=$country['id'];?>">
@@ -42,20 +42,24 @@
 				</div>
                 <div class="radios clearfix">
 					<div class="field col4">
-						<input type="radio" name="gender" value="1" id="radio-gender-1"<?=($this->view->groupdata->gender==1)?' checked':'';?> disabled>
+						<input type="radio" name="gender" value="1" id="radio-gender-1"<?=($this->view->groupdata->gender==1)?' checked':'';?>  <?=($this->view->groupdata->socialid==257)?' disabled':'';?>>
 						<label for="radio-gender-1">В этой группе больше мужчин</label>
 					</div>
 					<div class="field col4 last-col">
-						<input type="radio" name="gender" value="0" id="radio-gender-2"<?=(!$this->view->groupdata->gender)?' checked':'';?> disabled>
+						<input type="radio" name="gender" value="0" id="radio-gender-2"<?=(!$this->view->groupdata->gender)?' checked':'';?>  <?=($this->view->groupdata->socialid==257)?' disabled':'';?>>
 						<label for="radio-gender-2">В этой группе больше женщин</label>
 					</div>
+                    <?if($this->view->groupdata->socialid==257){?>
 					<input type="hidden" name="gender" value="<?=$this->view->groupdata->gender;?>">
+                    <?}?>
 				</div>
 				<div class="number-inputs clearfix">
 					<div class="field col2">
 						<label for="group-age-input">Средний возраст:</label>
-						<input id="group-age-input" type="text" name="age" class="txt short" value="<?=$this->view->groupdata->age;?>" disabled>
-						<input type="hidden" name="age" value="<?=$this->view->groupdata->age;?>">
+						<input id="group-age-input" type="text" name="age" class="txt short" value="<?=$this->view->groupdata->age;?>" <?=($this->view->groupdata->socialid==257)?' disabled':'';?>>
+						<?if($this->view->groupdata->socialid==257){?>
+                        <input type="hidden" name="age" value="<?=$this->view->groupdata->age;?>">
+                        <?}?>
 					</div>
 					<div class="field col3">
 						<label for="group-price-input">Цена за пост (<?=$this->view->currencyname;?>):</label>
@@ -94,8 +98,11 @@
 			<div class="col4 last-col">
 				<div class="stats">
 					<dl>
-						<dt>Число подписчиков данной группы</dt>
-						<dd class="bignum"><?=$this->view->membernum;?></dd>
+                        <? $likenum=($this->view->groupdata->socialid==257)?$this->view->membernum:$this->view->groupdata->likes;?>
+						<? if($likenum>0){?>
+                        <dt>Число подписчиков данной группы</dt>
+						<dd class="bignum"><?=$likenum;?></dd>
+                        <?}?>
 						<dt>Рекомендуемая цена за публикацию<a class="help" href="#help-45"></a></dt>
 						<dd class="bignum"><?=ceil($this->view->membernum*$this->view->postprice+$this->view->postpriceadd*$this->view->currencyprice);?> <span class="units"><?=$this->view->currencyname;?></span></dd>
 						<dt>Рекомендуемая цена за репост<a class="help" href="#help-46"></a></dt>

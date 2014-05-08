@@ -10,7 +10,8 @@ Class Geo Extends Basemodel {
 	$result=$db->queryFetchAllAssoc('
 				SELECT 
 				  z_country.id,
-				  z_country.name_ru AS name 
+				  z_country.name_ru AS name,
+				  z_country.name_en
 				FROM
 				  z_country 
 				WHERE z_country.active=1
