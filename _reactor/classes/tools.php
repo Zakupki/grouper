@@ -384,19 +384,19 @@ class tools
         }
     }*/
 	public static function str($str){
-		return mysql_escape_string(str_replace(array("\r\n", "\n", "\r"),' ',trim(stripcslashes($str))));
+		return str_replace(array("\r\n", "\n", "\r"),' ',trim(stripcslashes($str)));
 	}
 	public static function r_str($str){
-		return mysql_escape_string(trim(stripcslashes($str)));
+		return trim(stripcslashes($str));
 	}
 	public static function nulstr($str){
 		if(strlen(trim($str))<1)
 		return 'null';
 		else
-		return "'".mysql_escape_string(str_replace(array("\r\n", "\n", "\r"),' ',trim($str)))."'";
+		return "'".str_replace(array("\r\n", "\n", "\r"),' ',trim($str))."'";
 	}
 	public static function txt($str){
-		return mysql_escape_string(str_replace(array("\r\n", "\n", "\r"),'<br/>',trim($str)));
+		return str_replace(array("\r\n", "\n", "\r"),'<br/>',trim($str));
 	}
 	public static function tojs($str){
 		$str=str_replace(array('\\', '/', '"', "'", "\r", "\n", "\b", "\f", "\t"),
