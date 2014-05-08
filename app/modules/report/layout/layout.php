@@ -121,8 +121,8 @@ $bodyclass="feedback contact";*/
 	<footer>
 		<div class="centerwrap clearfix">
 			<div class="copyright col4">
-				<img src="/img/report/repost-logo-footer.png" alt="">
-				<div class="txt">© 2013 Сloud9 agency</div>
+				<!--<img src="/img/report/repost-logo-footer.png" alt="">-->
+				<div class="txt">© <?=date("Y");?></div>
 			</div>
 			<?
 			if($_SESSION['User']['id']){
