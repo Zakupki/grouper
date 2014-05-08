@@ -49,7 +49,7 @@ $bodyclass="feedback contact";*/
 				    <ul class="submenu">
                         <li class="c-vcard profile-link"><a href="/user/profile/">Личные данные</a></li>
                         <li class="c-backintime history-link"><a class="under-construction" href="/user/balance/">История операций</a></li>
-                        <li class="c-openbook public-link"><a class="under-construction" href="/user/accounts/">Мои аккаунты</a></li>
+                        <!--<li class="c-openbook public-link"><a class="under-construction" href="/user/accounts/">Мои аккаунты</a></li>-->
                         <li class="c-openbook public-link"><a class="under-construction" href="/public/">Мои публикации</a></li>
                         <li class="c-users groups-link"><a href="/user/groups/">Мои группы</a></li>
                         <li class="c-users groups-link"><a href="/user/withdraw/">Вывод денег</a></li>

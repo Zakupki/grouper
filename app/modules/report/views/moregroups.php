@@ -49,15 +49,15 @@
 								</div>
 							</a>
 							<div class="overlay actions">
-                                <? if(!$club['notconnected']){ ?>
+                                <? //if(!$club['notconnected']){ ?>
 								<a class="ir edit" href="/groups/update?id=<?=$club['id'];?>"></a>
-                                <?}?>
+                                <?//}?>
 								<a class="ir delete" href="#"></a>
 							</div>
 							<? if($club['notconnected']){ ?>
-							<div class="overlay error">
+							<!--<div class="overlay error">
 								<div class="txt">Вам необходимо подключить аккаунт соц.сети в которой находится данная группа</div>
-							</div>
+							</div>-->
 							<?}?>
 						</li>
 						<?}?>

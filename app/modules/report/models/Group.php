@@ -669,8 +669,10 @@ Class Group Extends Basemodel {
                 )
                 
                 club(\d+)
-                %xui', $data['url'], $match))
+                %xui', $data['url'], $match)){
+                $socialid=257;
                 $id=$match[1];
+            }
             elseif(preg_match('%^
                 (?:https?://)
                 (?:
@@ -682,7 +684,10 @@ Class Group Extends Basemodel {
                 )
                 public(\d+)
                 %xui', $data['url'], $match))
+            {
+                $socialid=257;
                 $id=$match[1];
+            }
             elseif(preg_match('%^
                 (?:https?://)
                 (?:
@@ -694,29 +699,39 @@ Class Group Extends Basemodel {
                 )
                 ([\w\d_.-]+)?
                 %xui', $data['url'], $match))
+            {
+                $socialid=257;
                 $id=$match[1];
-            
-            if($id){
+            }
+
+            if($id && $socialid==257){
                 $sUrl='https://api.vk.com/method/groups.getById?gid='.$id.'&access_token=a1173ba0be6f05b7127fae01cfceaeaebea18f5ffb76931a3492b8a06a07e259e91b34c37212079be16d7';
                 //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
                 $oResponce=null;
                 $oResponce = json_decode(file_get_contents($sUrl));
                 if($oResponce->error->error_code>0){
-                        
+
                 }else{
-                    $this->Users=new Users;
-                    $socgroups=$this->Users->getUserSocialGroups();
-                        if(array_key_exists($oResponce->response[0]->gid,$socgroups[257]))
-                        {
+                    //$this->Users=new Users;
+                    //$socgroups=$this->Users->getUserSocialGroups();
+                    if(self::groupExist($oResponce->response[0]->gid,$socialid))
+                        die('"Такая группа уже есть в базе"');
+                        /*if(array_key_exists($oResponce->response[0]->gid,$socgroups[257]))
+                        {*/
                             if($oResponce->response[0]->type=='group' || $oResponce->response[0]->type=='page'){
-                                $oResponce->response[0]->accountid=$socgroups[257][$oResponce->response[0]->gid]['accountid'];
-                                $oResponce->response[0]->token=$socgroups[257][$oResponce->response[0]->gid]['token'];
-                                $oResponce->response[0]->socialid=257;
+                                //$oResponce->response[0]->accountid=$socgroups[257][$oResponce->response[0]->gid]['accountid'];
+                                //$oResponce->response[0]->token=$socgroups[257][$oResponce->response[0]->gid]['token'];
+                                $oResponce->response[0]->socialid=$socialid;
                             return $oResponce->response[0];
-                        }
+                        /*}*/
                     }
                 }
             }
+    }
+    public function groupExist($id,$socialid){
+        $db=db::init();
+        $data=$db->queryFetchAll('SELECT id from z_group WHERE gid='.$id.' AND socialid='.tools::int($socialid).'');
+        return $data;
     }
     public function getFullData($id){
 

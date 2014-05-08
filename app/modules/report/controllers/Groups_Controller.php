@@ -148,7 +148,7 @@ Class Groups_Controller Extends BaseReport_Controller {
 			echo $this->Event->approvePoster($_GET['id'],$_GET['action']);
 			}
 		}
-        function createoldAction() {
+        function createAction() {
             if(!$_SESSION['User']['id'])
             $this->registry->get->redirect('/');
             $this->clubsnum=$this->Group->getGroupscount(2);
@@ -252,6 +252,5 @@ Class Groups_Controller Extends BaseReport_Controller {
             }
             
         }
-		
 }
 ?>
