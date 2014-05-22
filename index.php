@@ -4,10 +4,10 @@
 		$mtime = $mtime[1] + $mtime[0];
 		$starttime = $mtime;
 		/*---------------------------------------------------------------------------------*/
-		$ipArr=array('91.209.51.1572');
+		$ipArr=array('193.93.78.106');
 		if(in_array($_SERVER['REMOTE_ADDR'], $ipArr)){
-			//require_once 'atelier.html';
-			//die();
+            error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+            ini_set('display_errors', 1);
 		}else{
             error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
             ini_set('display_errors', 0);

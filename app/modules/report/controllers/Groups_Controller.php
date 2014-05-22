@@ -246,18 +246,14 @@ Class Groups_Controller Extends BaseReport_Controller {
             if(!tools::IsAjaxRequest() || !$_REQUEST['url'])
             $this->registry->get->redirect('/');
 
-            /*$group=$this->Group->findAll(array('url'=>$_POST['url']));
-            if($group->id)
-                echo 1;
-            else echo 2;*/
-            $group=$this->Group->checkGroup($_POST);
+            /*$group=$this->Group->checkGroup($_POST);
             if(($group->type=='group' || $group->type=='page') && $group->socialid==257)
                 echo 'true';
-            elseif($group->socialid==255)
+            elseif($group->socialid==255)*/
                 echo 'true';
-            else {
+            /*else {
                 echo '"Ссылка не является группой"';
-            }
+            }*/
             
         }
 }

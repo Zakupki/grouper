@@ -1,7 +1,6 @@
 <?
 require_once 'modules/base/models/Basemodel.php';
 require_once 'modules/report/models/Users.php';
-require_once 'modules/report/models/Users.php';
 
 Class Group Extends Basemodel {
 
@@ -391,7 +390,8 @@ Class Group Extends Basemodel {
                     ON z_social_stats.groupid=z_group.id AND z_social_stats.date="'.$date['date'].'"
                     '.$favJoinType.' JOIN z_favgroups
                     ON z_favgroups.groupid=z_group.id AND z_favgroups.userid='.tools::int($_SESSION['User']['id']).'
-                    WHERE z_group.socialid IN(257,255) /*AND z_group.notconnected=0*/
+                    WHERE
+                    1=1
                     '.$whereStr.'
                     '.$oderStr.'
                     LIMIT '.$params['start'].','.$params['take'].'
@@ -658,116 +658,38 @@ Class Group Extends Basemodel {
     }
 
     public function checkGroup($data){
+
+        $social=new Social;
         $data['url']=trim($data['url']);
-            if(preg_match('%^
-                (?:https?://)
-                (?:
-                www\.
-                )?      # Optional www subdomain
-                (?:             # Group host alternatives
-                  vk\.com/  # or youtube.com
-                | vkontakte\.ru/ 
-                )
-                
-                club(\d+)
-                %xui', $data['url'], $match)){
-                $socialid=257;
-                $id=$match[1];
-            }
-            elseif(preg_match('%^
-                (?:https?://)
-                (?:
-                www\.
-                )?      # Optional www subdomain
-                (?:             # Group host alternatives
-                  vk\.com/  # or youtube.com
-                | vkontakte\.ru/
-                )
-                public(\d+)
-                %xui', $data['url'], $match))
-            {
-                $socialid=257;
-                $id=$match[1];
-            }
-            elseif(preg_match('%^
-                (?:https?://)
-                (?:
-                www\.
-                )?      # Optional www subdomain
-                (?:             # Group host alternatives
-                vk\.com/  # or youtube.com
-                | vkontakte\.ru/
-                )
-                ([\w\d_.-]+)?
-                %xui', $data['url'], $match))
-            {
-                $socialid=257;
-                $id=$match[1];
-            }
-            elseif(preg_match('%^
-                (?:https?://)
-                (?:
-                www\.
-                )?      # Optional www subdomain
-                (?:             # Group host alternatives
-                vk\.com/  # or youtube.com
-                | facebook\.com/
-                )
-                ([\w\d_.-]+)?
-                %xui', $data['url'], $match))
-            {
-                $socialid=255;
-                $id=$match[1];
-            }
+        $socdata=$social->findSocial($data['url']);
+        $returndata = new stdClass();
+        //print_r($socdata['id']);
+        if(in_array($socdata['id'],array(341))){
 
-            if($id && $socialid==255){
-                $sUrl='https://graph.facebook.com/v1.0/'.$id;
-                //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
-                $oResponce=null;
-                $oResponce = json_decode(file_get_contents($sUrl));
-                if($oResponce->id>0){
-                    if(self::groupExist($oResponce->id,$socialid))
-                        die('"Такая группа уже есть в базе"');
-                    $oResponce->socialid=$socialid;
-                    $oResponce->gid=$oResponce->id;
-                    $oResponce->screen_name=$oResponce->username;
-                    $oResponce->photo_big=$oResponce->cover->source;
+            $returndata->socialid=$socdata['id'];
+            $returndata->gid=123;
 
-                    $picUrl='https://graph.facebook.com/'.$oResponce->id.'/?fields=picture.type(large)';
-                    //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
-                    $picResponce=null;
-                    $picResponce = json_decode(file_get_contents($picUrl));
-                    if(isset($picResponce->picture->data->url))
-                    $oResponce->photo_big=$picResponce->picture->data->url;
+        }elseif(in_array($socdata['id'],array(257))){
 
-                    unset($oResponce->id);
-                    return $oResponce;
-                }
-            }
+            $returndata=self::getVkData(array('url'=>$data['url']));
 
-            if($id && $socialid==257){
-                $sUrl='https://api.vk.com/method/groups.getById?gid='.$id.'&access_token=a1173ba0be6f05b7127fae01cfceaeaebea18f5ffb76931a3492b8a06a07e259e91b34c37212079be16d7';
-                //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
-                $oResponce=null;
-                $oResponce = json_decode(file_get_contents($sUrl));
-                if($oResponce->error->error_code>0){
+        }elseif(in_array($socdata['id'],array(255))){
 
-                }else{
-                    //$this->Users=new Users;
-                    //$socgroups=$this->Users->getUserSocialGroups();
-                    if(self::groupExist($oResponce->response[0]->gid,$socialid))
-                        die('"Такая группа уже есть в базе"');
-                        /*if(array_key_exists($oResponce->response[0]->gid,$socgroups[257]))
-                        {*/
-                            if($oResponce->response[0]->type=='group' || $oResponce->response[0]->type=='page'){
-                                //$oResponce->response[0]->accountid=$socgroups[257][$oResponce->response[0]->gid]['accountid'];
-                                //$oResponce->response[0]->token=$socgroups[257][$oResponce->response[0]->gid]['token'];
-                                $oResponce->response[0]->socialid=$socialid;
-                            return $oResponce->response[0];
-                        /*}*/
-                    }
-                }
-            }
+            $returndata=self::getFbData(array('url'=>$data['url']));
+
+        }else{
+
+            $returndata->socialid=$socdata['id'];
+            $returndata->gid=123;
+
+        }
+
+
+
+        return $returndata;
+
+
+
     }
     public function groupExist($id,$socialid){
         $db=db::init();
@@ -980,6 +902,114 @@ Class Group Extends Basemodel {
 	    WHERE z_group.id='.tools::int($id).'
 	    ');
         return $result;
+    }
+    public function getVkData($params=array()){
+        $socialid=257;
+        if(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                  vk\.com/  # or youtube.com
+                | vkontakte\.ru/
+                )
+
+                club(\d+)
+                %xui', $params['url'], $match)){
+        }
+        elseif(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                  vk\.com/  # or youtube.com
+                | vkontakte\.ru/
+                )
+                public(\d+)
+                %xui', $params['url'], $match))
+        {
+        }
+        elseif(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                vk\.com/  # or youtube.com
+                | vkontakte\.ru/
+                )
+                ([\w\d_.-]+)?
+                %xui', $params['url'], $match))
+        {
+        }
+        $id=$match[1];
+
+        if($id){
+            $sUrl='https://api.vk.com/method/groups.getById?gid='.$id.'&access_token=a1173ba0be6f05b7127fae01cfceaeaebea18f5ffb76931a3492b8a06a07e259e91b34c37212079be16d7';
+            //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+            $oResponce=null;
+            $oResponce = json_decode(file_get_contents($sUrl));
+            if($oResponce->error->error_code>0){
+
+            }else{
+                //$this->Users=new Users;
+                //$socgroups=$this->Users->getUserSocialGroups();
+                if(self::groupExist($oResponce->response[0]->gid,$socialid))
+                    die('"Такая группа уже есть в базе"');
+                /*if(array_key_exists($oResponce->response[0]->gid,$socgroups[257]))
+                {*/
+                if($oResponce->response[0]->type=='group' || $oResponce->response[0]->type=='page'){
+                    //$oResponce->response[0]->accountid=$socgroups[257][$oResponce->response[0]->gid]['accountid'];
+                    //$oResponce->response[0]->token=$socgroups[257][$oResponce->response[0]->gid]['token'];
+                    $oResponce->response[0]->socialid=$socialid;
+                    return $oResponce->response[0];
+                    /*}*/
+                }
+            }
+        }
+    }
+    public function getFbData($params=array()){
+        if(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                vk\.com/  # or youtube.com
+                | facebook\.com/
+                )
+                ([\w\d_.-]+)?
+                %xui', $params['url'], $match))
+        {
+            $socialid=255;
+            $id=$match[1];
+        }
+        if($id){
+            $sUrl='https://graph.facebook.com/v1.0/'.$id;
+            //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+            $oResponce=null;
+            $oResponce = json_decode(file_get_contents($sUrl));
+            if($oResponce->id>0){
+                if(self::groupExist($oResponce->id,$socialid))
+                    die('"Такая группа уже есть в базе"');
+                $oResponce->socialid=$socialid;
+                $oResponce->gid=$oResponce->id;
+                $oResponce->screen_name=$oResponce->username;
+                $oResponce->photo_big=$oResponce->cover->source;
+
+                $picUrl='https://graph.facebook.com/'.$oResponce->id.'/?fields=picture.type(large)';
+                //создадим объект, содержащий ответ сервера Вконтакте, который приходит в формате JSON
+                $picResponce=null;
+                $picResponce = json_decode(file_get_contents($picUrl));
+                if(isset($picResponce->picture->data->url))
+                    $oResponce->photo_big=$picResponce->picture->data->url;
+
+                unset($oResponce->id);
+                return $oResponce;
+            }
+        }
     }
 }
 ?>

@@ -108,5 +108,31 @@ Class Test_Controller Extends BaseReport_Controller {
             //print_r($picResponce->picture->data->url);
             echo "</pre>";
         }
+        public function odAction(){
+            /*
+            Этот код необходимо добавить один раз перед первым использованием SDK, указав в директиве require путь к файлу с SDK.
+            Он подключает SDK и проверяет, установлена ли необходимая для работы SDK библиотека curl.
+            */
+            //require("./odnoklassniki_sdk.php");
+            /*if (!odnoklassnikisdk::checkCurlSupport()){
+                print "У вас не установлен модуль curl, который требуется для работы с SDK одноклассников.  Инструкция по установке есть, например, <a href=\">.";
+                return;
+            }*/
+            //$data=odnoklassnikisdk::makeRequest("group.getInfo", array("uids" => "optimizmmm"));
+            ?>
+                <a href="http://www.odnoklassniki.ru/oauth/authorize?client_id=1090049792&scope=VALUABLE_ACCESS&response_type=code&redirect_uri=http://reactor-pro.com/test/od">логин</a>
+            <?
+            //print_r(odnoklassnikisdk::getCode());
+            //print_r(odnoklassnikisdk::changeCodeToToken(odnoklassnikisdk::getCode()));
+            if (!is_null(odnoklassnikisdk::getCode())){
+
+                if(odnoklassnikisdk::changeCodeToToken(odnoklassnikisdk::getCode())){
+
+                }
+            }
+            $data=odnoklassnikisdk::makeRequest("group.getInfo",array('uids'=>'zhemch','fields'=>'name'));
+            tools::print_r($data);
+
+        }
 }
 ?>
