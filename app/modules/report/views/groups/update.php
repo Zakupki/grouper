@@ -14,12 +14,11 @@
                     <? if($this->view->groupdata->code)
                         $this->view->groupdata->screen_name=$this->view->groupdata->code;
                     ?>  
-					<input id="group-url-input" type="text" name="url" class="txt" value="<?=($this->view->groupdata->socialid==255)?'http://facebook.com/'.$this->view->groupdata->screen_name:'';?><?=($this->view->groupdata->socialid==257)?'http://vk.com/'.$this->view->groupdata->screen_name:'';?>" disabled>
+					<input id="group-url-input" type="text" name="url" class="txt" value="<?=$this->view->groupdata->url;?>" disabled>
 				</div>
 				<div class="field">
 					<label for="group-name-input">Название:</label>
-					<input id="group-name-input" type="text" name="name" class="txt" value="<?=$this->view->groupdata->name;?>" disabled>
-					<input type="hidden" name="name" value="<?=$this->view->groupdata->name;?>">
+					<input id="group-name-input" type="text" name="name" class="txt" value="<?=$this->view->groupdata->name;?>">
 				</div>
 				<div class="clearfix">
 					<div class="field col4">
@@ -32,25 +31,25 @@
 					</div>
 					<div class="field col4 last-col">
 						<label>Большинство пользователей из</label>
-						<select name="countryid" disabled>
+						<select name="countryid">
 							<? foreach($this->view->countrylist as $country){?>
 							<option<?=($this->view->groupdata->countryid==$country['id'] || $country['name_en']==$this->view->groupdata->location->country)?' selected="selected"':'';?> value="<?=$country['id'];?>"><?=$country['name'];?></option>
 							<?}?>
 						</select>
-						<input type="hidden" name="countryid" value="<?=$country['id'];?>">
+						<!--<input type="hidden" name="countryid" value="<?=$country['id'];?>">-->
 					</div>
 				</div>
                 <div class="radios clearfix">
 					<div class="field col4">
-						<input type="radio" name="gender" value="1" id="radio-gender-1"<?=($this->view->groupdata->gender==1)?' checked':'';?>  <?=($this->view->groupdata->socialid==1257)?' disabled':'';?>>
+						<input type="radio" name="gender" value="1" id="radio-gender-1">
 						<label for="radio-gender-1">В этой группе больше мужчин</label>
 					</div>
 					<div class="field col4 last-col">
-						<input type="radio" name="gender" value="0" id="radio-gender-2"<?=(!$this->view->groupdata->gender)?' checked':'';?>  <?=($this->view->groupdata->socialid==1257)?' disabled':'';?>>
+						<input type="radio" name="gender" value="0" id="radio-gender-2">
 						<label for="radio-gender-2">В этой группе больше женщин</label>
 					</div>
                     <?if($this->view->groupdata->socialid==1257){?>
-					<input type="hidden" name="gender" value="<?=$this->view->groupdata->gender;?>">
+					<!--<input type="hidden" name="gender" value="<?=$this->view->groupdata->gender;?>">-->
                     <?}?>
 				</div>
 				<div class="number-inputs clearfix">
@@ -58,7 +57,7 @@
 						<label for="group-age-input">Средний возраст:</label>
 						<input id="group-age-input" type="text" name="age" class="txt short" value="<?=$this->view->groupdata->age;?>" <?=($this->view->groupdata->socialid==1257)?' disabled':'';?>>
 						<?if($this->view->groupdata->socialid==1257){?>
-                        <input type="hidden" name="age" value="<?=$this->view->groupdata->age;?>">
+                        <!--<input type="hidden" name="age" value="<?=$this->view->groupdata->age;?>">-->
                         <?}?>
 					</div>
 					<div class="field col3">

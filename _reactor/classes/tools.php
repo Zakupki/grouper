@@ -587,7 +587,7 @@ class tools
 		fclose($savefile);
 	if($size)
 	$size=$size.'_';
-	return '/uploads/temp/'.$size.$newfilename;
+    return '/uploads/temp/'.$size.$newfilename;
 	}
     public static function GetFacebookImageFromUrl($link,$size=null)
  	{

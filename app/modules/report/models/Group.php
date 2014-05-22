@@ -541,7 +541,7 @@ Class Group Extends Basemodel {
         }else{
           $image=str_replace("12_","",$data['image']);
         }
-        $newfile='"NULL"';
+        $newfile='NULL';
         $tempfile="".$_SERVER['DOCUMENT_ROOT'].$image."";
         
         if(file_exists($tempfile)){
@@ -550,7 +550,10 @@ Class Group Extends Basemodel {
             if(rename($tempfile, "".$_SERVER['DOCUMENT_ROOT']."/uploads/users/".tools::int($_SESSION['User']['id'])."/img/".$newfile.""))
             {
                 $update_file=', file_name="'.tools::str($newfile).'"';
+                $newfile='"'.$newfile.'"';
             }
+            else
+                $newfile='NULL';
             
         }
         if($data['groupsubjectid']>0)
@@ -584,9 +587,10 @@ Class Group Extends Basemodel {
             '.$groupsubjectid.',
             '.$countryid.',
             '.$data['gender'].',
-            "'.$newfile.'"
+            '.$newfile.'
             )
         ');
+
         if($result)
         $data['id']=$db->lastInsertId();
         
@@ -667,6 +671,7 @@ Class Group Extends Basemodel {
         if(in_array($socdata['id'],array(341))){
 
             $returndata->socialid=$socdata['id'];
+            $returndata->url=$data['url'];
             $returndata->gid=123;
 
         }elseif(in_array($socdata['id'],array(257))){
@@ -680,11 +685,12 @@ Class Group Extends Basemodel {
         }else{
 
             $returndata->socialid=$socdata['id'];
+            $returndata->url=$data['url'];
             $returndata->gid=123;
 
         }
 
-
+        //print_r($returndata);
 
         return $returndata;
 
