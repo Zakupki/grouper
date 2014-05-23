@@ -2320,20 +2320,15 @@ a.help{
 	text-decoration: none;
 	position: relative;
 	top: 2px;
+	margin-left: 10px;
 }
 
 
-.groups-list .address.i{
-	padding-right: 23px;
+.groups-list .address.i img{
+	float: right;
+	margin: 0 5px;
 }
 
-.groups-list .address.i.facebook{
-	background: url(/img/report/icon-facebook-small.png) no-repeat right center;
-}
-
-.groups-list .address.i.vk{
-	background: url(/img/report/icon-vk-small.png) no-repeat right center;
-}
 
 .groups-list .col{
 	height: 61px;
