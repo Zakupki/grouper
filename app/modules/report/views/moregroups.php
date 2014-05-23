@@ -21,6 +21,7 @@
 										<?}?>
 									</a>
 								</div>
+
 								<a class="address i <?=$socicons[$club['socialid']];?>"><?=$club['subject'];?></a>
                                 <a class="address i"><?=$club['subject'];?><img src="<?=$club['socialimage'];?>"/></a>
 							</div>
