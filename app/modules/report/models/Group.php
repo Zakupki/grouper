@@ -579,6 +579,9 @@ Class Group Extends Basemodel {
             INSERT INTO z_group
             (name,url,age,price,pricerepost,gid,code,type,screen_name,socialid,accountid,userid,groupsubjectid,countryid,gender,file_name) VALUES (
             "'.tools::str($data['name']).'",
+            "'.tools::str($data['adminname']).'",
+            "'.tools::str($data['admincontact']).'",
+            "'.tools::str($data['postdetails']).'",
             "'.tools::str($data['url']).'",
             "'.tools::str($data['age']).'",
             "'.tools::str($data['price']).'",
@@ -616,6 +619,9 @@ Class Group Extends Basemodel {
         }else{
             $db->exec('UPDATE z_group
             SET name="'.tools::str($data['name']).'",
+            adminname="'.tools::str($data['adminname']).'",
+            admincontact="'.tools::str($data['admincontact']).'",
+            postdetails="'.tools::str($data['postdetails']).'",
             age="'.tools::int($data['age']).'",
             price="'.tools::str($data['price']).'",
             pricerepost="'.tools::str($data['pricerepost']).'",
