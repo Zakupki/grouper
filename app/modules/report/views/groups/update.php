@@ -18,7 +18,7 @@
 				</div>
 				<div class="field">
 					<label for="group-name-input">Название:</label>
-					<input id="group-name-input" type="text" name="name" class="txt" value="<?=$this->view->groupdata->name;?>">
+					<input id="group-name-input" type="text" name="name" class="txt required" value="<?=$this->view->groupdata->name;?>">
 				</div>
                 <div class="field">
                     <label for="group-name-input">Админ группы:</label>
@@ -79,7 +79,7 @@
 				</div>
                 <div class="field">
                     <label for="group-name-input">Условие размещение поста:</label>
-                    <textarea name="postdetails"><?=$this->view->groupdata->postdetails?></textarea>
+                    <textarea name="postdetails" class="txt"><?=$this->view->groupdata->postdetails?></textarea>
 
                 </div>
 				<!--<div class="field checkbox"> 
