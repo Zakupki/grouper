@@ -577,8 +577,9 @@ Class Group Extends Basemodel {
 
             $result=$db->exec('
             INSERT INTO z_group
-            (name,age,price,pricerepost,gid,code,type,screen_name,socialid,accountid,userid,groupsubjectid,countryid,gender,file_name) VALUES (
+            (name,url,age,price,pricerepost,gid,code,type,screen_name,socialid,accountid,userid,groupsubjectid,countryid,gender,file_name) VALUES (
             "'.tools::str($data['name']).'",
+            "'.tools::str($data['url']).'",
             "'.tools::str($data['age']).'",
             "'.tools::str($data['price']).'",
             "'.tools::str($data['pricerepost']).'",
@@ -659,7 +660,14 @@ Class Group Extends Basemodel {
         $whereArr[]=$k.'='.$v;
         
         $result=$db->queryFetchObj('
-            SELECT t.*,CONCAT("/uploads/users/",t.userid,"/img/12_",t.file_name) as photo_big FROM z_group as t
+            SELECT
+            t.*,
+            CONCAT("/uploads/users/",t.userid,"/img/12_",t.file_name) as photo_big,
+            CONCAT("http://",z_social.url,"/",t.code) as url
+            FROM z_group as t
+            LEFT JOIN z_social
+            ON z_social.id=t.socialid
+
             WHERE '.implode(' AND ', $whereArr).'
         ');
         if($result)

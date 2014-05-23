@@ -20,7 +20,15 @@
 					<label for="group-name-input">Название:</label>
 					<input id="group-name-input" type="text" name="name" class="txt" value="<?=$this->view->groupdata->name;?>">
 				</div>
-				<div class="clearfix">
+                <div class="field">
+                    <label for="group-name-input">Админ группы:</label>
+                    <input id="group-name-input" type="text" name="adminname" class="txt" value="<?=$this->view->groupdata->adminname;?>">
+                </div>
+                <div class="field">
+                    <label for="group-name-input">Контакты админа:</label>
+                    <input id="group-name-input" type="text" name="admincontact" class="txt" value="<?=$this->view->groupdata->admincontact?>">
+                </div>
+                <div class="clearfix">
 					<div class="field col4">
 						<label>Тематика группы:</label>
 						<select name="groupsubjectid">
@@ -69,7 +77,11 @@
 						<input id="group-repost-price-input" type="text" name="pricerepost" class="txt short" value="<?=($this->view->groupdata->pricerepost)?$this->view->groupdata->pricerepost:ceil(($this->view->membernum*$this->view->postprice+$this->view->postpriceadd)*0.9*$this->view->currencyprice);?>">
 					</div>
 				</div>
+                <div class="field">
+                    <label for="group-name-input">Условие размещение поста:</label>
+                    <textarea name="postdetails"><?=$this->view->groupdata->postdetails?></textarea>
 
+                </div>
 				<!--<div class="field checkbox"> 
 					<input type="checkbox" name="legal" value="1" id="checkbox-legal">
 					<label for="checkbox-legal">Данная группа не содержит сисек, писек, призыва к насилию т.д.</label>
