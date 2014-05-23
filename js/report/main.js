@@ -1,7 +1,7 @@
 
 //global vars:
 var $dom = {},
-		loggedIn = $('body').hasClass('logged-in'),
+		loggedIn,
 		ajaxHelp = '/help/',
 		ajaxMoreGroups = '/groups/getmore/',
 		ajaxClubsAddToFav = '/clubs/addtofav',
@@ -67,6 +67,7 @@ function cacheDOM(){
 		content: $('#content'),
 		socialSide: $('#social-side')
 	});
+	loggedIn = $dom.body.hasClass('logged-in');
 }
 
 function unblockLinks(){
@@ -2388,6 +2389,9 @@ $.fn.groupUpdate = function(){
 						$gender = $form.find('input[name=gender]'),
 						$price = $form.find('input[name=price]'),
 						$pricerepost = $form.find('input[name=pricerepost]'),
+						$adminname = $form.find('input[name=adminname]'),
+						$admincontact = $form.find('input[name=admincontact]'),
+						$postdetails = $form.find('[name=postdetails]'),
 						$uploadCover = $root.find('#upload-image'),
 						$uploadLink = $root.find('.cover-input .upload-link'),
 						$cover = $root.find('.cover-input .img img'),
@@ -2405,6 +2409,10 @@ $.fn.groupUpdate = function(){
 					$uploadLink.hide();
 				}
 
+				$form.find('input, textarea').bind('click, focus', function(){
+					$(this).removeClass('error');
+				});
+
 				$uploadCover.uploadify({
 						'multi': false,
 						'swf': '/uploadify/uploadify32.swf',
@@ -2421,7 +2429,7 @@ $.fn.groupUpdate = function(){
 								if(data){
 									response = $.parseJSON(data);
 									if (response.error) {
-											$alert({
+											$.alert({
 												content: response.status
 											});
 											return;
@@ -2461,6 +2469,21 @@ $.fn.groupUpdate = function(){
 				$form.submit(function(e) {
 						e.preventDefault();
 						$submit.addClass('disabled');
+						
+						var $required = $form.find('.required');
+								valid = true;
+						$required.each(function(){
+							if($(this).val() == ''){
+								$(this).addClass('error');
+								valid = false;
+							}
+						});
+
+						if(!valid){
+							if($('.error').length) $('html, body').scrollTop($('.error').eq(0).offset().top);							
+							return false;
+						}
+
 						$.ajax({
 							type: 'post',
 							url: $form.attr('action'),
@@ -2477,6 +2500,9 @@ $.fn.groupUpdate = function(){
 								'gender': $gender.val(),
 								'price': $price.val(),
 								'pricerepost': $pricerepost.val(),
+								'adminname': $adminname.val(),
+								'admincontact': $admincontact.val(),
+								'postdetails': $postdetails.val(),
 								'code': $code.val(),
 								'type': $type.val(),
 								'socialid': $socialid.val(),

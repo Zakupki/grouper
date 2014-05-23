@@ -5385,7 +5385,8 @@ background-position:0 -100px
 	margin-bottom: 20px;
 }
 
-.groups-update .col8 input.txt{
+.groups-update .col8 input.txt,
+.groups-update .col8 textarea.txt{
 	width: 430px;
 }
 
