@@ -2481,6 +2481,7 @@ $.fn.groupUpdate = function(){
 
 						if(!valid){
 							if($('.error').length) $('html, body').scrollTop($('.error').eq(0).offset().top);							
+							$submit.removeClass('disabled');
 							return false;
 						}
 
