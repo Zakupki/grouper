@@ -368,6 +368,7 @@ Class Group Extends Basemodel {
                       z_group.price/z_social_stats.value AS `contactprice`,
                       z_group.age,
                       z_group.price,
+                      concat("/uploads/",z_file.subdir,"/",z_file.file_name) AS socialimage,
                       z_groupsubject.name as subject,
                       CONCAT(
                            "/uploads/users/",
@@ -386,6 +387,10 @@ Class Group Extends Basemodel {
                       z_group
                     INNER JOIN z_groupsubject
                     ON z_groupsubject.id=z_group.groupsubjectid
+                    LEFT JOIN z_social
+                    ON z_social.id=z_group.socialid
+                    LEFT JOIN z_file
+                    ON z_file.id=z_social.preview_image
                     LEFT JOIN z_social_stats
                     ON z_social_stats.groupid=z_group.id AND z_social_stats.date="'.$date['date'].'"
                     '.$favJoinType.' JOIN z_favgroups
