@@ -134,5 +134,16 @@ Class Test_Controller Extends BaseReport_Controller {
             tools::print_r($data);
 
         }
+    public function twAction(){
+
+
+        $connection = new twitteroauth(CONSUMER_KEY, CONSUMER_SECRET);
+
+        /* If method is set change API call made. Test is called by default. */
+        $content = $connection->get('users/show',array('screen_name'=>'HromadskeTV'));
+
+        tools::print_r($content);
+
+    }
 }
 ?>

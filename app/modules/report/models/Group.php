@@ -543,6 +543,7 @@ Class Group Extends Basemodel {
         
         if($data['remoteimage']==1){
             $image=tools::GetImageFromUrl($data['image']);
+
         }else{
           $image=str_replace("12_","",$data['image']);
         }
@@ -577,7 +578,7 @@ Class Group Extends Basemodel {
 
             $result=$db->exec('
             INSERT INTO z_group
-            (name,url,age,price,pricerepost,gid,code,type,screen_name,socialid,accountid,userid,groupsubjectid,countryid,gender,file_name) VALUES (
+            (name,adminname,admincontact,postdetails,url,age,price,pricerepost,gid,code,type,screen_name,socialid,accountid,userid,groupsubjectid,countryid,gender,file_name) VALUES (
             "'.tools::str($data['name']).'",
             "'.tools::str($data['adminname']).'",
             "'.tools::str($data['admincontact']).'",
@@ -686,6 +687,8 @@ Class Group Extends Basemodel {
         $data['url']=trim($data['url']);
         $socdata=$social->findSocial($data['url']);
         $returndata = new stdClass();
+
+
         //print_r($socdata['id']);
         if(in_array($socdata['id'],array(341))){
 
@@ -700,6 +703,14 @@ Class Group Extends Basemodel {
         }elseif(in_array($socdata['id'],array(255))){
 
             $returndata=self::getFbData(array('url'=>$data['url']));
+
+        }elseif(in_array($socdata['id'],array(222))){
+
+            $returndata=self::getTwData(array('url'=>$data['url']));
+
+        }elseif(in_array($socdata['id'],array(438))){
+
+            $returndata=self::getInstagramData(array('url'=>$data['url']));
 
         }else{
 
@@ -1002,7 +1013,7 @@ Class Group Extends Basemodel {
                 www\.
                 )?      # Optional www subdomain
                 (?:             # Group host alternatives
-                vk\.com/  # or youtube.com
+                fb\.com/
                 | facebook\.com/
                 )
                 ([\w\d_.-]+)?
@@ -1034,6 +1045,64 @@ Class Group Extends Basemodel {
                 unset($oResponce->id);
                 return $oResponce;
             }
+        }
+    }
+    public function getTwData($params=array()){
+        if(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                twitter\.com/
+                )
+                ([\w\d_.-]+)?
+                %xui', $params['url'], $match))
+        {
+            $socialid=222;
+            $id=$match[1];
+            $connection = new twitteroauth(CONSUMER_KEY, CONSUMER_SECRET);
+
+            /* If method is set change API call made. Test is called by default. */
+            $content = $connection->get('users/show',array('screen_name'=>$id));
+
+            $returndata = new stdClass();
+            $returndata->url=$params['url'];
+            $returndata->gid=$content->id;
+            $returndata->name=$content->name;
+            $returndata->socialid=$socialid;
+            $returndata->remote=1;
+            $returndata->photo_big=str_replace('_normal','',$content->profile_image_url);
+
+            return $returndata;
+        }
+    }
+    public function getInstagramData($params=array()){
+        if(preg_match('%^
+                (?:https?://)
+                (?:
+                www\.
+                )?      # Optional www subdomain
+                (?:             # Group host alternatives
+                instagram\.com/
+                )
+                ([\w\d_.-]+)?
+                %xui', $params['url'], $match))
+        {
+            $socialid=438;
+            $id=$match[1];
+
+
+            $instagram = new instagram('7d07909f242041ebad6af98f6a4414eb');
+
+            //tools::print_r($instagram->searchUser('savemymind'));
+
+
+            $returndata = new stdClass();
+            $returndata->url=$params['url'];
+            $returndata->socialid=$socialid;
+
+            return $returndata;
         }
     }
 }

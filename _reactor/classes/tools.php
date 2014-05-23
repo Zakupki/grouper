@@ -579,6 +579,7 @@ class tools
 	$result=curl_exec($ch);
 	curl_close($ch);
 
+
 		$targetPath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/temp/';
 		$path_parts=pathinfo($link);
 		$newfilename=md5(uniqid().microtime()).".".$path_parts['extension'];
