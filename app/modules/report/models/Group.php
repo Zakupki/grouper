@@ -1092,16 +1092,17 @@ Class Group Extends Basemodel {
             $socialid=438;
             $id=$match[1];
 
-
             $instagram = new instagram('7d07909f242041ebad6af98f6a4414eb');
-
-            //tools::print_r($instagram->searchUser('savemymind'));
-
+            $content=$instagram->searchUser($id);
+            //tools::print_r($content);
 
             $returndata = new stdClass();
             $returndata->url=$params['url'];
+            $returndata->gid=$content->data[0]->id;
+            $returndata->name=$content->data[0]->username;
             $returndata->socialid=$socialid;
-
+            $returndata->remote=1;
+            $returndata->photo_big=$content->data[0]->profile_picture;
             return $returndata;
         }
     }
