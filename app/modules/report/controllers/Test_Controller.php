@@ -1,8 +1,10 @@
 <?
 require_once 'modules/base/controllers/BaseReport_Controller.php';
-require_once 'modules/report/models/Club.php';
+/*require_once 'modules/report/models/Club.php';
 require_once 'modules/report/models/System.php';
-require_once 'modules/main/models/Geo.php';
+require_once 'modules/report/models/Social.php';*/
+require_once 'modules/report/models/Group.php';
+/*require_once 'modules/main/models/Geo.php';*/
 
 Class Test_Controller Extends BaseReport_Controller {
 		public $registry;
@@ -144,6 +146,41 @@ Class Test_Controller Extends BaseReport_Controller {
 
         tools::print_r($content);
 
+    }
+    public function excelAction(){
+        require_once 'classes/excel/reader.php';
+        $data = new Spreadsheet_Excel_Reader();
+        $data->setOutputEncoding('UTF8');
+        $data->read('test.xls');
+
+        error_reporting(E_ALL ^ E_NOTICE);
+
+        /*for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
+            for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
+                echo "\"".$data->sheets[0]['cells'][$i][$j]."\",";
+            }
+            echo "\n";
+
+        }*/
+
+        $group=new Group;
+
+        for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
+            $soc=array();
+
+            $groupdata=$group->checkGroup(array('url'=>trim($data->sheets[0]['cells'][$i][1])));
+
+            echo '<img src=""/>';
+
+
+            /*$soc['socialid']=$socdata['id'];
+            $soc['name']=$data->sheets[0]['cells'][$i][2];
+            $soc['pricepost']=$data->sheets[0]['cells'][$i][5];*/
+            print_r($groupdata);
+            echo "<br/>";
+            //print_r($data->sheets[0]['cells'][$i][2]);
+            echo "<br/>";
+        }
     }
 }
 ?>
