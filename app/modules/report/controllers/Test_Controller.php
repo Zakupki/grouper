@@ -170,7 +170,8 @@ Class Test_Controller Extends BaseReport_Controller {
 
             $groupdata=$group->checkGroup(array('url'=>trim($data->sheets[0]['cells'][$i][1])));
 
-            echo '<img src=""/>';
+            if(isset($groupdata->photo_big))
+            echo '<img src="'.$groupdata->photo_big.'"/>';
 
 
             /*$soc['socialid']=$socdata['id'];
